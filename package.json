@@ -4,8 +4,8 @@
   "description": "Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.",
   "main": "avatar.js",
   "scripts": {
-    "test": "grunt test",
-    "validate": "grunt jshint"
+    "test": "grunt jshint",
+    "build": "grunt build"
   },
   "repository": {
     "type": "git",
