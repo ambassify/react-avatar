@@ -7,7 +7,7 @@ module.exports = (function() {
   var React = require('react');
   var md5 = require('MD5');
 
-  var Avatar = React.createClass({
+  var Avatar = React.createClass({displayName: "Avatar",
 
     getProtocol: function()
     {
@@ -265,13 +265,13 @@ module.exports = (function() {
       if(this.state.src ) {
         return (
           /* jshint ignore:start */
-          <img width={ this.props.size } height={ this.props.size } style={ imageStyle } src={ this.state.src } onError={ this.fetch } />
+          React.createElement("img", {width:  this.props.size, height:  this.props.size, style: imageStyle, src:  this.state.src, onError:  this.fetch})
           /* jshint ignore:end */
         );
       } else {
         return (
           /* jshint ignore:start */
-          <div style={ initialsStyle }>{ this.state.value }</div>
+          React.createElement("div", {style: initialsStyle },  this.state.value)
           /* jshint ignore:end */
         );
       }
@@ -288,9 +288,9 @@ module.exports = (function() {
 
       return (
         /* jshint ignore:start */
-        <div style={ hostStyle }>
-          { visual } 
-        </div>
+        React.createElement("div", {style: hostStyle }, 
+          visual 
+        )
         /* jshint ignore:end */
       );
     }

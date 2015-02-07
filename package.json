@@ -1,6 +1,6 @@
 {
   "name": "react-avatar",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.",
   "main": "avatar.js",
   "scripts": {
@@ -33,6 +33,10 @@
     "reactify": "^1.0.0"
   },
   "dependencies": {
-    "MD5": "^1.2.1"
+    "MD5": "^1.2.1",
+    "grunt-react": "^0.10.0",
+    "is-array": "^1.0.1",
+    "react": "^0.12.2",
+    "react-tools": "^0.12.2"
   }
 }

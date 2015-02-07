@@ -15,10 +15,17 @@ module.exports = function(grunt) {
     'browserify': {
       dist: {
         files: {
-          'bundle.js': ['run.jsx'],
+          'bundle.js': ['run.jsx']
         },
         options: {
           transform: ['reactify']
+        }
+      }
+    },
+    'react': {
+      single_file_output: {
+        files: {
+          'avatar.js': 'avatar.jsx'
         }
       }
     },
@@ -50,8 +57,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-react');
 
-  grunt.registerTask('build',  ['jshint','browserify']);
+  grunt.registerTask('build',  ['jshint','browserify', 'react']);
   grunt.registerTask('deploy', ['gh-pages']);
   grunt.registerTask('server', ['connect']);
 
