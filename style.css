@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	line-height: 1.7em;
+	color: #7f8c8d;
+	font-size: 14px;
+	font-family: 'Roboto Slab', serif;
+	text-align:center;
+}
+
+h1 {
+	font-size: 70px;
+	font-weight: 100;
+	line-height: 1em;
+	margin-bottom: 30px;
+}
+h2 {
+	padding: 10px 0 20px 0;
+}
+#header {
+	background: #7e3794;
+	padding: 50px 0;
+	color: #FFF;
+	margin-bottom: 30px;
+}
+#header span, #header p {
+	opacity: 0.8;
+}
+#container {
+}
+section {
+	margin: 0 0 30px 0;
+}
