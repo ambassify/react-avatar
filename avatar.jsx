@@ -20,16 +20,16 @@ module.exports = (function() {
     /**
      * Gravatar implementation
      * @param  {string}   email MD5 hash or plain text email address
-     * @param  {int}   size  
-     * @param  {Function} cb    
-     * @return {void}         
+     * @param  {int}   size
+     * @param  {Function} cb
+     * @return {void}
      */
     getGravatarURL: function(email, size, cb, tryNext )
     {
       var base = 'gravatar.com/avatar/<%=id%>?s=<%=size%>';
 
       // if email does not contain @ it's already an MD5 hash
-      if( email.indexOf('@') > -1 ) 
+      if( email.indexOf('@') > -1 )
         email = md5(email);
 
       var prefix = this.getProtocol() === 'https:' ? 'https://secure.' : 'http://';
@@ -39,9 +39,9 @@ module.exports = (function() {
     /**
      * Facebook implementation
      * @param  {string|int}   id
-     * @param  {int}   size 
-     * @param  {Function} cb   
-     * @return {void} 
+     * @param  {int}   size
+     * @param  {Function} cb
+     * @return {void}
      */
     getFacebookURL: function( id, size, cb, tryNext )
     {
@@ -51,9 +51,9 @@ module.exports = (function() {
 
     /**
      * Google+ implementation
-     * @param  {int}   id   
-     * @param  {int}   size 
-     * @param  {Function} cb   
+     * @param  {int}   id
+     * @param  {int}   size
+     * @param  {Function} cb
      * @return {void}
      */
     getGoogleURL: function( id, size, cb, tryNext )
@@ -68,7 +68,7 @@ module.exports = (function() {
 
     /**
      * Skype implementation
-     * @param  {string}   id   
+     * @param  {string}   id
      * @param  {int}   size
      * @param  {Function} cb
      * @return {void}
@@ -123,7 +123,7 @@ module.exports = (function() {
 
     /**
      * Do an ajax request to fetch remote data
-     * @param  {string}   url 
+     * @param  {string}   url
      * @param  {Function} cb
      * @return {void}
      */
@@ -190,13 +190,27 @@ module.exports = (function() {
     componentWillMount: function() {
       this.fetch();
     },
+    componentWillReceiveProps: function(newProps) {
+      /**
+       * This component ignores changes in `this.props.src`, `this.props.name`, and
+       * `this.props.value`. This lifecycle method will allow users to change the avatars name or
+       * value.
+       */
+      if (this.props.src && newProps.src !== this.props.src) {
+        this.setState({ src: newProps.src });
+      } else if (newProps.name && newProps.name !== this.props.name) {
+        this.setState({ value: this.getInitials(newProps.name) });
+      } else if (newProps.value && newProps.value !== this.props.value) {
+        this.setState({ value: newProps.value });
+      }
+    },
     fetch: function( e ) {
       var url = null;
       var self = this;
-      var tryNext = function() { 
+      var tryNext = function() {
         self.fetch();
       };
-      
+
       // If fetch was triggered by img onError
       // then set state src back to null so getVisual will
       // automatically switch to drawn avatar if there is no other social ID available to try
@@ -289,7 +303,7 @@ module.exports = (function() {
       return (
         /* jshint ignore:start */
         <div style={ hostStyle }>
-          { visual } 
+          { visual }
         </div>
         /* jshint ignore:end */
       );

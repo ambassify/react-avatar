@@ -192,10 +192,13 @@ module.exports = (function() {
     },
     componentWillReceiveProps: function(newProps) {
       /**
-       * This component ignores changes in `this.props.name` and `this.props.value`.
-       * This lifecycle method will allow users to change the avatars name or value.
+       * This component ignores changes in `this.props.src`, `this.props.name`, and
+       * `this.props.value`. This lifecycle method will allow users to change the avatars name or
+       * value.
        */
-      if (newProps.name && newProps.name !== this.props.name) {
+      if (this.props.src && newProps.src !== this.props.src) {
+        this.setState({ src: newProps.src });
+      } else if (newProps.name && newProps.name !== this.props.name) {
         this.setState({ value: this.getInitials(newProps.name) });
       } else if (newProps.value && newProps.value !== this.props.value) {
         this.setState({ value: newProps.value });
