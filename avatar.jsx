@@ -156,6 +156,7 @@ module.exports = (function() {
     },
 
     propTypes: {
+      color: React.PropTypes.string,
       name: React.PropTypes.string,
       value: React.PropTypes.string,
       email: React.PropTypes.string,
@@ -177,6 +178,7 @@ module.exports = (function() {
     },
     getDefaultProps: function() {
       return {
+        color: null,
         name: null,
         value: null,
         email: null,

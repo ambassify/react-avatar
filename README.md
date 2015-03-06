@@ -1,6 +1,6 @@
 # &lt;Avatar&gt;
 
-Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user. 
+Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
 We use a fallback system that if for example an invalid Facebook ID is used it will try Google, and so on.
 
 For the moment we support following types:
@@ -54,18 +54,18 @@ Some examples:
 
 ## Options
 
-|   Attribute   |      Options      | Default |                                Description                                 |
-| ------------- | ----------------- | ------- | -------------------------------------------------------------------------- |
-| `email`       | *string*          |         | String of the email address of the user. You can also provide an MD5 hash. |
-| `facebook-id` | *int* OR *string* |         |                                                                            |
-| `google-id`   | *int*             |         |                                                                            |
-| `skype-id`    | *string*          |         |                                                                            |
-| `name`        | *string*          |         | Will be used to generate avatar based on the initials of the person        |
-| `value`       | *string*          |         | Show a value as avatar                                                     |
-| `color`       | *string*          | random  | Used in combination with `name` and `value`                                |
-| `size`        | *int*             | 50      | Size of the avatar                                                         |
-| `round`       | *bool*            | false   | Round the avatar corners                                                   |
-| `src`         | *string*          |         | Fallback image to use                                                      |
+|   Attribute   |      Options      | Default |                                              Description                                               |
+| ------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| `email`       | *string*          |         | String of the email address of the user. You can also provide an MD5 hash.                             |
+| `facebook-id` | *int* OR *string* |         |                                                                                                        |
+| `google-id`   | *int*             |         |                                                                                                        |
+| `skype-id`    | *string*          |         |                                                                                                        |
+| `name`        | *string*          |         | Will be used to generate avatar based on the initials of the person                                    |
+| `value`       | *string*          |         | Show a value as avatar                                                                                 |
+| `color`       | *string*          | random  | Used in combination with `name` and `value`. Give it a fixed color with a hex like for example #FF0000 |
+| `size`        | *int*             | 50      | Size of the avatar                                                                                     |
+| `round`       | *bool*            | false   | Round the avatar corners                                                                               |
+| `src`         | *string*          |         | Fallback image to use                                                                                  |
 
 ## Development
 

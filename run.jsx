@@ -50,7 +50,7 @@
 
       <section>
         <h2>Initials</h2>
-        <Avatar name="Wim Mostmans" size={40}></Avatar>
+        <Avatar color="#00FF00" name="Wim Mostmans" size={40}></Avatar>
         <Avatar name="Wim Mostmans" size={100} round={true}></Avatar>
         <Avatar name="Wim Mostmans" size={150}></Avatar>
         <Avatar name="Wim Mostmans" size={200}></Avatar>
