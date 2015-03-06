@@ -251,7 +251,7 @@ module.exports = (function() {
       };
 
       var initialsStyle = {
-        background: this.rndColor(),
+        background: this.props.color || this.rndColor(),
         width: this.props.size,
         height: this.props.size,
         font: Math.floor(this.props.size/3) + 'px/100px Helvetica, Arial, sans-serif',
