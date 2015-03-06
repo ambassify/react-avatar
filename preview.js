@@ -1,5 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/** @jsx React.DOM */
 
 module.exports = (function() {
 
@@ -21,16 +20,16 @@ module.exports = (function() {
     /**
      * Gravatar implementation
      * @param  {string}   email MD5 hash or plain text email address
-     * @param  {int}   size  
-     * @param  {Function} cb    
-     * @return {void}         
+     * @param  {int}   size
+     * @param  {Function} cb
+     * @return {void}
      */
     getGravatarURL: function(email, size, cb, tryNext )
     {
       var base = 'gravatar.com/avatar/<%=id%>?s=<%=size%>';
 
       // if email does not contain @ it's already an MD5 hash
-      if( email.indexOf('@') > -1 ) 
+      if( email.indexOf('@') > -1 )
         email = md5(email);
 
       var prefix = this.getProtocol() === 'https:' ? 'https://secure.' : 'http://';
@@ -40,9 +39,9 @@ module.exports = (function() {
     /**
      * Facebook implementation
      * @param  {string|int}   id
-     * @param  {int}   size 
-     * @param  {Function} cb   
-     * @return {void} 
+     * @param  {int}   size
+     * @param  {Function} cb
+     * @return {void}
      */
     getFacebookURL: function( id, size, cb, tryNext )
     {
@@ -52,9 +51,9 @@ module.exports = (function() {
 
     /**
      * Google+ implementation
-     * @param  {int}   id   
-     * @param  {int}   size 
-     * @param  {Function} cb   
+     * @param  {int}   id
+     * @param  {int}   size
+     * @param  {Function} cb
      * @return {void}
      */
     getGoogleURL: function( id, size, cb, tryNext )
@@ -69,7 +68,7 @@ module.exports = (function() {
 
     /**
      * Skype implementation
-     * @param  {string}   id   
+     * @param  {string}   id
      * @param  {int}   size
      * @param  {Function} cb
      * @return {void}
@@ -124,7 +123,7 @@ module.exports = (function() {
 
     /**
      * Do an ajax request to fetch remote data
-     * @param  {string}   url 
+     * @param  {string}   url
      * @param  {Function} cb
      * @return {void}
      */
@@ -194,10 +193,10 @@ module.exports = (function() {
     fetch: function( e ) {
       var url = null;
       var self = this;
-      var tryNext = function() { 
+      var tryNext = function() {
         self.fetch();
       };
-      
+
       // If fetch was triggered by img onError
       // then set state src back to null so getVisual will
       // automatically switch to drawn avatar if there is no other social ID available to try
@@ -289,8 +288,8 @@ module.exports = (function() {
 
       return (
         /* jshint ignore:start */
-        React.createElement("div", {style: hostStyle }, 
-          visual 
+        React.createElement("div", {style: hostStyle },
+          visual
         )
         /* jshint ignore:end */
       );
@@ -20462,67 +20461,67 @@ module.exports = require('./lib/React');
 
   React.render(
     /* jshint ignore:start */
-    React.createElement("div", null, 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Gravatar"), 
-        React.createElement(Avatar, {email: "8c5d4c4b9ef6c68c4ff91c319d4c56be", size: 40}), 
-        React.createElement(Avatar, {email: "8c5d4c4b9ef6c68c4ff91c319d4c56be", size: 100, round: true}), 
-        React.createElement(Avatar, {email: "8c5d4c4b9ef6c68c4ff91c319d4c56be", size: 150}), 
+    React.createElement("div", null,
+      React.createElement("section", null,
+        React.createElement("h2", null, "Gravatar"),
+        React.createElement(Avatar, {email: "8c5d4c4b9ef6c68c4ff91c319d4c56be", size: 40}),
+        React.createElement(Avatar, {email: "8c5d4c4b9ef6c68c4ff91c319d4c56be", size: 100, round: true}),
+        React.createElement(Avatar, {email: "8c5d4c4b9ef6c68c4ff91c319d4c56be", size: 150}),
         React.createElement(Avatar, {email: "8c5d4c4b9ef6c68c4ff91c319d4c56be", size: 200})
-      ), 
+      ),
 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Invalid gravatar"), 
+      React.createElement("section", null,
+        React.createElement("h2", null, "Invalid gravatar"),
         React.createElement(Avatar, {email: "bla", size: 80})
-      ), 
+      ),
 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Google+"), 
-        React.createElement(Avatar, {googleId: "116933859726289749306", size: 40}), 
-        React.createElement(Avatar, {googleId: "116933859726289749306", size: 100, round: true}), 
-        React.createElement(Avatar, {googleId: "116933859726289749306", size: 150}), 
+      React.createElement("section", null,
+        React.createElement("h2", null, "Google+"),
+        React.createElement(Avatar, {googleId: "116933859726289749306", size: 40}),
+        React.createElement(Avatar, {googleId: "116933859726289749306", size: 100, round: true}),
+        React.createElement(Avatar, {googleId: "116933859726289749306", size: 150}),
         React.createElement(Avatar, {googleId: "116933859726289749306", size: 200})
-      ), 
+      ),
 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Facebook"), 
-        React.createElement(Avatar, {facebookId: "100008343750912", size: 40}), 
-        React.createElement(Avatar, {facebookId: "100008343750912", size: 100, round: true}), 
-        React.createElement(Avatar, {facebookId: "100008343750912", size: 150}), 
+      React.createElement("section", null,
+        React.createElement("h2", null, "Facebook"),
+        React.createElement(Avatar, {facebookId: "100008343750912", size: 40}),
+        React.createElement(Avatar, {facebookId: "100008343750912", size: 100, round: true}),
+        React.createElement(Avatar, {facebookId: "100008343750912", size: 150}),
         React.createElement(Avatar, {facebookId: "100008343750912", size: 200})
-      ), 
+      ),
 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Skype"), 
-        React.createElement(Avatar, {skypeId: "sitebase", size: 40}), 
-        React.createElement(Avatar, {skypeId: "sitebase", size: 100, round: true}), 
-        React.createElement(Avatar, {skypeId: "sitebase", size: 150}), 
+      React.createElement("section", null,
+        React.createElement("h2", null, "Skype"),
+        React.createElement(Avatar, {skypeId: "sitebase", size: 40}),
+        React.createElement(Avatar, {skypeId: "sitebase", size: 100, round: true}),
+        React.createElement(Avatar, {skypeId: "sitebase", size: 150}),
         React.createElement(Avatar, {skypeId: "sitebase", size: 200})
-      ), 
+      ),
 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Initials"), 
-        React.createElement(Avatar, {name: "Wim Mostmans", size: 40}), 
-        React.createElement(Avatar, {name: "Wim Mostmans", size: 100, round: true}), 
-        React.createElement(Avatar, {name: "Wim Mostmans", size: 150}), 
+      React.createElement("section", null,
+        React.createElement("h2", null, "Initials"),
+        React.createElement(Avatar, {name: "Wim Mostmans", size: 40}),
+        React.createElement(Avatar, {name: "Wim Mostmans", size: 100, round: true}),
+        React.createElement(Avatar, {name: "Wim Mostmans", size: 150}),
         React.createElement(Avatar, {name: "Wim Mostmans", size: 200})
-      ), 
+      ),
 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Value"), 
-        React.createElement(Avatar, {value: "86%", size: 40}), 
-        React.createElement(Avatar, {value: "86%", size: 100, round: true}), 
-        React.createElement(Avatar, {value: "86%", size: 150}), 
+      React.createElement("section", null,
+        React.createElement("h2", null, "Value"),
+        React.createElement(Avatar, {value: "86%", size: 40}),
+        React.createElement(Avatar, {value: "86%", size: 100, round: true}),
+        React.createElement(Avatar, {value: "86%", size: 150}),
         React.createElement(Avatar, {value: "86%", size: 200})
-      ), 
+      ),
 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Fallback to static src"), 
+      React.createElement("section", null,
+        React.createElement("h2", null, "Fallback to static src"),
         React.createElement(Avatar, {size: 100, facebookId: "invalidfacebookusername", src: "http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3?s=<%=size%>"})
-      ), 
+      ),
 
-      React.createElement("section", null, 
-        React.createElement("h2", null, "Double fallback: Facebook to Google to initials"), 
+      React.createElement("section", null,
+        React.createElement("h2", null, "Double fallback: Facebook to Google to initials"),
         React.createElement(Avatar, {facebookId: "invalidfacebookusername", googleId: "invalidgoogleid", name: "Sitebase", size: 200, round: true})
       )
     ),
