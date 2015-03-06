@@ -5,6 +5,7 @@
 
   "use strict";
 
+  var React = require('react');
   var Avatar = require('./avatar.jsx');
 
   React.render(
