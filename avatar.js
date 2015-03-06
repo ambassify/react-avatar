@@ -303,8 +303,8 @@ module.exports = (function() {
 
       return (
         /* jshint ignore:start */
-        React.createElement("div", {style: hostStyle },
-          visual
+        React.createElement("div", {style: hostStyle }, 
+          visual 
         )
         /* jshint ignore:end */
       );
