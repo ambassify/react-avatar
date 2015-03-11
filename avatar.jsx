@@ -197,7 +197,7 @@ module.exports = (function() {
        * `this.props.value`. This lifecycle method will allow users to change the avatars name or
        * value.
        */
-      if (this.props.src && newProps.src !== this.props.src) {
+      if (newProps.src && newProps.src !== this.props.src) {
         this.setState({ src: newProps.src });
       } else if (newProps.name && newProps.name !== this.props.name) {
         this.setState({ value: this.getInitials(newProps.name) });
