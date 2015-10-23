@@ -21,7 +21,7 @@
 
       <section>
         <h2>Invalid gravatar</h2>
-        <Avatar email="bla" size={80}></Avatar>
+        <Avatar email="bla" name="Jim Jones" size={80}></Avatar>
       </section>
 
       <section>
