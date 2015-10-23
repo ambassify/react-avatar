@@ -22,6 +22,9 @@
     "avatar"
   ],
   "homepage": "https://github.com/sitebase/react-avatar",
+  "peerDependencies": {
+      "react": ">=0.14"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-browserify": "^3.3.0",
@@ -36,7 +39,8 @@
     "MD5": "^1.2.1",
     "grunt-react": "^0.10.0",
     "is-array": "^1.0.1",
-    "react": "^0.12.2",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "react-tools": "^0.12.2"
   }
 }

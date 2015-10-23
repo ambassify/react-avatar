@@ -6,9 +6,10 @@
   "use strict";
 
   var React = require('react');
+  var ReactDOM = require('react-dom');
   var Avatar = require('./avatar.jsx');
 
-  React.render(
+  ReactDOM.render(
     /* jshint ignore:start */
     <div>
       <section>
