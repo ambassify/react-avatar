@@ -220,25 +220,25 @@ module.exports = (function() {
 
       if( this.state.triedFacebook === false && ! this.state.url && this.props.facebookId) {
         this.state.triedFacebook = true;
-        this.getFacebookURL( this.props.facebookId , this.props.size, this.setSrc.bind(this), tryNext );
+        this.getFacebookURL( this.props.facebookId , this.props.size, this.setSrc, tryNext );
         return;
       }
 
       if( this.state.triedGoogle === false && ! this.state.url && this.props.googleId) {
         this.state.triedGoogle = true;
-        this.getGoogleURL( this.props.googleId , this.props.size, this.setSrc.bind(this), tryNext );
+        this.getGoogleURL( this.props.googleId , this.props.size, this.setSrc, tryNext );
         return;
       }
 
       if( this.state.triedSkype === false && ! this.state.url && this.props.skypeId) {
         this.state.triedSkype = true;
-        this.getSkypeURL( this.props.skypeId , this.props.size, this.setSrc.bind(this), tryNext );
+        this.getSkypeURL( this.props.skypeId , this.props.size, this.setSrc, tryNext );
         return;
       }
 
       if( this.state.triedGravatar === false && ! this.state.url && this.props.email) {
         this.state.triedGravatar = true;
-        this.getGravatarURL( this.props.email, this.props.size, this.setSrc.bind(this), tryNext );
+        this.getGravatarURL( this.props.email, this.props.size, this.setSrc, tryNext );
         return;
       }
 
