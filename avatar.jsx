@@ -5,9 +5,10 @@ module.exports = (function() {
 
   var React = require('react');
   var md5 = require('MD5');
+  var PureRenderMixin = require('react-addons-pure-render-mixin');
 
   var Avatar = React.createClass({
-
+      mixins: [PureRenderMixin],
     getProtocol: function()
     {
       if( typeof window === 'undefined' )
