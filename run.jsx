@@ -14,7 +14,7 @@
     <div>
       <section>
         <h2>Gravatar</h2>
-        <Avatar email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={40}></Avatar>
+        <Avatar className="myCustomClass" email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={40}></Avatar>
         <Avatar email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={100} round={true}></Avatar>
         <Avatar email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150}></Avatar>
         <Avatar email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={200}></Avatar>

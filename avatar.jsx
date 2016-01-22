@@ -156,6 +156,7 @@ module.exports = (function() {
     },
 
     propTypes: {
+      className: React.PropTypes.string,
       fgColor: React.PropTypes.string,
       color: React.PropTypes.string,
       name: React.PropTypes.string,
@@ -306,7 +307,7 @@ module.exports = (function() {
 
       return (
         /* jshint ignore:start */
-        <div style={ hostStyle }>
+        <div className={this.props.className} style={ hostStyle }>
           { visual }
         </div>
         /* jshint ignore:end */
