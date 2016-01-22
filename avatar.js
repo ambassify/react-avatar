@@ -156,6 +156,7 @@ module.exports = (function() {
     },
 
     propTypes: {
+      fgColor: React.PropTypes.string,
       color: React.PropTypes.string,
       name: React.PropTypes.string,
       value: React.PropTypes.string,
@@ -178,6 +179,7 @@ module.exports = (function() {
     },
     getDefaultProps: function() {
       return {
+        fgColor: '#FFF',
         color: null,
         name: null,
         value: null,
@@ -271,7 +273,7 @@ module.exports = (function() {
         width: this.props.size,
         height: this.props.size,
         font: Math.floor(this.props.size/3) + 'px/100px Helvetica, Arial, sans-serif',
-        color: '#FFF',
+        color: this.props.fgColor,
         textAlign: 'center',
         textTransform: 'uppercase',
         lineHeight: (this.props.size + Math.floor(this.props.size/10)) + 'px',

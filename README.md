@@ -62,7 +62,8 @@ Some examples:
 | `skype-id`    | *string*          |         |                                                                                                        |
 | `name`        | *string*          |         | Will be used to generate avatar based on the initials of the person                                    |
 | `value`       | *string*          |         | Show a value as avatar                                                                                 |
-| `color`       | *string*          | random  | Used in combination with `name` and `value`. Give it a fixed color with a hex like for example #FF0000 |
+| `color`       | *string*          | random  | Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example #FF0000 |
+| `fgColor`     | *string*          | #FFF  | Used in combination with `name` and `value`. Give the text a fixed color with a hex like for example #FF0000 |
 | `size`        | *int*             | 50      | Size of the avatar                                                                                     |
 | `round`       | *bool*            | false   | Round the avatar corners                                                                               |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
