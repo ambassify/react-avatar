@@ -4,7 +4,7 @@ module.exports = (function() {
   "use strict";
 
   var React = require('react');
-  var md5 = require('MD5');
+  var md5 = require('md5');
   var PureRenderMixin = require('react-addons-pure-render-mixin');
 
   var Avatar = React.createClass({displayName: "Avatar",
@@ -307,8 +307,8 @@ module.exports = (function() {
 
       return (
         /* jshint ignore:start */
-        React.createElement("div", {className: this.props.className, style: hostStyle }, 
-          visual 
+        React.createElement("div", {className: this.props.className, style: hostStyle },
+          visual
         )
         /* jshint ignore:end */
       );
