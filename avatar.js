@@ -307,8 +307,8 @@ module.exports = (function() {
 
       return (
         /* jshint ignore:start */
-        React.createElement("div", {className: this.props.className, style: hostStyle },
-          visual
+        React.createElement("div", {className: this.props.className, style: hostStyle }, 
+          visual 
         )
         /* jshint ignore:end */
       );
