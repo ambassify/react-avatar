@@ -4,7 +4,7 @@ module.exports = (function() {
   "use strict";
 
   var React = require('react');
-  var md5 = require('MD5');
+  var md5 = require('md5');
   var PureRenderMixin = require('react-addons-pure-render-mixin');
 
   var Avatar = React.createClass({
