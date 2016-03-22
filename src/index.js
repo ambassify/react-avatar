@@ -4,7 +4,10 @@ import React from 'react';
 import md5 from 'md5';
 import retina from 'is-retina';
 
-const isRetina = retina();
+const IS_RETINA = retina();
+const PROTOCOL = typeof window === 'undefined' ?
+                    'https:' : window.location.protocol;
+const IS_HTTPS = PROTOCOL === 'https:';
 
 export default class Avatar extends React.Component {
     static displayName = 'Avatar'
@@ -67,59 +70,76 @@ export default class Avatar extends React.Component {
         }
     }
 
-    getProtocol() {
-        return typeof window === 'undefined' ?
-            'https' : window.location.protocol;
-    }
+    static colors = [
+        '#d73d32',
+        '#7e3794',
+        '#4285f4',
+        '#67ae3f',
+        '#d61a7f',
+        '#ff4080'
+    ]
+    static gravatarURLTemplate = 'gravatar.com/avatar/<%=id%>?s=<%=size%>&d=404';
+    static facebookURLTemplate = 'graph.facebook.com/<%=id%>/picture?width=<%=size%>';
+    static googleURLTemplate = 'picasaweb.google.com/data/entry/api/user/<%=id%>?alt=json';
+    static skypeURLTemplate = 'api.skype.com/users/<%=id%>/profile/avatar';
 
     getGravatarURL(email, size, cb )
     {
-        const base = 'gravatar.com/avatar/<%=id%>?s=<%=size%>&d=404';
 
         // if email does not contain @ it's already an MD5 hash
         if( email.indexOf('@') > -1 )
             email = md5(email);
 
-        const prefix = this.getProtocol() === 'https:' ? 'https://secure.' : 'http://';
-        size = isRetina ? size * 2 : size;
-        cb(prefix + this.parse(base, {id: email, size: size}));
+        const prefixURL = IS_HTTPS ? 'https://secure.' : 'http://';
+        const parsedURL = this.parse(Avatar.gravatarURLTemplate, {
+            id: email,
+            size: IS_RETINA ? size * 2 : size
+        });
+
+        cb(prefixURL + parsedURL);
     }
 
     getFacebookURL( id, size, cb )
     {
-        const base = 'graph.facebook.com/<%=id%>/picture?width=<%=size%>';
-        cb( this.getProtocol() + '//' + this.parse(base, {id: id, size: size}));
+        const parsedURL = this.parse(Avatar.facebookURLTemplate, {
+            id: id,
+            size: size
+        });
+
+        cb(`${PROTOCOL}//${parsedURL}`);
     }
 
     getGoogleURL( id, size, cb, tryNext )
     {
-        const base = 'picasaweb.google.com/data/entry/api/user/<%=id%>?alt=json';
-        const url = this.getProtocol() + '//' + this.parse(base, {id: id});
+        const parsedURL = this.parse(Avatar.googleURLTemplate, {id: id});
+        const url = `${PROTOCOL}//${parsedURL}`;
+
         this.get(url, function(data) {
-            const src = data.entry.gphoto$thumbnail.$t.replace('s64', 's' + size); // replace with the correct size
-            cb(src);
+            const src = data.entry.gphoto$thumbnail.$t;
+            const srcWithCorrectSize = src.replace('s64', 's' + size);
+            cb(srcWithCorrectSize);
         }, tryNext);
     }
 
     getSkypeURL( id, size, cb )
     {
-        const base = 'api.skype.com/users/<%=id%>/profile/avatar';
-        cb(this.getProtocol() + '//' + this.parse(base, {id: id}));
+        const parsedURL = this.parse(Avatar.skypeURLTemplate, {id: id});
+        cb(`${PROTOCOL}//${parsedURL}`);
     }
 
     parse( value, variables )
     {
         for(const variable in variables) {
-            value = value.replace('<%=' + variable + '%>', variables[variable]);
+            const variableValue = variables[variable];
+            value = value.replace('<%=' + variable + '%>', variableValue);
         }
         return value;
     }
 
     rndColor()
     {
-        const colors = ['#d73d32', '#7e3794', '#4285f4', '#67ae3f', '#d61a7f', '#ff4080'];
-        const index = Math.floor(Math.random() * colors.length);
-        return colors[ index ];
+        const index = Math.floor(Math.random() * Avatar.colors.length);
+        return Avatar.colors[ index ];
     }
 
     getInitials( name )
@@ -150,10 +170,8 @@ export default class Avatar extends React.Component {
     }
 
     setSrc = ( src ) => {
-        if( src === null )
-            return;
-
-        this.setState({ src: src });
+        if(src)
+            this.setState({src: src});
     }
 
     fetch = ( e ) => {
@@ -203,52 +221,64 @@ export default class Avatar extends React.Component {
             this.setState({ value: this.props.value });
 
         if( url === null && this.props.src) {
-            this.setSrc( this.parse(this.props.src, {size: this.props.size}) );
-            return;
+            const parsedURL = this.parse(this.props.src, {
+                size: this.props.size
+            });
+            this.setSrc(parsedURL);
         }
     }
 
     getVisual() {
+        const size = this.props.size;
+        const round = this.props.round;
         const imageStyle = {
             maxWidth: '100%',
-            width: this.props.size,
-            height: this.props.size,
-            borderRadius: (this.props.round ? 500 : 0)
+            width: size,
+            height: size,
+            borderRadius: (round ? 500 : 0)
         };
 
         const initialsStyle = {
             background: this.props.color || this.rndColor(),
-            width: this.props.size,
-            height: this.props.size,
-            font: Math.floor(this.props.size / 3) + 'px/100px Helvetica, Arial, sans-serif',
+            width: size,
+            height: size,
+            font: Math.floor(size / 3) + 'px/100px Helvetica, Arial, sans-serif',
             color: this.props.fgColor,
             textAlign: 'center',
             textTransform: 'uppercase',
-            lineHeight: (this.props.size + Math.floor(this.props.size / 10)) + 'px',
-            borderRadius: (this.props.round ? 500 : 0)
+            lineHeight: (size + Math.floor(size / 10)) + 'px',
+            borderRadius: (round ? 500 : 0)
         };
 
         if(this.state.src ) {
             return (
-                <img width={this.props.size} height={this.props.size} style={imageStyle} src={this.state.src} onError={this.fetch} />
+                <img width={this.props.size}
+                    height={this.props.size}
+                    style={imageStyle}
+                    src={this.state.src}
+                    onError={this.fetch} />
             );
         } else {
             return (
-                <div style={initialsStyle}>{this.state.value}</div>
+                <div style={initialsStyle}>
+                    {this.state.value}
+                </div>
             );
         }
     }
 
     render() {
+        const size = this.props.size;
         const hostStyle = {
             display: 'inline-block',
-            width: this.props.size,
-            height: this.props.size,
+            width: size,
+            height: size,
             borderRadius: (this.props.round ? 500 : 0)
         };
         const visual = this.getVisual();
         return (
-            <div className={this.props.className} style={hostStyle}>
+            <div className={this.props.className}
+                style={hostStyle}>
                 {visual}
             </div>
         );
