@@ -120,3 +120,8 @@ For detailed changelog, check [Releases](https://github.com/sitebase/react-avata
 
 ## Todo
 * Add Jest unit tests
+
+## ES6 Todo
+* [  ] Add watch function
+* [  ] Add some unit tests
+* [  ] Fix color flipping problem using debounce
