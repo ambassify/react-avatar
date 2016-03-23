@@ -23,7 +23,9 @@ export default class Avatar extends React.Component {
         googleId: React.PropTypes.string,
         skypeId: React.PropTypes.string,
         round: React.PropTypes.bool,
-        size: React.PropTypes.number
+        size: React.PropTypes.number,
+
+        channelPriority: React.PropTypes.array
     }
 
     static defaultProps = {
@@ -36,7 +38,9 @@ export default class Avatar extends React.Component {
         skypeId: null,
         googleId: null,
         round: false,
-        size: 100
+        size: 100,
+
+        channelPriority: Avatar.defaultPriority
     }
 
     constructor(props) {
@@ -78,10 +82,27 @@ export default class Avatar extends React.Component {
         '#d61a7f',
         '#ff4080'
     ]
-    static gravatarURLTemplate = 'gravatar.com/avatar/<%=id%>?s=<%=size%>&d=404';
-    static facebookURLTemplate = 'graph.facebook.com/<%=id%>/picture?width=<%=size%>';
-    static googleURLTemplate = 'picasaweb.google.com/data/entry/api/user/<%=id%>?alt=json';
-    static skypeURLTemplate = 'api.skype.com/users/<%=id%>/profile/avatar';
+    static gravatarURLTemplate = 'gravatar.com/avatar/<%=id%>?s=<%=size%>&d=404'
+    static facebookURLTemplate = 'graph.facebook.com/<%=id%>/picture?width=<%=size%>'
+    static googleURLTemplate = 'picasaweb.google.com/data/entry/api/user/<%=id%>?alt=json'
+    static skypeURLTemplate = 'api.skype.com/users/<%=id%>/profile/avatar'
+
+    static sourceSrc = 'sourceSrc'
+    static sourceGravatar = 'sourceGravatar'
+    static sourceFacebook = 'sourceFacebook'
+    static sourceGoogle = 'sourceGoogle'
+    static sourceSkype = 'sourceSkype'
+    static sourceName = 'sourceName'
+    static sourceValue = 'sourceValue'
+    static defaultPriority = [
+        Avatar.sourceSrc,
+        Avatar.sourceGravatar,
+        Avatar.sourceFacebook,
+        Avatar.sourceGoogle,
+        Avatar.sourceSkype,
+        Avatar.sourceName,
+        Avatar.sourceValue
+    ]
 
     getGravatarURL(email, size, cb )
     {
