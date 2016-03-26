@@ -85,11 +85,8 @@ export default class Avatar extends React.Component {
 
         const instance = new Source(this.props);
 
-        if(!instance.isCompatible(this.props)) {
-            console.error('Source function "%s" not found', Source.name);
-            this.fetch();
-            return;
-        }
+        if(!instance.isCompatible(this.props))
+            return this.fetch();
 
         instance.get((state) => {
             if(state) {
