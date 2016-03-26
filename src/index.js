@@ -9,8 +9,6 @@ import valueSource from './sources/Value';
 import srcSource from './sources/Src';
 import iconSource from './sources/Icon';
 
-const PROTOCOL = typeof window === 'undefined' ?
-                    'https:' : window.location.protocol;
 const SOURCES = [
     gravatarSource,
     facebookSource,
@@ -83,52 +81,6 @@ export default class Avatar extends React.Component {
         }
     }
 
-    static gravatarURLTemplate = 'gravatar.com/avatar/<%=id%>?s=<%=size%>&d=404'
-    static facebookURLTemplate = 'graph.facebook.com/<%=id%>/picture?width=<%=size%>'
-    static googleURLTemplate = 'picasaweb.google.com/data/entry/api/user/<%=id%>?alt=json'
-    static skypeURLTemplate = 'api.skype.com/users/<%=id%>/profile/avatar'
-
-    getFacebookURL = (callback) =>
-    {
-        const parsedURL = this.parse(Avatar.facebookURLTemplate, {
-            id: this.props.facebookId,
-            size: this.props.size
-        });
-        callback(`${PROTOCOL}//${parsedURL}`);
-    }
-
-    getGoogleURL = ( id, size, cb, tryNext ) =>
-    {
-        const parsedURL = this.parse(Avatar.googleURLTemplate, {id: id});
-        const url = `${PROTOCOL}//${parsedURL}`;
-
-        this.get(url, function(data) {
-            const src = data.entry.gphoto$thumbnail.$t;
-            const srcWithCorrectSize = src.replace('s64', 's' + size);
-            cb(srcWithCorrectSize);
-        }, tryNext);
-    }
-
-    getSkypeURL = ( id, size, cb ) =>
-    {
-        const parsedURL = this.parse(Avatar.skypeURLTemplate, {id: id});
-        cb(`${PROTOCOL}//${parsedURL}`);
-    }
-
-    parse( value, variables )
-    {
-        for(const variable in variables) {
-            const variableValue = variables[variable];
-            value = value.replace('<%=' + variable + '%>', variableValue);
-        }
-        return value;
-    }
-
-    setSrc = ( src ) => {
-        if(src)
-            this.setState({src: src});
-    }
-
     tryNextsource = (Source) => {
 
         const instance = new Source(this.props);
@@ -165,46 +117,6 @@ export default class Avatar extends React.Component {
         }, () => {
             this.tryNextsource(source);
         });
-
-        // if( this.state.triedFacebook === false && ! this.state.url && this.props.facebookId) {
-            // this.state.triedFacebook = true;
-            // this.getFacebookURL( this.props.facebookId , this.props.size, this.setSrc, tryNext );
-            // return;
-        // }
-
-        // if( this.state.triedGoogle === false && ! this.state.url && this.props.googleId) {
-            // this.state.triedGoogle = true;
-            // this.getGoogleURL( this.props.googleId , this.props.size, this.setSrc, tryNext );
-            // return;
-        // }
-
-        // if( this.state.triedSkype === false && ! this.state.url && this.props.skypeId) {
-            // this.state.triedSkype = true;
-            // this.getSkypeURL( this.props.skypeId , this.props.size, this.setSrc, tryNext );
-            // return;
-        // }
-
-        // if( this.state.triedGravatar === false && ! this.state.url && this.props.email) {
-            // this.state.triedGravatar = true;
-            // this.getGravatarURL( this.props.email, this.props.size, this.setSrc, tryNext );
-            // return;
-        // }
-
-        // if( this.state.src )
-            // return;
-
-        // if( this.props.name )
-            // this.setState({ value: this.getInitials( this.props.name ) });
-
-        // if( !this.props.name && this.props.value )
-            // this.setState({ value: this.props.value });
-
-        // if( url === null && this.props.src) {
-            // const parsedURL = this.parse(this.props.src, {
-                // size: this.props.size
-            // });
-            // this.setSrc(parsedURL);
-        // }
     }
 
     getVisual() {
