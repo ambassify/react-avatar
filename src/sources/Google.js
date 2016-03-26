@@ -24,8 +24,7 @@ class GoogleSource {
                 src: srcWithCorrectSize
             });
         }, () => {
-            // error
-            console.log('error');
+            // on error
             setState(null);
         });
     }
