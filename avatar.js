@@ -6,6 +6,7 @@ module.exports = (function() {
   var React = require('react');
   var md5 = require('md5');
   var PureRenderMixin = require('react-addons-pure-render-mixin');
+  var isRetina = require('is-retina')();
 
   var Avatar = React.createClass({displayName: "Avatar",
       mixins: [PureRenderMixin],
@@ -33,6 +34,7 @@ module.exports = (function() {
         email = md5(email);
 
       var prefix = this.getProtocol() === 'https:' ? 'https://secure.' : 'http://';
+      size = isRetina ? size * 2 : size;
       cb(prefix + this.parse(base, {id: email, size: size}));
     },
 
