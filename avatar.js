@@ -154,7 +154,7 @@ module.exports = (function() {
       if( src === null )
         return;
 
-      this.setState({ src: src });
+      this.state.src = src;
     },
 
     propTypes: {
@@ -168,7 +168,9 @@ module.exports = (function() {
       googleId: React.PropTypes.string,
       skypeID: React.PropTypes.string,
       round: React.PropTypes.bool,
-      size: React.PropTypes.number
+      size: React.PropTypes.number,
+      width: React.PropTypes.number,
+      height: React.PropTypes.number
     },
     getInitialState: function() {
       return {
@@ -205,10 +207,13 @@ module.exports = (function() {
        */
       if (newProps.src && newProps.src !== this.props.src) {
         this.setState({ src: newProps.src });
-      } else if (newProps.name && newProps.name !== this.props.name) {
-        this.setState({ value: this.getInitials(newProps.name) });
+      } else if (newProps.email && newProps.email !== this.props.email) {
+          this.state.triedGravatar = true;
+          this.getGravatarURL(newProps.email, newProps.size, this.setSrc, undefined);
       } else if (newProps.value && newProps.value !== this.props.value) {
-        this.setState({ value: newProps.value });
+          this.setState({value: newProps.value});
+      } else if (newProps.name && newProps.name !== this.props.name) {
+          this.setState({ value: this.getInitials(newProps.name) });
       }
     },
     fetch: function( e ) {
@@ -223,6 +228,7 @@ module.exports = (function() {
       // automatically switch to drawn avatar if there is no other social ID available to try
       if( e && e.type === "error" )
         this.state.src = null;
+        this.state.value = null;
 
       if( this.state.triedFacebook === false && ! this.state.url && this.props.facebookId) {
         this.state.triedFacebook = true;
@@ -250,6 +256,9 @@ module.exports = (function() {
 
       if( this.state.src )
         return;
+        
+      if( this.state.value )
+         return;
 
       if( this.props.name )
         this.setState({ value: this.getInitials( this.props.name ) });
@@ -266,15 +275,15 @@ module.exports = (function() {
 
       var imageStyle = {
         maxWidth: '100%',
-        width: this.props.size,
-        height: this.props.size,
+        width: this.props.width || this.props.size,
+        height: this.props.height || this.props.size,
         borderRadius: (this.props.round ? 500 : 0)
       };
 
       var initialsStyle = {
         background: this.props.color || this.rndColor(),
-        width: this.props.size,
-        height: this.props.size,
+        width: this.props.width || this.props.size,
+        height: this.props.height || this.props.size,
         font: Math.floor(this.props.size/3) + 'px/100px Helvetica, Arial, sans-serif',
         color: this.props.fgColor,
         textAlign: 'center',
@@ -286,7 +295,7 @@ module.exports = (function() {
       if(this.state.src ) {
         return (
           /* jshint ignore:start */
-          React.createElement("img", {width:  this.props.size, height:  this.props.size, style: imageStyle, src:  this.state.src, onError:  this.fetch})
+          React.createElement("img", {width:  this.props.width || this.props.size, height:  this.props.height || this.props.size, style: imageStyle, src:  this.state.src, onError:  this.fetch})
           /* jshint ignore:end */
         );
       } else {
@@ -301,8 +310,8 @@ module.exports = (function() {
 
       var hostStyle = {
         display: 'inline-block',
-        width: this.props.size,
-        height: this.props.size,
+        width: this.props.width || this.props.size,
+        height: this.props.height || this.props.size,
         borderRadius: (this.props.round ? 500 : 0)
       };
       var visual = this.getVisual();

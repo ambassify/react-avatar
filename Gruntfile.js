@@ -57,7 +57,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-react');
+  grunt.loadNpmTasks('grunt-babel');
 
   grunt.registerTask('build',  ['jshint','browserify', 'react']);
   grunt.registerTask('deploy', ['gh-pages']);
