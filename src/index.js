@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+
 import gravatarSource from './sources/Gravatar';
 import facebookSource from './sources/Facebook';
 import googleSource from './sources/Google';
@@ -68,11 +69,6 @@ export default class Avatar extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        /**
-        * This component ignores changes in `this.props.src`, `this.props.name`, and
-        * `this.props.value`. This lifecycle method will allow users to change the avatars name or
-        * value.
-        */
         if (newProps.src && newProps.src !== this.props.src) {
             this.setState({ src: newProps.src });
         } else if (newProps.name && newProps.name !== this.props.name) {
@@ -100,9 +96,11 @@ export default class Avatar extends React.Component {
     }
 
     fetch = (event) => {
+
         // If fetch was triggered by img onError
-        // then set state src back to null so getVisual will
-        // automatically switch to drawn avatar if there is no other social ID available to try
+        // then set state src back to null so render will
+        // automatically switch a text avatar if there is no
+        // other social ID available to try
         if( event && event.type === 'error' )
             this.setState({src: null});
 
