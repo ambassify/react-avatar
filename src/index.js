@@ -116,7 +116,7 @@ export default class Avatar extends React.Component {
         });
     }
 
-    getVisual() {
+    _renderAsImage() {
         const size = this.props.size;
         const round = this.props.round;
         const imageStyle = {
@@ -125,7 +125,18 @@ export default class Avatar extends React.Component {
             height: size,
             borderRadius: (round ? 500 : 0)
         };
+        return (
+            <img width={this.props.size}
+                height={this.props.size}
+                style={imageStyle}
+                src={this.state.src}
+                onError={this.fetch} />
+        );
+    }
 
+    _renderAsText() {
+        const size = this.props.size;
+        const round = this.props.round;
         const initialsStyle = {
             width: size,
             height: size,
@@ -137,22 +148,11 @@ export default class Avatar extends React.Component {
             background: this.state.color,
             borderRadius: (round ? '100%' : 0)
         };
-
-        if(this.state.src ) {
-            return (
-                <img width={this.props.size}
-                    height={this.props.size}
-                    style={imageStyle}
-                    src={this.state.src}
-                    onError={this.fetch} />
-            );
-        } else {
-            return (
-                <div style={initialsStyle}>
-                    {this.state.value}
-                </div>
-            );
-        }
+        return (
+            <div style={initialsStyle}>
+                {this.state.value}
+            </div>
+        );
     }
 
     render() {
@@ -163,11 +163,10 @@ export default class Avatar extends React.Component {
             height: size,
             borderRadius: (this.props.round ? 500 : 0)
         };
-        const visual = this.getVisual();
         return (
             <div className={this.props.className}
                 style={hostStyle}>
-                {visual}
+                {this.state.src ? this._renderAsImage() : this._renderAsText()}
             </div>
         );
     }
