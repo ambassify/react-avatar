@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "browserify src/index.js -o lib/index.js -x react -x md5 -x is-retina -t [ babelify --presets [ es2015 stage-0 react ] ]",
-    "demo": "browserify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
-    "dev": "watchify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
+    "demo": "browserify src/demo.js -o lib/demo.js -x ./index.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
+    "dev": "watchify src/demo.js -o lib/demo.js -x ./index.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "test": "eslint src/index.js"
   },
   "license": "MIT",
