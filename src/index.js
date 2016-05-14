@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-import gravatarSource from './sources/Gravatar';
-import facebookSource from './sources/Facebook';
-import googleSource from './sources/Google';
-import skypeSource from './sources/Skype';
-import valueSource from './sources/Value';
-import srcSource from './sources/Src';
-import iconSource from './sources/Icon';
+import gravatarSource from './sources/Gravatar.js';
+import facebookSource from './sources/Facebook.js';
+import googleSource from './sources/Google.js';
+import skypeSource from './sources/Skype.js';
+import valueSource from './sources/Value.js';
+import srcSource from './sources/Src.js';
+import iconSource from './sources/Icon.js';
 
 const SOURCES = [
     gravatarSource,
