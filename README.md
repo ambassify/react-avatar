@@ -16,7 +16,7 @@ The fallbacks are in the same order as the list above were Facebook has the high
 
 ## Demo
 
-[Check it live!](http://sitebase.github.io/react-avatar)
+[Check it live!](https://www.sitebase.be/react-avatar/)
 
 ## Install
 
@@ -34,7 +34,7 @@ Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip
 1. Import Custom Element:
 
     ```js
-    var Avatar = require('react-avatar');
+    import Avatar from 'react-avatar';
     ```
 
 2. Start using it!
@@ -45,12 +45,14 @@ Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip
 
 Some examples:
 
+    ```
     <Avatar google-id="118096717852922241760" size="100" round="true" />
     <Avatar facebook-id="100008343750912" size="150" />
     <Avatar skype-id="sitebase" size="200" />
     <Avatar name="Wim Mostmans" size="150" />
     <Avatar value="86%" size="40" />
     <Avatar size="100" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
+    ```
 
 ## Options
 
@@ -72,12 +74,6 @@ Some examples:
 
 In order to run it locally you'll need to fetch some dependencies and a basic server setup.
 
-* Install [Grunt](http://gruntjs.com/):
-
-    ```sh
-    $ [sudo] npm install -g grunt-cli
-    ```
-
 * Install local dependencies:
 
     ```sh
@@ -87,19 +83,14 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 * Auto build new test version when developing that can be run with `grunt connect`:
 
     ```sh
-    $ grunt watch
+    $ npm run dev
     ```
 
-* To test your project, start the development server and open `http://localhost:8000`.
+* To test your project, start the development server and open `http://localhost:8000/index.html`.
 
     ```sh
-    $ grunt connect
-    ```
-
-* To provide a live demo, send everything to `gh-pages` branch.
-
-    ```sh
-    $ grunt deploy
+    $ cd src/
+    $ python -m SimpleHTTPServer
     ```
 
 ## Contributing
@@ -117,11 +108,3 @@ For detailed changelog, check [Releases](https://github.com/sitebase/react-avata
 ## License
 
 [MIT License](http://opensource.org/licenses/MIT)
-
-## Todo
-* Add Jest unit tests
-
-## ES6 Todo
-* [  ] Add watch function
-* [  ] Add some unit tests
-* [  ] Fix color flipping problem using debounce
