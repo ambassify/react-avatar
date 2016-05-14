@@ -58,7 +58,7 @@ Some examples:
 
 |   Attribute   |      Options      | Default |                                              Description                                               |
 | ------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| `className`       | *string*          |         | Name of the CSS class you want to add to this component.                             |
+| `className`       | *string*          | sb-avatar        | Name of the CSS class you want to add to this component.                             |
 | `email`       | *string*          |         | String of the email address of the user. You can also provide an MD5 hash.                             |
 | `facebook-id` | *string* |         |                                                                                                        |
 | `google-id`   | *string*             |         |                                                                                                        |
