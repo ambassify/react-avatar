@@ -4,13 +4,12 @@
   "description": "Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.",
   "main": "avatar.js",
   "scripts": {
-    "test": "grunt jshint",
     "build": "browserify src/index.js -o lib/index.js -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "demo": "browserify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "dev": "watchify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "lint": "eslint src/index.js"
   },
-  "licenses": "MIT",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/sitebase/react-avatar.git"
@@ -31,6 +30,9 @@
   },
   "devDependencies": {
     "babel-preset-stage-0": "^6.5.0",
+    "eslint": "1.10.3",
+    "eslint-plugin-react": "3.5.1",
+    "babel-eslint": "6.0.0",
     "is-array": "^1.0.1",
     "is-retina": "^1.0.3",
     "md5": "^2.0.0",
