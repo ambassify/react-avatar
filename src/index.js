@@ -118,6 +118,7 @@ export default class Avatar extends React.Component {
     _renderAsImage() {
         const size = this.props.size;
         const round = this.props.round;
+        const alt = this.props.name || this.props.value;
         const imageStyle = {
             maxWidth: '100%',
             width: size,
@@ -129,6 +130,7 @@ export default class Avatar extends React.Component {
                 height={this.props.size}
                 style={imageStyle}
                 src={this.state.src}
+                alt={alt}
                 onError={this.fetch} />
         );
     }
