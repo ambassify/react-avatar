@@ -2,7 +2,7 @@
   "name": "react-avatar",
   "version": "0.7.2",
   "description": "Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.",
-  "main": "avatar.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "browserify src/index.js -o lib/index.js -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "demo": "browserify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
