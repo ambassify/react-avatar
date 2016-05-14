@@ -51,14 +51,15 @@
     "babelify": "^7.2.0",
     "eslint": "1.10.3",
     "eslint-plugin-react": "3.5.1",
-    "is-array": "^1.0.1",
-    "is-retina": "^1.0.3",
-    "md5": "^2.0.0",
-    "react": "^0.14.0",
     "react-addons-pure-render-mixin": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-tools": "^0.12.2",
     "reactify": "^1.0.0",
     "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "is-retina": "^1.0.3",
+    "md5": "^2.0.0",
+    "react": "^0.14.0"
   }
 }
