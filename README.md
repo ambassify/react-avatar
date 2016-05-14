@@ -40,7 +40,7 @@ Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip
 2. Start using it!
 
     ```html
-    <Avatar />
+    <Avatar name="Foo Bar" />
     ```
 
 Some examples:
