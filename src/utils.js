@@ -44,7 +44,8 @@ function getRandomColor(value, colors = defaultColors)
 
     // value based random color index
     // the reason we don't just use a random number is to make sure that
-    // a certain value still get the same color assigned
+    // a certain value will always get the same color assigned given
+    // a fixed set of colors
     const sum = _stringAsciiCodeSum(value);
     const colorIndex = (sum % colors.length);
     return colors[colorIndex];
