@@ -2,10 +2,22 @@
 
 import React from 'react';
 
+import gravatarSource from './sources/Gravatar.js';
+import facebookSource from './sources/Facebook.js';
+import googleSource from './sources/Google.js';
+import skypeSource from './sources/Skype.js';
+import valueSource from './sources/Value.js';
 import srcSource from './sources/Src.js';
+import iconSource from './sources/Icon.js';
 
 const SOURCES = [
-    srcSource
+    gravatarSource,
+    facebookSource,
+    googleSource,
+    skypeSource,
+    valueSource,
+    srcSource,
+    iconSource
 ];
 
 export default class Avatar extends React.Component {
