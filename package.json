@@ -7,7 +7,7 @@
     "build": "browserify src/index.js -o lib/index.js -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "demo": "browserify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "dev": "watchify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
-    "lint": "eslint src/index.js"
+    "test": "eslint src/index.js"
   },
   "license": "MIT",
   "repository": {
