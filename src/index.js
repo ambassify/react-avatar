@@ -127,15 +127,15 @@ export default class Avatar extends React.Component {
         };
 
         const initialsStyle = {
-            background: this.state.color,
             width: size,
             height: size,
-            font: Math.floor(size / 3) + 'px/100px Helvetica, Arial, sans-serif',
-            color: this.props.fgColor,
+            font: Math.floor(size / 3) + 'px Helvetica, Arial, sans-serif',
+            lineHeight: size + 'px', // yes, px suffix is needed on lineHeight
             textAlign: 'center',
             textTransform: 'uppercase',
-            lineHeight: (size + Math.floor(size / 10)) + 'px',
-            borderRadius: (round ? 500 : 0)
+            color: this.props.fgColor,
+            background: this.state.color,
+            borderRadius: (round ? '100%' : 0)
         };
 
         if(this.state.src ) {
