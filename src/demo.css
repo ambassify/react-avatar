@@ -6,7 +6,7 @@ body {
 	line-height: 1.7em;
 	color: #7f8c8d;
 	font-size: 14px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Roboto Slab', Arial, sans-serif;
 	text-align:center;
 }
 
@@ -21,7 +21,7 @@ h2 {
 }
 #header {
 	background: #7e3794;
-	padding: 50px 0;
+	padding: 50px 20px;
 	color: #FFF;
 	margin-bottom: 30px;
 }

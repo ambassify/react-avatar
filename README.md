@@ -86,10 +86,9 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
     $ npm run dev
     ```
 
-* To test your project, start the development server and open `http://localhost:8000/index.html`.
+* To test your project, start the development server and open `http://localhost:8000/src/index.html`.
 
     ```sh
-    $ cd src/
     $ python -m SimpleHTTPServer
     ```
 
