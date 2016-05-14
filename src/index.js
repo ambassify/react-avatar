@@ -39,6 +39,7 @@ export default class Avatar extends React.Component {
     }
 
     static defaultProps = {
+        className: 'sb-avatar',
         fgColor: '#FFF',
         color: null,
         name: null,
