@@ -1,10 +1,10 @@
 {
   "name": "react-avatar",
   "version": "0.7.2",
-  "description": "Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.",
+  "description": "Universal React avatar component makes it possible to generate avatars based on user information.",
   "main": "lib/index.js",
   "scripts": {
-    "build": "browserify src/index.js -o lib/index.js -x react -x md5 -x is-retina -t [ babelify --presets [ es2015 stage-0 react ] ]",
+    "build": "browserify src/index.js -o lib/index.js -x react -x md5 -x is-retina --list -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "demo": "browserify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "dev": "watchify src/demo.js -o lib/demo.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "test": "eslint src/index.js"
