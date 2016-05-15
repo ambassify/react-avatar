@@ -15,6 +15,11 @@ npm run dev
 # deploy
 cd public
 git init
-git add .
-git commit -m "Deploy to Github Pages"
+
+# Commit if there are changes
+if [ -n "$(git status --porcelain)" ]; then
+    git add .
+    git commit -m "Deploy to Github Pages"
+fi
+
 git push --force --quiet "https://${GITHUB_TOKEN}@$github.com/${GITHUB_REPO}.git" master:gh-pages > /dev/null 2>&1
