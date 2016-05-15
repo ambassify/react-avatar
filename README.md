@@ -47,14 +47,14 @@ Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip
 
 Some examples:
 
-    ```html
-    <Avatar google-id="118096717852922241760" size="100" round="true" />
-    <Avatar facebook-id="100008343750912" size="150" />
-    <Avatar skype-id="sitebase" size="200" />
-    <Avatar name="Wim Mostmans" size="150" />
-    <Avatar value="86%" size="40" />
-    <Avatar size="100" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
-    ```
+```html
+<Avatar google-id="118096717852922241760" size="100" round="true" />
+<Avatar facebook-id="100008343750912" size="150" />
+<Avatar skype-id="sitebase" size="200" />
+<Avatar name="Wim Mostmans" size="150" />
+<Avatar value="86%" size="40" />
+<Avatar size="100" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
+```
 
 ## Options
 
