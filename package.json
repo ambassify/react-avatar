@@ -4,8 +4,8 @@
   "description": "Universal React avatar component makes it possible to generate avatars based on user information.",
   "main": "lib/index.js",
   "scripts": {
-    "compile": "./node_modules/.bin/babel ./src --out-dir ./lib",
-    "demo2": "./node_modules/.bin/browserify ./lib/demo.js -o ./build/demo.js --transform browserify-global-shim --standalone ReactAvatarDemo",
+    "transpile": "./node_modules/.bin/babel ./src --out-dir ./lib",
+    "demo": "./node_modules/.bin/browserify ./lib/demo.js -o ./build/demo.js --transform browserify-global-shim --standalone ReactAvatarDemo",
     "test": "eslint src/index.js"
   },
   "license": "MIT",
