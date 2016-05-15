@@ -1,7 +1,3 @@
 language: node_js
 script:
   - bash ./scripts/deploy-to-gh-pages.sh
-env:
-  global:
-    - GITHUB_REPO: "Sitebase/react-avatar"
-    - secure: "SJHM7G/tZb5sGYcWgqYFFNcYKVU79ptqLwMB3QQ1GmRRDLDgTZD8tma061H1Z1r/5gu/T3t7qX/T24IC0eOdlOKGXlrdHxxN3gYe72vx2Ee7qfUqHSJHufVD4YEJqdDwo8buqrIP4Cf/hl4WQOrbOiasXsuXSzEz6y2ysBUUb3A="
