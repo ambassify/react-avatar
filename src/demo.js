@@ -63,7 +63,7 @@ export default class Demo extends React.Component {
 
       <section>
         <h2>Fallback to static src</h2>
-        <Avatar size={100} facebookId="invalidfacebookusername" src="http://superiorplatform.com/pictures-of/faces/angry/04a-angry_baby.jpg" />
+        <Avatar size={150} facebookId="invalidfacebookusername" src="https://thumbs.dreamstime.com/m/cute-monster-avatar-smiling-face-yellow-color-52010608.jpg" />
       </section>
 
       <section>
