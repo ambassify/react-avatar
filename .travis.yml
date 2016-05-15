@@ -3,4 +3,5 @@ script:
   - bash ./scripts/deploy-to-gh-pages.sh
 env:
   global:
-    - secure: "SJHM7G/tZb5sGYcWgqYFFNcYKVU79ptqLwMB3QQ1GmRRDLDgTZD8tma061H1Z1r/5gu/T3t7qX/T24IC0eOdlOKGXlrdHxxN3gYe72vx2Ee7qfUqHSJHufVD4YEJqdDwo8buqrIP4Cf/hl4WQOrbOiasXsuXSzEz6y2ysBUUb3A="
+    - GITHUB_REPO: Sitebase/react-avatar
+    - secure: P/bG1JdqV5yRemvFYy8dng53nZOfKXkNyLvNH/OKaV1RItaKzElmbBPU59OrprLSgKawS8S4S+jzxaXJWQ8sBPYQ4A0bPXCB8Kz43GHoqxITnb9c2gy60QjD2XoB1yhQsJxwg6rojq/O8cEmtHmCvH085ofEqpTl65mBRwUoZ1w=
