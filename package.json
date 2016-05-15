@@ -4,9 +4,12 @@
   "description": "Universal React avatar component makes it possible to generate avatars based on user information.",
   "main": "lib/index.js",
   "scripts": {
-    "build": "browserify src/index.js -o lib/index.js -x react -x md5 -x is-retina -t [ babelify --presets [ es2015 stage-0 react ] ]",
-    "demo": "browserify src/demo.js -o lib/demo.js -x ./index.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
+    "react": "browserify -r react -o lib/react.js -t [ babelify --presets [ es2015 stage-0 react ] ]",
+    "build": "browserify -e src/index.js -o lib/index.js -t [ babelify --presets [ es2015 stage-0 react ] ]",
+    "demo": "browserify src/demo.js -o lib/demo.js -x react -x src/index.js -x ./index.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
     "dev": "watchify src/demo.js -o lib/demo.js -x ./index.js -d -t [ babelify --presets [ es2015 stage-0 react ] ]",
+    "compile": "./node_modules/.bin/babel ./src --out-dir ./lib",
+    "demo2": "./node_modules/.bin/browserify ./lib/demo.js -o ./build/demo.js --transform browserify-global-shim --standalone ReactAvatarDemo",
     "test": "eslint src/index.js"
   },
   "license": "MIT",
@@ -28,10 +31,14 @@
   "peerDependencies": {
     "react": ">=0.14"
   },
+  "browserify-global-shim": {
+    },
   "devDependencies": {
-    "babel": "^6.5.2",
-    "babel-core": "^6.5.2",
+    "babel": "6.5.0",
+    "babel-cli": "^6.8.0",
+    "babel-core": "6.5.0",
     "babel-eslint": "^6.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-dev": "^1.0.0",
     "babel-plugin-dev-expression": "^0.1.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
