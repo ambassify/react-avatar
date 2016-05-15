@@ -1,7 +1,7 @@
 language: node_js
 script:
-  - bash ./scripts/deploy-to-gh-pages.sh
+- bash ./scripts/deploy-to-gh-pages.sh
 env:
   global:
-    - GITHUB_REPO: Sitebase/react-avatar
-    - secure: P/bG1JdqV5yRemvFYy8dng53nZOfKXkNyLvNH/OKaV1RItaKzElmbBPU59OrprLSgKawS8S4S+jzxaXJWQ8sBPYQ4A0bPXCB8Kz43GHoqxITnb9c2gy60QjD2XoB1yhQsJxwg6rojq/O8cEmtHmCvH085ofEqpTl65mBRwUoZ1w=
+  - GITHUB_REPO: Sitebase/react-avatar
+  - secure: T6DBXxYA65gMyoxHPmP/0N0G6KTIChCC5XqF1vtgIj8K0r4ZlrMU2Q1Aa5uFAYgvLllp2ReFFBwbhaxWOF9ej2zB2QupasHdQPXm7JoP3m3/0xNZCPrReO6zQs5nmrsjN6l/Oos6cqRCmZn0DKtz9OJMCTtC37daW7paEZzfgk4=
