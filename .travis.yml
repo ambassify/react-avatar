@@ -4,4 +4,3 @@ script:
 env:
   global:
   - GITHUB_REPO: Sitebase/react-avatar
-  - secure: T6DBXxYA65gMyoxHPmP/0N0G6KTIChCC5XqF1vtgIj8K0r4ZlrMU2Q1Aa5uFAYgvLllp2ReFFBwbhaxWOF9ej2zB2QupasHdQPXm7JoP3m3/0xNZCPrReO6zQs5nmrsjN6l/Oos6cqRCmZn0DKtz9OJMCTtC37daW7paEZzfgk4=
