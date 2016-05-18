@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -70,12 +71,25 @@ export default class Avatar extends React.Component {
 
     componentWillReceiveProps(newProps) {
         if (newProps.src && newProps.src !== this.props.src) {
-            this.setState({ src: newProps.src });
+            this.setState({
+                src: newProps.src,
+                sourcePointer: 0
+            }, this.fetch);
         } else if (newProps.name && newProps.name !== this.props.name) {
-            this.setState({ value: this.getInitials(newProps.name) });
+            this.setState({
+                name: newProps.name,
+                sourcePointer: 0
+            }, this.fetch);
         } else if (newProps.value && newProps.value !== this.props.value) {
-            this.setState({ value: newProps.value });
+            this.setState({
+                value: newProps.value,
+                sourcePointer: 0
+            }, this.fetch);
         }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     tryNextsource = (Source) => {

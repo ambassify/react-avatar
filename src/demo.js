@@ -4,7 +4,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Avatar from './index.js';
 
-export default class Demo extends React.Component {
+export default
+class Demo extends React.Component {
+    state = {
+        name: 'Wim Mostmans'
+    }
+
+    _onChangeName = () => {
+        this.setState({
+            name: 'Foo Bar'
+        });
+    }
+
     render() {
         return (
             <div>
@@ -47,10 +58,13 @@ export default class Demo extends React.Component {
 
       <section>
         <h2>Initials</h2>
-        <Avatar color="#00FF00" name="Wim Mostmans" size={40} />
-        <Avatar name="Wim Mostmans" size={100} round={true}/>
-        <Avatar name="Wim Mostmans" size={150} />
-        <Avatar name="Wim Mostmans" size={200} />
+        <div>
+            <button onClick={this._onChangeName}>Change name</button>
+        </div>
+        <Avatar name={this.state.name} skypeId={this.state.skypeId} size={40} />
+        <Avatar name={this.state.name} size={100} round={true}/>
+        <Avatar name={this.state.name} size={150} />
+        <Avatar name={this.state.name} size={200} />
       </section>
 
     <section>
