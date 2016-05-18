@@ -82,7 +82,11 @@ class Demo extends React.Component {
 
       <section>
         <h2>Double fallback: Facebook to Google to initials</h2>
-        <Avatar facebookId="invalidfacebookusername" googleId="invalidgoogleid" name="Sitebase" size={200} round={true}></Avatar>
+        <Avatar facebookId="invalidfacebookusername"
+            googleId="invalidgoogleid"
+            name="Sitebase"
+            size={200}
+            round={true} />
       </section>
             </div>
         );
