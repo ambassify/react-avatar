@@ -7,15 +7,20 @@ import Avatar from './index.js';
 export default
 class Demo extends React.Component {
     state = {
-        name: 'Wim Mostmans'
+        name: 'Wim Mostmans',
+        skypeId: null
     }
 
     _onChangeName = () => {
         this.setState({
-            name: 'Foo Bar'
+            name: 'Foo Bar',
+            skypeId: null
         });
     }
 
+    _onSetSkype = () => {
+        this.setState({skypeId: 'sitebase'});
+    }
     render() {
         return (
             <div>
@@ -58,8 +63,9 @@ class Demo extends React.Component {
 
       <section>
         <h2>Initials</h2>
-        <div>
+        <div className="hidden">
             <button onClick={this._onChangeName}>Change name</button>
+            <button onClick={this._onSetSkype}>Set skype ID</button>
         </div>
         <Avatar name={this.state.name} skypeId={this.state.skypeId} size={40} />
         <Avatar name={this.state.name} size={100} round={true}/>

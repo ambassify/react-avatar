@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import shallowCompare from 'react-addons-shallow-compare';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -70,26 +69,35 @@ export default class Avatar extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if (newProps.src && newProps.src !== this.props.src) {
-            this.setState({
-                src: newProps.src,
-                sourcePointer: 0
-            }, this.fetch);
-        } else if (newProps.name && newProps.name !== this.props.name) {
-            this.setState({
-                name: newProps.name,
-                sourcePointer: 0
-            }, this.fetch);
-        } else if (newProps.value && newProps.value !== this.props.value) {
-            this.setState({
-                value: newProps.value,
-                sourcePointer: 0
-            }, this.fetch);
-        }
-    }
+        const nextState = {};
+        if (newProps.src !== this.props.src)
+            nextState.src = newProps.src;
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
+        if (newProps.name !== this.props.name)
+            nextState.name = newProps.name;
+
+        if (newProps.value !== this.props.value)
+            nextState.value = newProps.value;
+
+        if (newProps.skypeId !== this.props.skypeId)
+            nextState.skypeId = newProps.skypeId;
+
+        if (newProps.email !== this.props.email)
+            nextState.email = newProps.email;
+
+        if (newProps.md5Email !== this.props.md5Email)
+            nextState.md5Email = newProps.md5Email;
+
+        if (newProps.facebookId !== this.props.facebookId)
+            nextState.facebookId = newProps.facebookId;
+
+        if (newProps.googleId !== this.props.googleId)
+            nextState.googleId = newProps.googleId;
+
+        if(Object.keys(nextState) !== 0) {
+            nextState.sourcePointer = 0;
+            this.setState(nextState, this.fetch);
+        }
     }
 
     tryNextsource = (Source) => {
