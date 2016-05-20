@@ -10,9 +10,9 @@ For the moment we support following types:
 * Google
 * Skype
 * Gravatar
+* Custom image
 * Name initials
 * Custom text
-* Custom image
 
 The fallbacks are in the same order as the list above were Facebook has the highest priority.
 
