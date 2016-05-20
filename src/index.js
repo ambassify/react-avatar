@@ -17,8 +17,8 @@ const SOURCES = [
     twitterSource,
     googleSource,
     skypeSource,
-    valueSource,
     srcSource,
+    valueSource,
     iconSource
 ];
 

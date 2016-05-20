@@ -183,7 +183,7 @@ var Demo = function (_React$Component) {
             null,
             'Fallback to static src'
           ),
-          _react2.default.createElement(_index2.default, { size: 150, facebookId: 'invalidfacebookusername', src: 'https://thumbs.dreamstime.com/m/cute-monster-avatar-smiling-face-yellow-color-52010608.jpg' })
+          _react2.default.createElement(_index2.default, { size: 150, facebookId: 'invalidfacebookusername', src: 'https://thumbs.dreamstime.com/m/cute-monster-avatar-smiling-face-yellow-color-52010608.jpg', name: 'Foo Bar' })
         ),
         _react2.default.createElement(
           'section',
@@ -265,7 +265,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SOURCES = [_Gravatar2.default, _Facebook2.default, _Twitter2.default, _Google2.default, _Skype2.default, _Value2.default, _Src2.default, _Icon2.default];
+var SOURCES = [_Gravatar2.default, _Facebook2.default, _Twitter2.default, _Google2.default, _Skype2.default, _Src2.default, _Value2.default, _Icon2.default];
 
 var Avatar = function (_React$Component) {
     _inherits(Avatar, _React$Component);

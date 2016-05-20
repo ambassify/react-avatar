@@ -91,7 +91,7 @@ class Demo extends React.Component {
 
       <section>
         <h2>Fallback to static src</h2>
-        <Avatar size={150} facebookId="invalidfacebookusername" src="https://thumbs.dreamstime.com/m/cute-monster-avatar-smiling-face-yellow-color-52010608.jpg" />
+        <Avatar size={150} facebookId="invalidfacebookusername" src="https://thumbs.dreamstime.com/m/cute-monster-avatar-smiling-face-yellow-color-52010608.jpg" name="Foo Bar" />
       </section>
 
       <section>
