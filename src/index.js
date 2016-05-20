@@ -4,6 +4,7 @@ import React from 'react';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
+import twitterSource from './sources/Twitter.js';
 import googleSource from './sources/Google.js';
 import skypeSource from './sources/Skype.js';
 import valueSource from './sources/Value.js';
@@ -13,6 +14,7 @@ import iconSource from './sources/Icon.js';
 const SOURCES = [
     gravatarSource,
     facebookSource,
+    twitterSource,
     googleSource,
     skypeSource,
     valueSource,
@@ -35,6 +37,7 @@ export default class Avatar extends React.Component {
         facebookId: React.PropTypes.string,
         googleId: React.PropTypes.string,
         skypeId: React.PropTypes.string,
+        twitterHandle: React.PropTypes.string,
         round: React.PropTypes.bool,
         size: React.PropTypes.number
     }
@@ -49,6 +52,7 @@ export default class Avatar extends React.Component {
         md5Email: null,
         facebookId: null,
         skypeId: null,
+        twitterHandle: null,
         googleId: null,
         round: false,
         size: 100
@@ -93,6 +97,9 @@ export default class Avatar extends React.Component {
 
         if (newProps.googleId !== this.props.googleId)
             nextState.googleId = newProps.googleId;
+
+        if (newProps.twitterHandle !== this.props.twitterHandle)
+            nextState.twitterHandle = newProps.twitterHandle;
 
         if(Object.keys(nextState) !== 0) {
             nextState.sourcePointer = 0;

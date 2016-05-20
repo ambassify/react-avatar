@@ -63,6 +63,7 @@ Some examples:
 | `className`       | *string*          | sb-avatar        | Name of the CSS class you want to add to this component.                             |
 | `email`       | *string*          |         | String of the email address of the user. You can also provide an MD5 hash.                             |
 | `facebook-id` | *string* |         |                                                                                                        |
+| `twitter-handle` | *string* |         |                                                                                                        |
 | `google-id`   | *string*             |         |                                                                                                        |
 | `skype-id`    | *string*          |         |                                                                                                        |
 | `name`        | *string*          |         | Will be used to generate avatar based on the initials of the person                                    |
