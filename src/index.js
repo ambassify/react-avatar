@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -61,11 +62,14 @@ export default class Avatar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sourcePointer: 0,
+            _internal: {
+                sourcePointer: 0
+            },
             src: null,
             value: null,
             color: props.color
         };
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
 
     componentWillMount() {
@@ -102,7 +106,8 @@ export default class Avatar extends React.Component {
             nextState.twitterHandle = newProps.twitterHandle;
 
         if(Object.keys(nextState) !== 0) {
-            nextState.sourcePointer = 0;
+            nextState._internal = this.state._internal;
+            nextState._internal.sourcePointer = 0;
             this.setState(nextState, this.fetch);
         }
     }
@@ -133,12 +138,16 @@ export default class Avatar extends React.Component {
         if( event && event.type === 'error' )
             this.setState({src: null});
 
-        if(SOURCES.length === this.state.sourcePointer)
+        if(SOURCES.length === this.state._internal.sourcePointer)
             return;
 
-        const source = SOURCES[this.state.sourcePointer];
+        const source = SOURCES[this.state._internal.sourcePointer];
+
+        const internal = this.state._internal;
+        internal.sourcePointer++;
+
         this.setState({
-            sourcePointer: (this.state.sourcePointer + 1)
+            _internal: internal
         }, () => {
             this.tryNextsource(source);
         });
