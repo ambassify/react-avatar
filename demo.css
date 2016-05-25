@@ -9,6 +9,16 @@ body {
 	font-family: 'Roboto Slab', Arial, sans-serif;
 	text-align:center;
 }
+a:link, a:active, a:visited {
+	color: #fff;
+    text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+p {
+    padding: 5px 0;
+}
 
 h1 {
 	font-size: 70px;
@@ -24,9 +34,6 @@ h2 {
 	padding: 50px 20px;
 	color: #FFF;
 	margin-bottom: 30px;
-}
-#header span, #header p {
-	opacity: 0.8;
 }
 #container {
 }
