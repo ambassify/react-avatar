@@ -57,7 +57,7 @@
     "browserify-global-shim": "^1.0.3",
     "eslint": "1.10.3",
     "eslint-plugin-react": "3.5.1",
-    "react-addons-pure-render-mixin": "^0.14.0",
+    "react-addons-pure-render-mixin": "^0.14.8",
     "react-dom": "^0.14.0",
     "reactify": "^1.0.0",
     "watchify": "^3.7.0"

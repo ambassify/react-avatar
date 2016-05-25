@@ -71,7 +71,7 @@ class Demo extends React.Component {
 
       <section>
         <h2>Initials</h2>
-        <div className="hidden">
+        <div>
             <button onClick={this._onChangeName}>Change name</button>
             <button onClick={this._onSetSkype}>Set skype ID</button>
         </div>
