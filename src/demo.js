@@ -53,13 +53,21 @@ class Demo extends React.Component {
         <Avatar facebookId="100008343750912" size={200} />
       </section>
 
-        <section>
-          <h2>Twitter</h2>
-          <Avatar twitterHandle="sitebase" size={40} />
-          <Avatar twitterHandle="sitebase" size={100} round={true} />
-          <Avatar twitterHandle="sitebase" size={150} />
-          <Avatar twitterHandle="sitebase" size={200} />
-        </section>
+      <section>
+        <h2>Twitter</h2>
+        <Avatar twitterHandle="sitebase" size={40} />
+        <Avatar twitterHandle="sitebase" size={100} round={true} />
+        <Avatar twitterHandle="sitebase" size={150} />
+        <Avatar twitterHandle="sitebase" size={200} />
+      </section>
+
+      <section>
+        <h2>Vkontakte</h2>
+        <Avatar vkontakteId="1" size={40} />
+        <Avatar vkontakteId="1" size={100} round={true} />
+        <Avatar vkontakteId="1" size={150} />
+        <Avatar vkontakteId="1" size={200} />
+      </section>
 
       <section>
         <h2>Skype</h2>

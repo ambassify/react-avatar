@@ -12,7 +12,7 @@ class TwitterSource {
     isCompatible = () => !!this.props.twitterHandle
 
     getImageSize() {
-        const { size }  = this.props;
+        const { size } = this.props;
 
         if (size <= 24)
             return 'mini';

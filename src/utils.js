@@ -17,6 +17,26 @@ function fetch(url, successCb, errorCb) {
     request.send();
 }
 
+export
+function fetchJSONP(url, successCb, errorCb) {
+    const callbackName = 'jsonp_cb_' + Math.round(100000 * Math.random());
+
+    const script = document.createElement('script');
+    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+    document.body.appendChild(script);
+
+    script.onerror = function() {
+        errorCb();
+    };
+
+    window[callbackName] = function(data) {
+        console.log('CALLBACK', data, successCb);
+        delete window[callbackName];
+        document.body.removeChild(script);
+        successCb(data);
+    };
+}
+
 const defaultColors = [
     '#d73d32',
     '#7e3794',

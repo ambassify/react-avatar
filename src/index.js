@@ -5,6 +5,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
+import vkontakteSource from './sources/Vkontakte.js';
 import twitterSource from './sources/Twitter.js';
 import googleSource from './sources/Google.js';
 import skypeSource from './sources/Skype.js';
@@ -13,11 +14,12 @@ import srcSource from './sources/Src.js';
 import iconSource from './sources/Icon.js';
 
 const SOURCES = [
-    gravatarSource,
     facebookSource,
-    twitterSource,
     googleSource,
+    twitterSource,
+    vkontakteSource,
     skypeSource,
+    gravatarSource,
     srcSource,
     valueSource,
     iconSource
@@ -37,8 +39,9 @@ export default class Avatar extends React.Component {
         src: React.PropTypes.string,
         facebookId: React.PropTypes.string,
         googleId: React.PropTypes.string,
-        skypeId: React.PropTypes.string,
         twitterHandle: React.PropTypes.string,
+        vkontakteId: React.PropTypes.string,
+        skypeId: React.PropTypes.string,
         round: React.PropTypes.bool,
         size: React.PropTypes.number
     }
@@ -52,9 +55,10 @@ export default class Avatar extends React.Component {
         email: null,
         md5Email: null,
         facebookId: null,
-        skypeId: null,
-        twitterHandle: null,
         googleId: null,
+        twitterHandle: null,
+        vkontakteId: null,
+        skypeId: null,
         round: false,
         size: 100
     }
@@ -87,9 +91,6 @@ export default class Avatar extends React.Component {
         if (newProps.value !== this.props.value)
             nextState.value = newProps.value;
 
-        if (newProps.skypeId !== this.props.skypeId)
-            nextState.skypeId = newProps.skypeId;
-
         if (newProps.email !== this.props.email)
             nextState.email = newProps.email;
 
@@ -104,6 +105,13 @@ export default class Avatar extends React.Component {
 
         if (newProps.twitterHandle !== this.props.twitterHandle)
             nextState.twitterHandle = newProps.twitterHandle;
+
+        if (newProps.vkontakteId !== this.props.vkontakteId)
+            nextState.vkontakteId = newProps.vkontakteId;
+
+        if (newProps.skypeId !== this.props.skypeId)
+            nextState.skypeId = newProps.skypeId;
+
 
         if(Object.keys(nextState) !== 0) {
             nextState._internal = this.state._internal;
