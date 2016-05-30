@@ -8,11 +8,12 @@ We use a fallback system that if for example an invalid Facebook ID is used it w
 For the moment we support following types:
 * Facebook
 * Google
+* Twitter
+* Vkontakte
 * Skype
 * Gravatar
 * Custom image
 * Name initials
-* Custom text
 
 The fallbacks are in the same order as the list above were Facebook has the highest priority.
 
@@ -48,9 +49,11 @@ Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip
 Some examples:
 
 ```html
-<Avatar google-id="118096717852922241760" size="100" round="true" />
-<Avatar facebook-id="100008343750912" size="150" />
-<Avatar skype-id="sitebase" size="200" />
+<Avatar googleId="118096717852922241760" size="100" round="true" />
+<Avatar facebookId="100008343750912" size="150" />
+<Avatar vkontakteId="1" size="150" />
+<Avatar skypeId="sitebase" size="200" />
+<Avatar twitterHandle="sitebase" size="40" />
 <Avatar name="Wim Mostmans" size="150" />
 <Avatar value="86%" size="40" />
 <Avatar size="100" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
