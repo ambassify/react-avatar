@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -73,7 +73,6 @@ export default class Avatar extends React.Component {
             value: null,
             color: props.color
         };
-        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
 
     componentWillMount() {
@@ -118,6 +117,10 @@ export default class Avatar extends React.Component {
             nextState._internal.sourcePointer = 0;
             this.setState(nextState, this.fetch);
         }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     tryNextsource = (Source) => {
