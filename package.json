@@ -65,6 +65,6 @@
     "is-retina": "^1.0.3",
     "md5": "^2.0.0",
     "react": "^0.14.0",
-    "react-addons-shallow-compare": "^15.1.0"
+    "react-addons-shallow-compare": "^0.14.0"
   }
 }
