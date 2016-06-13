@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import shallowCompare from 'react-addons-shallow-compare';
 
 import gravatarSource from './sources/Gravatar.js';
