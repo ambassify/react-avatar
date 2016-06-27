@@ -13,7 +13,8 @@ class FacebookSource {
 
     get = (setState) => {
         const { size, facebookId } = this.props;
-        const url = `https://graph.facebook.com/${facebookId}/picture?width=${size}`;
+        const url = 'https://graph.facebook.com/' +
+            `${facebookId}/picture?width=${size}&height=${size}`;
 
         setState({src: url});
     }
