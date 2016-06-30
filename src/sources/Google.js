@@ -1,6 +1,6 @@
 'use strict';
 
-import {fetch} from '../utils';
+import {fetch,cacheFailingSource,hasSourceFailedBefore} from '../utils';
 
 export default
 class GoogleSource {
@@ -17,6 +17,11 @@ class GoogleSource {
         const { size, googleId } = this.props;
         const url = `https://picasaweb.google.com/data/entry/api/user/${googleId}?alt=json`;
 
+        if(hasSourceFailedBefore(url)) {
+            setState(null);
+            return;
+        }
+
         fetch(url, (data) => {
             const src = data.entry.gphoto$thumbnail.$t;
             const srcWithCorrectSize = src.replace('s64', 's' + size);
@@ -25,6 +30,7 @@ class GoogleSource {
             });
         }, () => {
             // on error
+            cacheFailingSource(url);
             setState(null);
         });
     }

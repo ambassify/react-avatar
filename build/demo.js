@@ -557,6 +557,11 @@ var GoogleSource = function GoogleSource(props) {
 
         var url = 'https://picasaweb.google.com/data/entry/api/user/' + googleId + '?alt=json';
 
+        if ((0, _utils.hasSourceFailedBefore)(url)) {
+            setState(null);
+            return;
+        }
+
         (0, _utils.fetch)(url, function (data) {
             var src = data.entry.gphoto$thumbnail.$t;
             var srcWithCorrectSize = src.replace('s64', 's' + size);
@@ -565,6 +570,7 @@ var GoogleSource = function GoogleSource(props) {
             });
         }, function () {
             // on error
+            (0, _utils.cacheFailingSource)(url);
             setState(null);
         });
     };
@@ -997,7 +1003,7 @@ function getRandomColor(value) {
 }
 
 function _hasLocalStorage() {
-    return typeof Storage !== "undefined";
+    return typeof Storage !== 'undefined';
 }
 
 var CACHE_KEY = 'react-avatar';
