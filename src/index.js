@@ -2,6 +2,7 @@
 
 import React from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
+import {cacheFailingSource, hasSourceFailedBefore} from './utils.js';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -131,7 +132,12 @@ export default class Avatar extends React.Component {
             return this.fetch();
 
         instance.get((state) => {
-            if(state) {
+
+            const failedBefore = state &&
+                state.hasOwnProperty('src') &&
+                hasSourceFailedBefore(state.src);
+
+            if(!failedBefore && state) {
                 this.setState(state);
                 return;
             } else {
@@ -146,8 +152,10 @@ export default class Avatar extends React.Component {
         // then set state src back to null so render will
         // automatically switch a text avatar if there is no
         // other social ID available to try
-        if( event && event.type === 'error' )
+        if( event && event.type === 'error' ) {
+            cacheFailingSource(this.state.src);
             this.setState({src: null});
+        }
 
         if(SOURCES.length === this.state._internal.sourcePointer)
             return;
