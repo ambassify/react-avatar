@@ -242,6 +242,8 @@ var _reactAddonsShallowCompare = require('react-addons-shallow-compare');
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
+var _utils = require('./utils.js');
+
 var _Gravatar = require('./sources/Gravatar.js');
 
 var _Gravatar2 = _interopRequireDefault(_Gravatar);
@@ -303,7 +305,10 @@ var Avatar = function (_React$Component) {
             if (!instance.isCompatible(_this.props)) return _this.fetch();
 
             instance.get(function (state) {
-                if (state) {
+
+                var failedBefore = state && state.hasOwnProperty('src') && (0, _utils.hasSourceFailedBefore)(state.src);
+
+                if (!failedBefore && state) {
                     _this.setState(state);
                     return;
                 } else {
@@ -318,7 +323,10 @@ var Avatar = function (_React$Component) {
             // then set state src back to null so render will
             // automatically switch a text avatar if there is no
             // other social ID available to try
-            if (event && event.type === 'error') _this.setState({ src: null });
+            if (event && event.type === 'error') {
+                (0, _utils.cacheFailingSource)(_this.state.src);
+                _this.setState({ src: null });
+            }
 
             if (SOURCES.length === _this.state._internal.sourcePointer) return;
 
@@ -485,7 +493,7 @@ Avatar.defaultProps = {
 };
 exports.default = Avatar;
 module.exports = exports['default'];
-},{"./sources/Facebook.js":3,"./sources/Google.js":4,"./sources/Gravatar.js":5,"./sources/Icon.js":6,"./sources/Skype.js":7,"./sources/Src.js":8,"./sources/Twitter.js":9,"./sources/Value.js":10,"./sources/Vkontakte.js":11,"react":177,"react-addons-shallow-compare":46}],3:[function(require,module,exports){
+},{"./sources/Facebook.js":3,"./sources/Google.js":4,"./sources/Gravatar.js":5,"./sources/Icon.js":6,"./sources/Skype.js":7,"./sources/Src.js":8,"./sources/Twitter.js":9,"./sources/Value.js":10,"./sources/Vkontakte.js":11,"./utils.js":12,"react":177,"react-addons-shallow-compare":46}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -921,6 +929,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.fetch = fetch;
 exports.fetchJSONP = fetchJSONP;
 exports.getRandomColor = getRandomColor;
+exports.cacheFailingSource = cacheFailingSource;
+exports.hasSourceFailedBefore = hasSourceFailedBefore;
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -952,7 +962,6 @@ function fetchJSONP(url, successCb, errorCb) {
     };
 
     window[callbackName] = function (data) {
-        console.log('CALLBACK', data, successCb);
         delete window[callbackName];
         document.body.removeChild(script);
         successCb(data);
@@ -985,6 +994,35 @@ function getRandomColor(value) {
     var sum = _stringAsciiCodeSum(value);
     var colorIndex = sum % colors.length;
     return colors[colorIndex];
+}
+
+function _hasLocalStorage() {
+    return typeof Storage !== "undefined";
+}
+
+var CACHE_KEY = 'react-avatar';
+
+function cacheFailingSource(source) {
+    // cache not available
+    if (!_hasLocalStorage) return;
+
+    var cache = localStorage.getItem(CACHE_KEY) || '';
+
+    // already in cache
+    if (cache.indexOf(source) > -1) return;
+
+    var cacheList = cache.split(';');
+    cacheList.push(source);
+
+    // only keep the last 20 results so we don't fill up local storage
+    cacheList = cacheList.slice(-20);
+
+    localStorage.setItem(CACHE_KEY, cacheList.join(';'));
+}
+
+function hasSourceFailedBefore(source) {
+    var cache = localStorage.getItem(CACHE_KEY) || '';
+    return cache.indexOf(source) > -1;
 }
 },{}],13:[function(require,module,exports){
 var charenc = {
