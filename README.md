@@ -1,5 +1,4 @@
 # &lt;Avatar&gt;[![Build Status](https://travis-ci.org/Sitebase/react-avatar.svg?branch=master)](https://travis-ci.org/Sitebase/react-avatar)
-
 Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
 We use a fallback system that if for example an invalid Facebook ID is used it will try Google, and so on.
 
