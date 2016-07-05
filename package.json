@@ -1,6 +1,6 @@
 {
   "name": "react-avatar",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.",
   "main": "avatar.js",
   "scripts": {
