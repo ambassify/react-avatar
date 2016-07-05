@@ -159,6 +159,7 @@ module.exports = (function() {
 
     propTypes: {
       className: React.PropTypes.string,
+      innerClassName: React.PropTypes.string,
       fgColor: React.PropTypes.string,
       color: React.PropTypes.string,
       name: React.PropTypes.string,
@@ -301,7 +302,7 @@ module.exports = (function() {
       } else {
         return (
           /* jshint ignore:start */
-          React.createElement("div", {style: initialsStyle },  this.state.value)
+          React.createElement("div", {className: this.props.innerClassName, style: initialsStyle },  this.state.value)
           /* jshint ignore:end */
         );
       }
