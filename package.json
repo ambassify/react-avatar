@@ -1,13 +1,22 @@
 {
   "name": "react-avatar",
+<<<<<<< HEAD
   "version": "0.7.3",
   "description": "Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.",
   "main": "avatar.js",
+=======
+  "version": "2.0.0",
+  "description": "Universal React avatar component makes it possible to generate avatars based on user information.",
+  "main": "lib/index.js",
+>>>>>>> 8c9e7b448c22c9c3794df8a894b30d0695af31d8
   "scripts": {
-    "test": "grunt jshint",
-    "build": "grunt build"
+    "clean": "rm -rf ./lib/*",
+    "transpile": "./node_modules/.bin/babel ./src --out-dir ./lib",
+    "demo": "./node_modules/.bin/browserify ./lib/demo.js -o ./build/demo.js --transform browserify-global-shim --standalone ReactAvatarDemo",
+    "dev": "npm run clean && npm run transpile && npm run demo",
+    "test": "eslint src/index.js"
   },
-  "licenses": "MIT",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/sitebase/react-avatar.git"
@@ -26,24 +35,48 @@
   "peerDependencies": {
     "react": ">=0.14"
   },
+  "browserify-global-shim": {},
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-browserify": "^3.3.0",
-    "grunt-cli": "~0.1.9",
-    "grunt-contrib-connect": "^0.9.0",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-gh-pages": "~0.9.1",
-    "reactify": "^1.0.0"
+    "babel": "6.5.0",
+    "babel-cli": "^6.8.0",
+    "babel-core": "6.5.0",
+    "babel-eslint": "^6.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev": "^1.0.0",
+    "babel-plugin-dev-expression": "^0.1.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-inline-environment-variables": "^6.5.0",
+    "babel-plugin-transform-member-expression-literals": "^6.5.0",
+    "babel-plugin-transform-property-literals": "^6.5.0",
+    "babel-plugin-transform-react-constant-elements": "^6.5.0",
+    "babel-plugin-transform-react-inline-elements": "^6.5.0",
+    "babel-plugin-transform-runtime": "^6.5.2",
+    "babel-plugin-transform-undefined-to-void": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-regenerator-runtime": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "babel-runtime": "^6.5.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.1",
+    "browserify-global-shim": "^1.0.3",
+    "eslint": "1.10.3",
+    "eslint-plugin-react": "3.5.1",
+    "react-dom": "^0.14.0",
+    "reactify": "^1.0.0",
+    "watchify": "^3.7.0"
   },
   "dependencies": {
+<<<<<<< HEAD
     "md5": "^2.0.0",
     "grunt-babel": "6.0.0",
     "is-array": "^1.0.1",
+=======
+>>>>>>> 8c9e7b448c22c9c3794df8a894b30d0695af31d8
     "is-retina": "^1.0.3",
+    "md5": "^2.0.0",
     "react": "^0.14.0",
-    "react-addons-pure-render-mixin": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "react-tools": "^0.12.2"
+    "react-addons-shallow-compare": "^0.14.0"
   }
 }
