@@ -1,8 +1,14 @@
 {
   "name": "react-avatar",
+<<<<<<< HEAD
+  "version": "0.7.3",
+  "description": "Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.",
+  "main": "avatar.js",
+=======
   "version": "2.0.0",
   "description": "Universal React avatar component makes it possible to generate avatars based on user information.",
   "main": "lib/index.js",
+>>>>>>> 8c9e7b448c22c9c3794df8a894b30d0695af31d8
   "scripts": {
     "clean": "rm -rf ./lib/*",
     "transpile": "./node_modules/.bin/babel ./src --out-dir ./lib",
@@ -62,6 +68,12 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "md5": "^2.0.0",
+    "grunt-babel": "6.0.0",
+    "is-array": "^1.0.1",
+=======
+>>>>>>> 8c9e7b448c22c9c3794df8a894b30d0695af31d8
     "is-retina": "^1.0.3",
     "md5": "^2.0.0",
     "react": "^0.14.0",
