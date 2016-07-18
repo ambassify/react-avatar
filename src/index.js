@@ -170,7 +170,7 @@ export default class Avatar extends React.Component {
 
             // console.log('## try fetch', id, this._fetchId, internal.sourcePointer-1);
             this.setState({
-                _internal: internal,
+                _internal: internal
             }, () => {
                 this.tryNextsource(source, () => {
                     // console.log('-- next', id, this._fetchId);
@@ -183,7 +183,7 @@ export default class Avatar extends React.Component {
 
         tryFetch();
 
-    }
+    };
 
     _renderAsImage() {
         const size = this.props.size;
