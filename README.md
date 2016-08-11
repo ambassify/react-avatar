@@ -96,7 +96,8 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 
     ```sh
     $ python -m SimpleHTTPServer
-    ``
+    ```
+    
 ## Products using React Avatar
 * [BuboBox](https://www.bubobox.com)
 * [Ambassify](https://www.ambassify.com)
