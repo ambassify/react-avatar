@@ -126,30 +126,28 @@ export default class Avatar extends React.Component {
         return shallowCompare(this, nextProps, nextState);
     }
 
-    tryNextsource = (Source) => {
+    tryNextsource = (Source, next) => {
 
         const instance = new Source(this.props);
 
         if(!instance.isCompatible(this.props))
-            return this.fetch();
+            return next();
 
         instance.get((state) => {
-
             const failedBefore = state &&
                 state.hasOwnProperty('src') &&
                 hasSourceFailedBefore(state.src);
 
             if(!failedBefore && state) {
+                // console.log(state);
                 this.setState(state);
-                return;
             } else {
-                this.fetch();
+                next();
             }
         });
-    }
+    };
 
     fetch = (event) => {
-
         // If fetch was triggered by img onError
         // then set state src back to null so render will
         // automatically switch a text avatar if there is no
@@ -159,20 +157,35 @@ export default class Avatar extends React.Component {
             this.setState({src: null});
         }
 
-        if(SOURCES.length === this.state._internal.sourcePointer)
-            return;
+        // console.log('## fetch');
 
-        const source = SOURCES[this.state._internal.sourcePointer];
+        const id = this._fetchId = this._fetchId ? this._fetchId + 1 : 1;
 
-        const internal = this.state._internal;
-        internal.sourcePointer++;
+        var tryFetch = () => {
+            if(SOURCES.length === this.state._internal.sourcePointer)
+                return;
 
-        this.setState({
-            _internal: internal
-        }, () => {
-            this.tryNextsource(source);
-        });
-    }
+            const source = SOURCES[this.state._internal.sourcePointer];
+
+            const internal = this.state._internal;
+            internal.sourcePointer++;
+
+            // console.log('## try fetch', id, this._fetchId, internal.sourcePointer-1);
+            this.setState({
+                _internal: internal
+            }, () => {
+                this.tryNextsource(source, () => {
+                    // console.log('-- next', id, this._fetchId);
+                    if (id === this._fetchId) {
+                        tryFetch();
+                    }
+                });
+            });
+        };
+
+        tryFetch();
+
+    };
 
     _renderAsImage() {
         const size = this.props.size;
