@@ -75,6 +75,7 @@ Some examples:
 | `size`        | *number*             | 50      | Size of the avatar                                                                                     |
 | `round`       | *bool*            | false   | Round the avatar corners                                                                               |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
+| `style`         | *object*          |         | Style that will be applied on the root element
 
 ## Development
 

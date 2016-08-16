@@ -44,6 +44,7 @@ export default class Avatar extends React.Component {
         vkontakteId: React.PropTypes.string,
         skypeId: React.PropTypes.string,
         round: React.PropTypes.bool,
+        style: React.PropTypes.object,
         size: React.PropTypes.number
     }
 
@@ -61,7 +62,8 @@ export default class Avatar extends React.Component {
         vkontakteId: null,
         skypeId: null,
         round: false,
-        size: 100
+        size: 100,
+        style: null
     }
 
     constructor(props) {
@@ -219,7 +221,8 @@ export default class Avatar extends React.Component {
             display: 'inline-block',
             width: size,
             height: size,
-            borderRadius: (this.props.round ? 500 : 0)
+            borderRadius: (this.props.round ? 500 : 0),
+            ...this.props.style
         };
         return (
             <div className={this.props.className}
