@@ -18,7 +18,7 @@ The fallbacks are in the same order as the list above were Facebook has the high
 
 ## Demo
 
-[Check it live!](https://www.sitebase.be/react-avatar/)
+[Check it live!](https://www.sitebase.be/react-avatar/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
 
 ## Install
 
@@ -100,8 +100,8 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
     ```
     
 ## Products using React Avatar
-* [BuboBox](https://www.bubobox.com)
-* [Ambassify](https://www.ambassify.com)
+* [BuboBox](https://www.bubobox.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
+* [Ambassify](https://www.ambassify.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
     
 ## Contributing
 
