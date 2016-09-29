@@ -45,7 +45,8 @@ export default class Avatar extends React.Component {
         skypeId: React.PropTypes.string,
         round: React.PropTypes.bool,
         style: React.PropTypes.object,
-        size: React.PropTypes.number
+        size: React.PropTypes.number,
+        textSizeRatio: React.PropTypes.number
     }
 
     static defaultProps = {
@@ -63,7 +64,8 @@ export default class Avatar extends React.Component {
         skypeId: null,
         round: false,
         size: 100,
-        style: null
+        style: null,
+        textSizeRatio: 3
     }
 
     constructor(props) {
@@ -209,11 +211,12 @@ export default class Avatar extends React.Component {
 
     _renderAsText() {
         const size = this.props.size;
+        const textSizeRatio = this.props.textSizeRatio;
         const round = this.props.round;
         const initialsStyle = {
             width: size,
             height: size,
-            font: Math.floor(size / 3) + 'px Helvetica, Arial, sans-serif',
+            font: Math.floor(size / textSizeRatio) + 'px Helvetica, Arial, sans-serif',
             lineHeight: size + 'px', // yes, px suffix is needed on lineHeight
             textAlign: 'center',
             textTransform: 'uppercase',
