@@ -95,7 +95,12 @@ function cacheFailingSource(source)
     // only keep the last 20 results so we don't fill up local storage
     cacheList = cacheList.slice(-20);
 
-    localStorage.setItem(CACHE_KEY, cacheList.join(';'));
+    try {
+        localStorage.setItem(CACHE_KEY, cacheList.join(';'));
+    } catch(e) {
+        // failsafe for mobile Safari private mode
+        console.error(e);
+    }
 }
 
 export
