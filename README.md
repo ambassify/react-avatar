@@ -54,6 +54,7 @@ Some examples:
 <Avatar skypeId="sitebase" size="200" />
 <Avatar twitterHandle="sitebase" size="40" />
 <Avatar name="Wim Mostmans" size="150" />
+<Avatar name="Wim Mostmans" size="150" textSizeRatio="1.75" />
 <Avatar value="86%" size="40" />
 <Avatar size="100" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
 ```
@@ -73,6 +74,7 @@ Some examples:
 | `color`       | *string*          | random  | Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example #FF0000 |
 | `fgColor`     | *string*          | #FFF  | Used in combination with `name` and `value`. Give the text a fixed color with a hex like for example #FF0000 |
 | `size`        | *number*             | 50      | Size of the avatar                                                                                     |
+| `textSizeRatio` | *number*             | 3      | For text based avatars the size of the text as a fragment of size (size / textSizeRatio)                                 |
 | `round`       | *bool*            | false   | Round the avatar corners                                                                               |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
 | `style`         | *object*          |         | Style that will be applied on the root element
@@ -98,11 +100,11 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
     ```sh
     $ python -m SimpleHTTPServer
     ```
-    
+
 ## Products using React Avatar
 * [BuboBox](https://www.bubobox.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
 * [Ambassify](https://www.ambassify.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
-    
+
 ## Contributing
 
 1. Fork it!
