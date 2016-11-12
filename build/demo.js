@@ -193,6 +193,31 @@ var Demo = function (_React$Component) {
           _react2.default.createElement(
             'h2',
             null,
+            'Initials with different font sizes'
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_index2.default, { name: this.state.name, skypeId: this.state.skypeId, size: 40, textSizeRatio: 2 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 100, round: true, textSizeRatio: 2 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, textSizeRatio: 2 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 200, textSizeRatio: 2 })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_index2.default, { name: this.state.name, skypeId: this.state.skypeId, size: 40, textSizeRatio: 4 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 100, round: true, textSizeRatio: 4 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, textSizeRatio: 4 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 200, textSizeRatio: 4 })
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          null,
+          _react2.default.createElement(
+            'h2',
+            null,
             'Value'
           ),
           _react2.default.createElement(_index2.default, { value: '86%', size: 40 }),
@@ -472,11 +497,12 @@ var Avatar = function (_React$Component) {
         key: '_renderAsText',
         value: function _renderAsText() {
             var size = this.props.size;
+            var textSizeRatio = this.props.textSizeRatio;
             var round = this.props.round;
             var initialsStyle = {
                 width: size,
                 height: size,
-                font: Math.floor(size / 3) + 'px Helvetica, Arial, sans-serif',
+                font: Math.floor(size / textSizeRatio) + 'px Helvetica, Arial, sans-serif',
                 lineHeight: size + 'px', // yes, px suffix is needed on lineHeight
                 textAlign: 'center',
                 textTransform: 'uppercase',
@@ -529,7 +555,8 @@ Avatar.propTypes = {
     skypeId: _react2.default.PropTypes.string,
     round: _react2.default.PropTypes.bool,
     style: _react2.default.PropTypes.object,
-    size: _react2.default.PropTypes.number
+    size: _react2.default.PropTypes.number,
+    textSizeRatio: _react2.default.PropTypes.number
 };
 Avatar.defaultProps = {
     className: 'sb-avatar',
@@ -546,7 +573,8 @@ Avatar.defaultProps = {
     skypeId: null,
     round: false,
     size: 100,
-    style: null
+    style: null,
+    textSizeRatio: 3
 };
 exports.default = Avatar;
 module.exports = exports['default'];
@@ -1114,7 +1142,12 @@ function cacheFailingSource(source) {
     // only keep the last 20 results so we don't fill up local storage
     cacheList = cacheList.slice(-20);
 
-    localStorage.setItem(CACHE_KEY, cacheList.join(';'));
+    try {
+        localStorage.setItem(CACHE_KEY, cacheList.join(';'));
+    } catch (e) {
+        // failsafe for mobile Safari private mode
+        console.error(e);
+    }
 }
 
 function hasSourceFailedBefore(source) {

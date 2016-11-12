@@ -89,7 +89,23 @@ class Demo extends React.Component {
         <Avatar name={this.state.name} size={200} />
       </section>
 
-    <section>
+      <section>
+        <h2>Initials with different font sizes</h2>
+        <div>
+          <Avatar name={this.state.name} skypeId={this.state.skypeId} size={40} textSizeRatio={2} />
+          <Avatar name={this.state.name} size={100} round={true} textSizeRatio={2} />
+          <Avatar name={this.state.name} size={150} textSizeRatio={2} />
+          <Avatar name={this.state.name} size={200} textSizeRatio={2} />
+        </div>
+        <div>
+          <Avatar name={this.state.name} skypeId={this.state.skypeId} size={40} textSizeRatio={4} />
+          <Avatar name={this.state.name} size={100} round={true} textSizeRatio={4} />
+          <Avatar name={this.state.name} size={150} textSizeRatio={4} />
+          <Avatar name={this.state.name} size={200} textSizeRatio={4} />
+        </div>
+      </section>
+
+      <section>
         <h2>Value</h2>
         <Avatar value="86%" size={40} />
         <Avatar value="86%" size={100} round={true} />
