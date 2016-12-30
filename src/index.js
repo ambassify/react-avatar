@@ -74,7 +74,7 @@ export default class Avatar extends React.Component {
             _internal: {
                 sourcePointer: 0
             },
-            src: null,
+            src: props.src,
             value: null,
             color: props.color
         };
