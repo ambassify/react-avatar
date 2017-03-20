@@ -64,6 +64,7 @@ Some examples:
 <Avatar name="Wim Mostmans" size="150" textSizeRatio="1.75" />
 <Avatar value="86%" size="40" />
 <Avatar size="100" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
+<Avatar name="Wim Mostmans" unstyled="true" />
 ```
 
 ## Options
