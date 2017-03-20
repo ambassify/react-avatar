@@ -47,7 +47,8 @@ export default class Avatar extends React.Component {
         round: PropTypes.bool,
         style: PropTypes.object,
         size: PropTypes.number,
-        textSizeRatio: PropTypes.number
+        textSizeRatio: PropTypes.number,
+        unstyled: PropTypes.bool
     }
 
     static defaultProps = {
@@ -66,7 +67,8 @@ export default class Avatar extends React.Component {
         round: false,
         size: 100,
         style: null,
-        textSizeRatio: 3
+        textSizeRatio: 3,
+        unstyled: false
     }
 
     constructor(props) {
@@ -194,7 +196,7 @@ export default class Avatar extends React.Component {
         const size = this.props.size;
         const round = this.props.round;
         const alt = this.props.name || this.props.value;
-        const imageStyle = {
+        const imageStyle = this.props.unstyled ? null : {
             maxWidth: '100%',
             width: size,
             height: size,
@@ -214,7 +216,7 @@ export default class Avatar extends React.Component {
         const size = this.props.size;
         const textSizeRatio = this.props.textSizeRatio;
         const round = this.props.round;
-        const initialsStyle = {
+        const initialsStyle = this.props.unstyled ? null : {
             width: size,
             height: size,
             font: Math.floor(size / textSizeRatio) + 'px Helvetica, Arial, sans-serif',
@@ -234,7 +236,7 @@ export default class Avatar extends React.Component {
 
     render() {
         const size = this.props.size;
-        const hostStyle = {
+        const hostStyle = this.props.unstyled ? null : {
             display: 'inline-block',
             width: size,
             height: size,

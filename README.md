@@ -84,7 +84,8 @@ Some examples:
 | `textSizeRatio` | *number*             | 3      | For text based avatars the size of the text as a fragment of size (size / textSizeRatio)                                 |
 | `round`       | *bool*            | false   | Round the avatar corners                                                                               |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
-| `style`         | *object*          |         | Style that will be applied on the root element
+| `style`         | *object*          |         | Style that will be applied on the root element                                                       |
+| `unstyled`    | *bool*            | false   | Disable all styles                                                                                     |
 
 ## Development
 

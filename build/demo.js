@@ -261,6 +261,18 @@ var Demo = function (_React$Component) {
             name: 'Wim Mostmans',
             style: { borderRadius: 10, border: 'solid 10px rgba(0,0,0,0.5)' },
             size: 100 })
+        ),
+        _react2.default.createElement(
+          'section',
+          null,
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Unstyled'
+          ),
+          _react2.default.createElement(_index2.default, {
+            name: 'Wim Mostmans',
+            unstyled: true })
         )
       );
     }
@@ -484,7 +496,7 @@ var Avatar = function (_React$Component) {
             var size = this.props.size;
             var round = this.props.round;
             var alt = this.props.name || this.props.value;
-            var imageStyle = {
+            var imageStyle = this.props.unstyled ? null : {
                 maxWidth: '100%',
                 width: size,
                 height: size,
@@ -503,7 +515,7 @@ var Avatar = function (_React$Component) {
             var size = this.props.size;
             var textSizeRatio = this.props.textSizeRatio;
             var round = this.props.round;
-            var initialsStyle = {
+            var initialsStyle = this.props.unstyled ? null : {
                 width: size,
                 height: size,
                 font: Math.floor(size / textSizeRatio) + 'px Helvetica, Arial, sans-serif',
@@ -524,7 +536,7 @@ var Avatar = function (_React$Component) {
         key: 'render',
         value: function render() {
             var size = this.props.size;
-            var hostStyle = (0, _extends3.default)({
+            var hostStyle = this.props.unstyled ? null : (0, _extends3.default)({
                 display: 'inline-block',
                 width: size,
                 height: size,
@@ -560,7 +572,8 @@ Avatar.propTypes = {
     round: _propTypes2.default.bool,
     style: _propTypes2.default.object,
     size: _propTypes2.default.number,
-    textSizeRatio: _propTypes2.default.number
+    textSizeRatio: _propTypes2.default.number,
+    unstyled: _propTypes2.default.bool
 };
 Avatar.defaultProps = {
     className: 'sb-avatar',
@@ -578,7 +591,8 @@ Avatar.defaultProps = {
     round: false,
     size: 100,
     style: null,
-    textSizeRatio: 3
+    textSizeRatio: 3,
+    unstyled: false
 };
 exports.default = Avatar;
 module.exports = exports['default'];

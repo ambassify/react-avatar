@@ -126,13 +126,19 @@ class Demo extends React.Component {
             size={200}
             round={true} />
       </section>
-    <section>
-      <h2>Custom style</h2>
-      <Avatar
-          name="Wim Mostmans"
-          style={{borderRadius: 10, border: 'solid 10px rgba(0,0,0,0.5)'}}
-          size={100} />
-    </section>
+      <section>
+        <h2>Custom style</h2>
+        <Avatar
+            name="Wim Mostmans"
+            style={{borderRadius: 10, border: 'solid 10px rgba(0,0,0,0.5)'}}
+            size={100} />
+      </section>
+      <section>
+        <h2>Unstyled</h2>
+        <Avatar
+            name="Wim Mostmans"
+            unstyled={true} />
+      </section>
             </div>
         );
     }
