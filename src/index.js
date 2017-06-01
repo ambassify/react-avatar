@@ -1,5 +1,6 @@
 'use strict';
 
+import PropTypes from 'prop-types';
 import React from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import {cacheFailingSource, hasSourceFailedBefore} from './utils.js';
@@ -29,24 +30,24 @@ const SOURCES = [
 export default class Avatar extends React.Component {
     static displayName = 'Avatar'
     static propTypes = {
-        className: React.PropTypes.string,
-        fgColor: React.PropTypes.string,
-        color: React.PropTypes.string,
-        colors: React.PropTypes.array,
-        name: React.PropTypes.string,
-        value: React.PropTypes.string,
-        email: React.PropTypes.string,
-        md5Email: React.PropTypes.string,
-        src: React.PropTypes.string,
-        facebookId: React.PropTypes.string,
-        googleId: React.PropTypes.string,
-        twitterHandle: React.PropTypes.string,
-        vkontakteId: React.PropTypes.string,
-        skypeId: React.PropTypes.string,
-        round: React.PropTypes.bool,
-        style: React.PropTypes.object,
-        size: React.PropTypes.number,
-        textSizeRatio: React.PropTypes.number
+        className: PropTypes.string,
+        fgColor: PropTypes.string,
+        color: PropTypes.string,
+        colors: PropTypes.array,
+        name: PropTypes.string,
+        value: PropTypes.string,
+        email: PropTypes.string,
+        md5Email: PropTypes.string,
+        src: PropTypes.string,
+        facebookId: PropTypes.string,
+        googleId: PropTypes.string,
+        twitterHandle: PropTypes.string,
+        vkontakteId: PropTypes.string,
+        skypeId: PropTypes.string,
+        round: PropTypes.bool,
+        style: PropTypes.object,
+        size: PropTypes.number,
+        textSizeRatio: PropTypes.number
     }
 
     static defaultProps = {
