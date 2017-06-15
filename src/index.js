@@ -196,8 +196,7 @@ export default class Avatar extends React.Component {
         const imageStyle = {
             maxWidth: '100%',
             width: size,
-            height: size,
-            borderRadius: (round ? 500 : 0)
+            height: size
         };
         return (
             <img width={this.props.size}
@@ -235,6 +234,7 @@ export default class Avatar extends React.Component {
         const size = this.props.size;
         const hostStyle = {
             display: 'inline-block',
+            overflow: 'hidden',
             width: size,
             height: size,
             borderRadius: (this.props.round ? 500 : 0),
