@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rm -rf ./lib/*",
-    "transpile": "./node_modules/.bin/babel ./src --out-dir ./lib",
-    "demo": "./node_modules/.bin/browserify ./lib/demo.js -o ./build/demo.js --transform browserify-global-shim --standalone ReactAvatarDemo",
+    "transpile": "babel ./src --out-dir ./lib",
+    "demo": "browserify ./lib/demo.js -o ./build/demo.js --transform browserify-global-shim --standalone ReactAvatarDemo",
     "dev": "npm run clean && npm run transpile && npm run demo",
     "test": "eslint src/index.js",
     "serve": "python -m SimpleHTTPServer"
@@ -33,7 +33,7 @@
   "browserify-global-shim": {},
   "devDependencies": {
     "babel": "6.5.0",
-    "babel-cli": "^6.8.0",
+    "babel-cli": "^6.24.1",
     "babel-core": "6.5.0",
     "babel-eslint": "^6.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
