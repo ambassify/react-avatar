@@ -64,6 +64,7 @@ Some examples:
 <Avatar name="Wim Mostmans" size="150" textSizeRatio="1.75" />
 <Avatar value="86%" size="40" />
 <Avatar size="100" facebook-id="invalidfacebookusername" src="http://www.gravatar.com/avatar/a16a38cdfe8b2cbd38e8a56ab93238d3" />
+<Avatar name="Wim Mostmans" unstyled="true" />
 ```
 
 ## Options
@@ -84,7 +85,8 @@ Some examples:
 | `textSizeRatio` | *number*             | 3      | For text based avatars the size of the text as a fragment of size (size / textSizeRatio)                                 |
 | `round`       | *bool*            | false   | Round the avatar corners                                                                               |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
-| `style`         | *object*          |         | Style that will be applied on the root element
+| `style`         | *object*          |         | Style that will be applied on the root element                                                       |
+| `unstyled`    | *bool*            | false   | Disable all styles                                                                                     |
 
 ## Development
 
