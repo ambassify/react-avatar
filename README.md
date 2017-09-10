@@ -26,6 +26,13 @@ Install the component using [NPM](https://www.npmjs.com/):
 
 ```sh
 $ npm install react-avatar --save
+
+# besides React, react-avatar also has react-addons-shallow-compare
+# as a peer dependency, make sure to install the correct version
+# for your version of react
+$ npm install react-addons-shallow-compare@^0.14 --save
+# OR
+$ npm install react-addons-shallow-compare@^15 --save
 ```
 
 Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip).

@@ -28,7 +28,8 @@
   ],
   "homepage": "https://github.com/sitebase/react-avatar",
   "peerDependencies": {
-    "react": ">=0.14"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
+    "react-addons-shallow-compare": "^0.14.0 || ^15.0.0 || ^16.0.0"
   },
   "browserify-global-shim": {},
   "devDependencies": {
@@ -57,15 +58,15 @@
     "browserify-global-shim": "^1.0.3",
     "eslint": "1.10.3",
     "eslint-plugin-react": "3.5.1",
-    "react-dom": ">=0.14.0",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-addons-shallow-compare": "^15.0.0",
     "reactify": "^1.0.0",
     "watchify": "^3.7.0"
   },
   "dependencies": {
     "babel-runtime": ">=5.0.0",
     "is-retina": "^1.0.3",
-    "md5": "^2.0.0",
-    "react": ">=0.14.0",
-    "react-addons-shallow-compare": ">=0.14.0"
+    "md5": "^2.0.0"
   }
 }
