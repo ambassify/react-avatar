@@ -55,7 +55,7 @@ Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip
 Some examples:
 
 ```html
-<Avatar googleId="118096717852922241760" size="100" round="true" />
+<Avatar googleId="118096717852922241760" size="100" round={true} />
 <Avatar facebookId="100008343750912" size="150" />
 <Avatar vkontakteId="1" size="150" />
 <Avatar skypeId="sitebase" size="200" />
