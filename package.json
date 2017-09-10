@@ -29,7 +29,8 @@
   "homepage": "https://github.com/sitebase/react-avatar",
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
-    "react-addons-shallow-compare": "^0.14.0 || ^15.0.0 || ^16.0.0"
+    "react-addons-shallow-compare": "^0.14.0 || ^15.0.0 || ^16.0.0",
+    "prop-types": "^0.14.0 || ^15.0.0 || ^16.0.0"
   },
   "browserify-global-shim": {},
   "devDependencies": {
