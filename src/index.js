@@ -49,7 +49,7 @@ export default class Avatar extends React.Component {
         size: PropTypes.number,
         textSizeRatio: PropTypes.number,
         unstyled: PropTypes.bool,
-				onClick: PropTypes.function
+        onClick: PropTypes.function
     }
 
     static defaultProps = {
