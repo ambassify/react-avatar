@@ -18,13 +18,14 @@ class ValueSource {
     getInitials()
     {
         const name = this.props.name;
+        const maxInitials = this.props.maxInitials;
         const parts = name.split(' ');
         let initials = '';
         for(let i = 0 ; i < parts.length ; i++)
         {
             initials += parts[i].substr(0, 1).toUpperCase();
         }
-        return initials;
+        return maxInitials ? initials.slice(0, maxInitials) : initials;
     }
 
     getValue() {
