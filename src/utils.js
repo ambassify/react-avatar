@@ -70,10 +70,15 @@ function getRandomColor(value, colors = defaultColors)
     return colors[colorIndex];
 }
 
-function _hasLocalStorage()
-{
-    return typeof Storage !== 'undefined';
+function isLocalStorageAvailable() {
+	try {
+		return ('localStorage' in window && window['localStorage'])
+	} catch(err) {
+		return false
+	}
 }
+const _hasLocalStorage = isLocalStorageAvailable()
+
 
 const CACHE_KEY = 'react-avatar';
 export
@@ -106,6 +111,8 @@ function cacheFailingSource(source)
 export
 function hasSourceFailedBefore(source)
 {
+    if(!_hasLocalStorage)
+        return;
     const cache = localStorage.getItem(CACHE_KEY) || '';
     return cache.indexOf(source) > -1;
 }
