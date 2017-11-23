@@ -48,7 +48,8 @@ export default class Avatar extends React.Component {
         style: PropTypes.object,
         size: PropTypes.number,
         textSizeRatio: PropTypes.number,
-        unstyled: PropTypes.bool
+        unstyled: PropTypes.bool,
+        onClick: PropTypes.function
     }
 
     static defaultProps = {
@@ -244,7 +245,7 @@ export default class Avatar extends React.Component {
             ...this.props.style
         };
         return (
-            <div className={this.props.className}
+            <div className={this.props.className} onClick={this.props.onClick}
                 style={hostStyle}>
                 {this.state.src ? this._renderAsImage() : this._renderAsText()}
             </div>
