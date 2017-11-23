@@ -1,8 +1,7 @@
 'use strict';
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import shallowCompare from 'react-addons-shallow-compare';
 import {cacheFailingSource, hasSourceFailedBefore} from './utils.js';
 
 import gravatarSource from './sources/Gravatar.js';
@@ -27,7 +26,7 @@ const SOURCES = [
     iconSource
 ];
 
-export default class Avatar extends React.Component {
+export default class Avatar extends PureComponent {
     static displayName = 'Avatar'
     static propTypes = {
         className: PropTypes.string,
@@ -126,10 +125,6 @@ export default class Avatar extends React.Component {
             nextState._internal.sourcePointer = 0;
             this.setState(nextState, this.fetch);
         }
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     tryNextsource = (Source, next) => {
