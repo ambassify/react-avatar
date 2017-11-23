@@ -49,7 +49,7 @@ export default class Avatar extends PureComponent {
         size: PropTypes.number,
         textSizeRatio: PropTypes.number,
         unstyled: PropTypes.bool,
-        onClick: PropTypes.function
+        onClick: PropTypes.func
     }
 
     static defaultProps = {
@@ -245,7 +245,9 @@ export default class Avatar extends PureComponent {
             ...this.props.style
         };
         return (
-            <div className={this.props.className} onClick={this.props.onClick}
+            <div
+                className={this.props.className}
+                onClick={this.props.onClick}
                 style={hostStyle}>
                 {this.state.src ? this._renderAsImage() : this._renderAsText()}
             </div>
