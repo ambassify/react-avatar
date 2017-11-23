@@ -106,6 +106,16 @@ class Demo extends React.Component {
       </section>
 
       <section>
+        <h2>Initials with maximum number of characters</h2>
+        <div>
+          <Avatar name={this.state.name} maxInitials={2} skypeId={this.state.skypeId} size={40} textSizeRatio={2} />
+          <Avatar name={this.state.name} maxInitials={1} size={100} round={true} textSizeRatio={2} />
+          <Avatar name={this.state.name} size={150} textSizeRatio={2} />
+          <Avatar name={this.state.name} size={200} textSizeRatio={2} />
+        </div>
+      </section>
+
+      <section>
         <h2>Value</h2>
         <Avatar value="86%" size={40} />
         <Avatar value="86%" size={100} round={true} />

@@ -34,6 +34,7 @@ export default class Avatar extends PureComponent {
         color: PropTypes.string,
         colors: PropTypes.array,
         name: PropTypes.string,
+        maxInitials: PropTypes.number,
         value: PropTypes.string,
         email: PropTypes.string,
         md5Email: PropTypes.string,
@@ -56,6 +57,7 @@ export default class Avatar extends PureComponent {
         fgColor: '#FFF',
         color: null,
         name: null,
+        maxInitials: null,
         value: null,
         email: null,
         md5Email: null,
@@ -94,6 +96,9 @@ export default class Avatar extends PureComponent {
 
         if (newProps.name !== this.props.name)
             nextState.name = newProps.name;
+
+        if (newProps.maxInitials !== this.props.maxInitials)
+            nextState.maxInitials = newProps.maxInitials;
 
         if (newProps.value !== this.props.value)
             nextState.value = newProps.value;
