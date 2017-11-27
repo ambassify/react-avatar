@@ -63,6 +63,8 @@ var Demo = function (_React$Component) {
       });
     }, _this._onSetSkype = function () {
       _this.setState({ skypeId: 'sitebase' });
+    }, _this._onClick = function () {
+      alert('Clicked!');
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -186,6 +188,16 @@ var Demo = function (_React$Component) {
           _react2.default.createElement(_index2.default, { name: this.state.name, size: 100, round: true }),
           _react2.default.createElement(_index2.default, { name: this.state.name, size: 150 }),
           _react2.default.createElement(_index2.default, { name: this.state.name, size: 200 })
+        ),
+        _react2.default.createElement(
+          'section',
+          null,
+          _react2.default.createElement(
+            'h2',
+            null,
+            'onClick'
+          ),
+          _react2.default.createElement(_index2.default, { name: this.state.name, onClick: this._onClick, size: 200 })
         ),
         _react2.default.createElement(
           'section',
@@ -585,7 +597,7 @@ Avatar.propTypes = {
     size: _propTypes2.default.number,
     textSizeRatio: _propTypes2.default.number,
     unstyled: _propTypes2.default.bool,
-    onClick: _propTypes2.default.function
+    onClick: _propTypes2.default.func
 };
 Avatar.defaultProps = {
     className: 'sb-avatar',

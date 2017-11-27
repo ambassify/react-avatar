@@ -21,6 +21,11 @@ class Demo extends React.Component {
     _onSetSkype = () => {
         this.setState({skypeId: 'sitebase'});
     }
+
+    _onClick = () => {
+        alert('Clicked!');
+    }
+
     render() {
         return (
             <div>
@@ -88,6 +93,11 @@ class Demo extends React.Component {
         <Avatar name={this.state.name} size={150} />
         <Avatar name={this.state.name} size={200} />
       </section>
+
+    <section>
+      <h2>onClick</h2>
+      <Avatar name={this.state.name} onClick={this._onClick} size={200} />
+    </section>
 
       <section>
         <h2>Initials with different font sizes</h2>
