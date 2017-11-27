@@ -245,7 +245,9 @@ export default class Avatar extends PureComponent {
             ...this.props.style
         };
         return (
-            <div className={this.props.className} onClick={this.props.onClick}
+            <div
+                className={this.props.className}
+                onClick={this.props.onClick}
                 style={hostStyle}>
                 {this.state.src ? this._renderAsImage() : this._renderAsText()}
             </div>
