@@ -47,6 +47,7 @@ export default class Avatar extends PureComponent {
         round: PropTypes.bool,
         style: PropTypes.object,
         size: PropTypes.number,
+        unit: PropTypes.string,
         textSizeRatio: PropTypes.number,
         unstyled: PropTypes.bool,
         onClick: PropTypes.func
@@ -68,6 +69,7 @@ export default class Avatar extends PureComponent {
         skypeId: null,
         round: false,
         size: 100,
+        unit: 'px',
         style: null,
         textSizeRatio: 3,
         unstyled: false
@@ -195,33 +197,35 @@ export default class Avatar extends PureComponent {
 
     _renderAsImage() {
         const size = this.props.size;
+        const unit = this.props.unit;
         const round = this.props.round;
         const alt = this.props.name || this.props.value;
         const imageStyle = this.props.unstyled ? null : {
             maxWidth: '100%',
-            width: size,
-            height: size,
+            width: size + unit,
+            height: size + unit,
             borderRadius: (round ? 500 : 0)
         };
         return (
-            <img width={this.props.size}
-                height={this.props.size}
-                style={imageStyle}
-                src={this.state.src}
-                alt={alt}
-                onError={this.fetch} />
-        );
+          <img width={size + unit}
+              height={size + unit}
+              style={imageStyle}
+              src={this.state.src}
+              alt={alt}
+              onError={this.fetch} />
+      );
     }
 
     _renderAsText() {
         const size = this.props.size;
+        const unit = this.props.unit;
         const textSizeRatio = this.props.textSizeRatio;
         const round = this.props.round;
         const initialsStyle = this.props.unstyled ? null : {
-            width: size,
-            height: size,
-            font: Math.floor(size / textSizeRatio) + 'px Helvetica, Arial, sans-serif',
-            lineHeight: size + 'px', // yes, px suffix is needed on lineHeight
+            width: size + unit,
+            height: size + unit,
+            font: (Math.floor((size * 10) / textSizeRatio) / 10) + unit + ' Helvetica, Arial, sans-serif',
+            lineHeight: size + unit,
             textAlign: 'center',
             textTransform: 'uppercase',
             color: this.props.fgColor,
@@ -237,10 +241,11 @@ export default class Avatar extends PureComponent {
 
     render() {
         const size = this.props.size;
+        const unit = this.props.unit;
         const hostStyle = this.props.unstyled ? null : {
             display: 'inline-block',
-            width: size,
-            height: size,
+            width: size + unit,
+            height: size + unit,
             borderRadius: (this.props.round ? 500 : 0),
             ...this.props.style
         };
