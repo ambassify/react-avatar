@@ -1,8 +1,12 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
+
+React.PropTypes = PropTypes;
+
 import shallowCompare from 'react-addons-shallow-compare';
-import {cacheFailingSource, hasSourceFailedBefore} from './utils.js';
+import { cacheFailingSource, hasSourceFailedBefore } from './utils.js';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -117,7 +121,7 @@ export default class Avatar extends React.Component {
             nextState.skypeId = newProps.skypeId;
 
 
-        if(Object.keys(nextState) !== 0) {
+        if (Object.keys(nextState) !== 0) {
             nextState._internal = this.state._internal;
             nextState._internal.sourcePointer = 0;
             this.setState(nextState, this.fetch);
@@ -132,7 +136,7 @@ export default class Avatar extends React.Component {
 
         const instance = new Source(this.props);
 
-        if(!instance.isCompatible(this.props))
+        if (!instance.isCompatible(this.props))
             return next();
 
         instance.get((state) => {
@@ -140,7 +144,7 @@ export default class Avatar extends React.Component {
                 state.hasOwnProperty('src') &&
                 hasSourceFailedBefore(state.src);
 
-            if(!failedBefore && state) {
+            if (!failedBefore && state) {
                 // console.log(state);
                 this.setState(state);
             } else {
@@ -154,9 +158,9 @@ export default class Avatar extends React.Component {
         // then set state src back to null so render will
         // automatically switch a text avatar if there is no
         // other social ID available to try
-        if( event && event.type === 'error' ) {
+        if (event && event.type === 'error') {
             cacheFailingSource(this.state.src);
-            this.setState({src: null});
+            this.setState({ src: null });
         }
 
         // console.log('## fetch');
@@ -164,7 +168,7 @@ export default class Avatar extends React.Component {
         const id = this._fetchId = this._fetchId ? this._fetchId + 1 : 1;
 
         var tryFetch = () => {
-            if(SOURCES.length === this.state._internal.sourcePointer)
+            if (SOURCES.length === this.state._internal.sourcePointer)
                 return;
 
             const source = SOURCES[this.state._internal.sourcePointer];
