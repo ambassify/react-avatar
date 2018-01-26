@@ -46,6 +46,7 @@ export default class Avatar extends PureComponent {
         skypeId: PropTypes.string,
         round: PropTypes.bool,
         style: PropTypes.object,
+        fontFamily: PropTypes.string,
         size: PropTypes.number,
         textSizeRatio: PropTypes.number,
         unstyled: PropTypes.bool,
@@ -69,6 +70,7 @@ export default class Avatar extends PureComponent {
         round: false,
         size: 100,
         style: null,
+        fontFamily: 'Helvetica, Arial, sans-serif',
         textSizeRatio: 3,
         unstyled: false
     }
@@ -216,11 +218,13 @@ export default class Avatar extends PureComponent {
     _renderAsText() {
         const size = this.props.size;
         const textSizeRatio = this.props.textSizeRatio;
+        const fontFamily = this.props.fontFamily;
         const round = this.props.round;
         const initialsStyle = this.props.unstyled ? null : {
             width: size,
             height: size,
-            font: Math.floor(size / textSizeRatio) + 'px Helvetica, Arial, sans-serif',
+            fontSize: Math.floor(size / textSizeRatio) + 'px',
+            fontFamily,
             lineHeight: size + 'px', // yes, px suffix is needed on lineHeight
             textAlign: 'center',
             textTransform: 'uppercase',

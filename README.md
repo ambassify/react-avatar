@@ -87,6 +87,7 @@ Some examples:
 | `round`       | *bool*            | false   | Round the avatar corners                                                                               |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
 | `style`         | *object*          |         | Style that will be applied on the root element                                                       |
+| `fontFamily`   | *string*          |  Helvetica, Arial, sans-serif | The font that will be used on text rendering                                                       |
 | `unstyled`    | *bool*            | false   | Disable all styles                                                                                     |
 | `onClick`    | *function*            |        | Mouse click event                                                                                     |
 
