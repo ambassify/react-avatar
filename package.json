@@ -3,9 +3,6 @@
   "version": "2.5.1",
   "description": "Universal React avatar component makes it possible to generate avatars based on user information.",
   "main": "lib/index.js",
-  "engines": {
-    "node": "8.x.x"
-  },
   "scripts": {
     "clean": "rm -rf ./lib/*",
     "transpile": "babel ./src --out-dir ./lib",
