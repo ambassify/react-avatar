@@ -161,7 +161,7 @@ export default class Avatar extends PureComponent {
         if( event && event.type === 'error' ) {
             cacheFailingSource(this.state.src);
             this.setState({src: null});
-	    return;
+            return;
         }
 
         // console.log('## fetch');
