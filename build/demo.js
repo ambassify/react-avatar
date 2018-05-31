@@ -230,7 +230,7 @@ var Demo = function (_React$Component) {
           _react2.default.createElement(
             'h2',
             null,
-            'Sizes in different units'
+            'Size in different units'
           ),
           _react2.default.createElement(
             'div',
@@ -566,7 +566,7 @@ var Avatar = function (_PureComponent) {
                 width: size.str,
                 height: size.str,
                 font: (size.value / textSizeRatio).toFixed(4) + size.unit + ' Helvetica, Arial, sans-serif',
-                lineHeight: size.str, // yes, px suffix is needed on lineHeight
+                lineHeight: size.str,
                 textAlign: 'center',
                 textTransform: 'uppercase',
                 color: this.props.fgColor,
@@ -619,7 +619,7 @@ Avatar.propTypes = {
     skypeId: _propTypes2.default.string,
     round: _propTypes2.default.bool,
     style: _propTypes2.default.object,
-    size: _propTypes2.default.number,
+    size: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
     textSizeRatio: _propTypes2.default.number,
     unstyled: _propTypes2.default.bool,
     onClick: _propTypes2.default.func
@@ -1170,6 +1170,7 @@ function fetchJSONP(url, successCb, errorCb) {
 var defaultColors = ['#d73d32', '#7e3794', '#4285f4', '#67ae3f', '#d61a7f', '#ff4080'];
 
 // https://regex101.com/r/YEsPER/1
+// https://developer.mozilla.org/en-US/docs/Web/CSS/length
 var reSize = /^([-+]?(?:\d+(?:\.\d+)?|\.\d+))([a-z]{2,4})?$/;
 
 function _stringAsciiCodeSum(value) {
