@@ -175,6 +175,17 @@ class Demo extends React.Component {
             name="Wim Mostmans"
             unstyled={true} />
       </section>
+      <section>
+        <h2>Vertical Alignment</h2>
+        <Avatar name="Wim Mostmans" size={50} />
+        Wim Mostmans
+        <Avatar name="Wim Mostmans" size={50} round={true} />
+        Wim Mostmans
+        <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={50} round={true} />
+        Wim Mostmans
+        <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150} />
+        Wim Mostmans
+      </section>
             </div>
         );
     }
