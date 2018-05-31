@@ -116,6 +116,22 @@ class Demo extends React.Component {
       </section>
 
       <section>
+        <h2>Size in different units</h2>
+        <div>
+          <Avatar name={this.state.name} skypeId={this.state.skypeId} size="30pt" textSizeRatio={4} />
+          <Avatar name={this.state.name} size="90pt" round={true} textSizeRatio={4} />
+          <Avatar name={this.state.name} size="130pt" textSizeRatio={4} />
+          <Avatar name={this.state.name} size="170pt" textSizeRatio={4} />
+        </div>
+        <div>
+          <Avatar name={this.state.name} skypeId={this.state.skypeId} size="4vw" textSizeRatio={4} />
+          <Avatar name={this.state.name} size="6vw" round={true} textSizeRatio={4} />
+          <Avatar name={this.state.name} size="10vw" textSizeRatio={4} />
+          <Avatar name={this.state.name} size="15vw" textSizeRatio={4} />
+        </div>
+      </section>
+
+      <section>
         <h2>Initials with maximum number of characters</h2>
         <div>
           <Avatar name={this.state.name} maxInitials={2} skypeId={this.state.skypeId} size={40} textSizeRatio={2} />
