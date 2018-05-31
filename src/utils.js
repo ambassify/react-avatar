@@ -45,6 +45,10 @@ const defaultColors = [
     '#ff4080'
 ];
 
+// https://regex101.com/r/YEsPER/1
+// https://developer.mozilla.org/en-US/docs/Web/CSS/length
+const reSize = /^([-+]?(?:\d+(?:\.\d+)?|\.\d+))([a-z]{2,4})?$/;
+
 function _stringAsciiCodeSum(value) {
     return [...value]
         .map(letter => letter.charCodeAt(0))
@@ -68,6 +72,22 @@ function getRandomColor(value, colors = defaultColors)
     const sum = _stringAsciiCodeSum(value);
     const colorIndex = (sum % colors.length);
     return colors[colorIndex];
+}
+
+export
+function parseSize(size) {
+    size = '' + size;
+
+    const [,
+        value = 0,
+        unit = 'px'
+    ] = reSize.exec(size) || [];
+
+    return {
+        value: parseFloat(value),
+        str: value + unit,
+        unit
+    };
 }
 
 function isLocalStorageAvailable() {

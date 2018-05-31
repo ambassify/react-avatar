@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {cacheFailingSource, hasSourceFailedBefore} from './utils.js';
+import {cacheFailingSource, hasSourceFailedBefore, parseSize} from './utils.js';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -194,18 +194,18 @@ export default class Avatar extends PureComponent {
     };
 
     _renderAsImage() {
-        const size = this.props.size;
+        const size = parseSize(this.props.size);
         const round = this.props.round;
         const alt = this.props.name || this.props.value;
         const imageStyle = this.props.unstyled ? null : {
             maxWidth: '100%',
-            width: size,
-            height: size,
+            width: size.str,
+            height: size.str,
             borderRadius: (round ? 500 : 0)
         };
         return (
-            <img width={this.props.size}
-                height={this.props.size}
+            <img width={size.str}
+                height={size.str}
                 style={imageStyle}
                 src={this.state.src}
                 alt={alt}
@@ -214,14 +214,14 @@ export default class Avatar extends PureComponent {
     }
 
     _renderAsText() {
-        const size = this.props.size;
+        const size = parseSize(this.props.size);
         const textSizeRatio = this.props.textSizeRatio;
         const round = this.props.round;
         const initialsStyle = this.props.unstyled ? null : {
-            width: size,
-            height: size,
-            font: Math.floor(size / textSizeRatio) + 'px Helvetica, Arial, sans-serif',
-            lineHeight: size + 'px', // yes, px suffix is needed on lineHeight
+            width: size.str,
+            height: size.str,
+            font: (size.value / textSizeRatio).toFixed(4) + size.unit + ' Helvetica, Arial, sans-serif',
+            lineHeight: size.str,
             textAlign: 'center',
             textTransform: 'uppercase',
             color: this.props.fgColor,
@@ -236,11 +236,11 @@ export default class Avatar extends PureComponent {
     }
 
     render() {
-        const size = this.props.size;
+        const size = parseSize(this.props.size);
         const hostStyle = this.props.unstyled ? null : {
             display: 'inline-block',
-            width: size,
-            height: size,
+            width: size.str,
+            height: size.str,
             borderRadius: (this.props.round ? 500 : 0),
             ...this.props.style
         };

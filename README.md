@@ -83,7 +83,7 @@ Some examples:
 | `value`       | *string*          |         | Show a value as avatar                                                                                 |
 | `color`       | *string*          | random  | Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example #FF0000 |
 | `fgColor`     | *string*          | #FFF  | Used in combination with `name` and `value`. Give the text a fixed color with a hex like for example #FF0000 |
-| `size`        | *number*             | 50      | Size of the avatar                                                                                     |
+| `size`        | *[length][1]*             | 50px      | Size of the avatar                                                                                     |
 | `textSizeRatio` | *number*             | 3      | For text based avatars the size of the text as a fragment of size (size / textSizeRatio)                                 |
 | `round`       | *bool*            | false   | Round the avatar corners                                                                               |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
@@ -132,3 +132,5 @@ For detailed changelog, check [Releases](https://github.com/sitebase/react-avata
 ## License
 
 [MIT License](http://opensource.org/licenses/MIT)
+
+[1]: https://developer.mozilla.org/en-US/docs/Web/CSS/length
