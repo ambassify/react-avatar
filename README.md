@@ -83,6 +83,7 @@ Some examples:
 | `color`       | *string*          | random  | Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example #FF0000 |
 | `fgColor`     | *string*          | #FFF  | Used in combination with `name` and `value`. Give the text a fixed color with a hex like for example #FF0000 |
 | `size`        | *number*             | 50      | Size of the avatar                                                                                     |
+| `unit`        | *string*             | px      | Unit of measure of the size (px, em, rem...)                                                                                     |
 | `textSizeRatio` | *number*             | 3      | For text based avatars the size of the text as a fragment of size (size / textSizeRatio)                                 |
 | `round`       | *bool*            | false   | Round the avatar corners                                                                               |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
