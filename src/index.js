@@ -45,6 +45,7 @@ export default class Avatar extends PureComponent {
         vkontakteId: PropTypes.string,
         skypeId: PropTypes.string,
         round: PropTypes.bool,
+        borderRadius: PropTypes.string,
         style: PropTypes.object,
         size: PropTypes.number,
         textSizeRatio: PropTypes.number,
@@ -67,6 +68,7 @@ export default class Avatar extends PureComponent {
         vkontakteId: null,
         skypeId: null,
         round: false,
+        borderRadius: '100%',
         size: 100,
         style: null,
         textSizeRatio: 3,
@@ -196,12 +198,13 @@ export default class Avatar extends PureComponent {
     _renderAsImage() {
         const size = this.props.size;
         const round = this.props.round;
+        const borderRadius = this.props.borderRadius;
         const alt = this.props.name || this.props.value;
         const imageStyle = this.props.unstyled ? null : {
             maxWidth: '100%',
             width: size,
             height: size,
-            borderRadius: (round ? 500 : 0)
+            borderRadius: (round ? borderRadius : 0)
         };
         return (
             <img width={this.props.size}
@@ -217,6 +220,7 @@ export default class Avatar extends PureComponent {
         const size = this.props.size;
         const textSizeRatio = this.props.textSizeRatio;
         const round = this.props.round;
+        const borderRadius = this.props.borderRadius;
         const initialsStyle = this.props.unstyled ? null : {
             width: size,
             height: size,
@@ -226,7 +230,7 @@ export default class Avatar extends PureComponent {
             textTransform: 'uppercase',
             color: this.props.fgColor,
             background: this.state.color,
-            borderRadius: (round ? '100%' : 0)
+            borderRadius: (round ? borderRadius : 0)
         };
         return (
             <div style={initialsStyle}>
@@ -241,7 +245,7 @@ export default class Avatar extends PureComponent {
             display: 'inline-block',
             width: size,
             height: size,
-            borderRadius: (this.props.round ? 500 : 0),
+            borderRadius: (this.props.round ? this.props.borderRadius : 0),
             ...this.props.style
         };
         return (
