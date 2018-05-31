@@ -46,7 +46,10 @@ export default class Avatar extends PureComponent {
         skypeId: PropTypes.string,
         round: PropTypes.bool,
         style: PropTypes.object,
-        size: PropTypes.number,
+        size: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]),
         textSizeRatio: PropTypes.number,
         unstyled: PropTypes.bool,
         onClick: PropTypes.func
