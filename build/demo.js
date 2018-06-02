@@ -84,7 +84,7 @@ var Demo = function (_React$Component) {
           ),
           _react2.default.createElement(_index2.default, { className: 'myCustomClass', md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 40 }),
           _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 100, round: true }),
-          _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 150 }),
+          _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 150, round: '20px' }),
           _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 200 })
         ),
         _react2.default.createElement(
@@ -107,7 +107,7 @@ var Demo = function (_React$Component) {
           ),
           _react2.default.createElement(_index2.default, { googleId: '116933859726289749306', size: 40 }),
           _react2.default.createElement(_index2.default, { googleId: '116933859726289749306', size: 100, round: true }),
-          _react2.default.createElement(_index2.default, { googleId: '116933859726289749306', size: 150 }),
+          _react2.default.createElement(_index2.default, { googleId: '116933859726289749306', size: 150, round: '20px' }),
           _react2.default.createElement(_index2.default, { googleId: '116933859726289749306', size: 200 })
         ),
         _react2.default.createElement(
@@ -120,7 +120,7 @@ var Demo = function (_React$Component) {
           ),
           _react2.default.createElement(_index2.default, { facebookId: '100008343750912', size: 40 }),
           _react2.default.createElement(_index2.default, { facebookId: '100008343750912', size: 100, round: true }),
-          _react2.default.createElement(_index2.default, { facebookId: '100008343750912', size: 150 }),
+          _react2.default.createElement(_index2.default, { facebookId: '100008343750912', size: 150, round: '20px' }),
           _react2.default.createElement(_index2.default, { facebookId: '100008343750912', size: 200 })
         ),
         _react2.default.createElement(
@@ -133,7 +133,7 @@ var Demo = function (_React$Component) {
           ),
           _react2.default.createElement(_index2.default, { twitterHandle: 'sitebase', size: 40 }),
           _react2.default.createElement(_index2.default, { twitterHandle: 'sitebase', size: 100, round: true }),
-          _react2.default.createElement(_index2.default, { twitterHandle: 'sitebase', size: 150 }),
+          _react2.default.createElement(_index2.default, { twitterHandle: 'sitebase', size: 150, round: '20px' }),
           _react2.default.createElement(_index2.default, { twitterHandle: 'sitebase', size: 200 })
         ),
         _react2.default.createElement(
@@ -146,7 +146,7 @@ var Demo = function (_React$Component) {
           ),
           _react2.default.createElement(_index2.default, { vkontakteId: '1', size: 40 }),
           _react2.default.createElement(_index2.default, { vkontakteId: '1', size: 100, round: true }),
-          _react2.default.createElement(_index2.default, { vkontakteId: '1', size: 150 }),
+          _react2.default.createElement(_index2.default, { vkontakteId: '1', size: 150, round: '20px' }),
           _react2.default.createElement(_index2.default, { vkontakteId: '1', size: 200 })
         ),
         _react2.default.createElement(
@@ -159,7 +159,7 @@ var Demo = function (_React$Component) {
           ),
           _react2.default.createElement(_index2.default, { skypeId: 'sitebase', size: 40 }),
           _react2.default.createElement(_index2.default, { skypeId: 'sitebase', size: 100, round: true }),
-          _react2.default.createElement(_index2.default, { skypeId: 'sitebase', size: 150 }),
+          _react2.default.createElement(_index2.default, { skypeId: 'sitebase', size: 150, round: '20px' }),
           _react2.default.createElement(_index2.default, { skypeId: 'sitebase', size: 200 })
         ),
         _react2.default.createElement(
@@ -186,7 +186,7 @@ var Demo = function (_React$Component) {
           ),
           _react2.default.createElement(_index2.default, { name: this.state.name, skypeId: this.state.skypeId, size: 40 }),
           _react2.default.createElement(_index2.default, { name: this.state.name, size: 100, round: true }),
-          _react2.default.createElement(_index2.default, { name: this.state.name, size: 150 }),
+          _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, round: '20px' }),
           _react2.default.createElement(_index2.default, { name: this.state.name, size: 200 })
         ),
         _react2.default.createElement(
@@ -212,7 +212,7 @@ var Demo = function (_React$Component) {
             null,
             _react2.default.createElement(_index2.default, { name: this.state.name, skypeId: this.state.skypeId, size: 40, textSizeRatio: 2 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: 100, round: true, textSizeRatio: 2 }),
-            _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, textSizeRatio: 2 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, round: '20px', textSizeRatio: 2 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: 200, textSizeRatio: 2 })
           ),
           _react2.default.createElement(
@@ -220,7 +220,7 @@ var Demo = function (_React$Component) {
             null,
             _react2.default.createElement(_index2.default, { name: this.state.name, skypeId: this.state.skypeId, size: 40, textSizeRatio: 4 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: 100, round: true, textSizeRatio: 4 }),
-            _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, textSizeRatio: 4 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, round: '20px', textSizeRatio: 4 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: 200, textSizeRatio: 4 })
           )
         ),
@@ -237,7 +237,7 @@ var Demo = function (_React$Component) {
             null,
             _react2.default.createElement(_index2.default, { name: this.state.name, skypeId: this.state.skypeId, size: '30pt', textSizeRatio: 4 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: '90pt', round: true, textSizeRatio: 4 }),
-            _react2.default.createElement(_index2.default, { name: this.state.name, size: '130pt', textSizeRatio: 4 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: '130pt', round: '20px', textSizeRatio: 4 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: '170pt', textSizeRatio: 4 })
           ),
           _react2.default.createElement(
@@ -245,7 +245,7 @@ var Demo = function (_React$Component) {
             null,
             _react2.default.createElement(_index2.default, { name: this.state.name, skypeId: this.state.skypeId, size: '4vw', textSizeRatio: 4 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: '6vw', round: true, textSizeRatio: 4 }),
-            _react2.default.createElement(_index2.default, { name: this.state.name, size: '10vw', textSizeRatio: 4 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: '10vw', round: '20px', textSizeRatio: 4 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: '15vw', textSizeRatio: 4 })
           )
         ),
@@ -262,7 +262,7 @@ var Demo = function (_React$Component) {
             null,
             _react2.default.createElement(_index2.default, { name: this.state.name, maxInitials: 2, skypeId: this.state.skypeId, size: 40, textSizeRatio: 2 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, maxInitials: 1, size: 100, round: true, textSizeRatio: 2 }),
-            _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, textSizeRatio: 2 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, size: 150, round: '20px', textSizeRatio: 2 }),
             _react2.default.createElement(_index2.default, { name: this.state.name, size: 200, textSizeRatio: 2 })
           )
         ),
@@ -276,7 +276,7 @@ var Demo = function (_React$Component) {
           ),
           _react2.default.createElement(_index2.default, { value: '86%', size: 40 }),
           _react2.default.createElement(_index2.default, { value: '86%', size: 100, round: true }),
-          _react2.default.createElement(_index2.default, { value: '86%', size: 150 }),
+          _react2.default.createElement(_index2.default, { value: '86%', size: 150, round: '20px' }),
           _react2.default.createElement(_index2.default, { value: '86%', size: 200 })
         ),
         _react2.default.createElement(
@@ -558,16 +558,24 @@ var Avatar = function (_PureComponent) {
     }, {
         key: '_renderAsImage',
         value: function _renderAsImage() {
+            var _props = this.props,
+                className = _props.className,
+                round = _props.round,
+                unstyled = _props.unstyled,
+                name = _props.name,
+                value = _props.value;
+
             var size = (0, _utils.parseSize)(this.props.size);
-            var round = this.props.round;
-            var alt = this.props.name || this.props.value;
-            var imageStyle = this.props.unstyled ? null : {
+            var alt = name || value;
+
+            var imageStyle = unstyled ? null : {
                 maxWidth: '100%',
                 width: size.str,
                 height: size.str,
-                borderRadius: round ? 500 : 0
+                borderRadius: round === true ? '100%' : round
             };
-            return _react2.default.createElement('img', { className: this.props.className + ' sb-avatar__image',
+
+            return _react2.default.createElement('img', { className: className + ' sb-avatar__image',
                 width: size.str,
                 height: size.str,
                 style: imageStyle,
@@ -578,10 +586,15 @@ var Avatar = function (_PureComponent) {
     }, {
         key: '_renderAsText',
         value: function _renderAsText() {
+            var _props2 = this.props,
+                className = _props2.className,
+                textSizeRatio = _props2.textSizeRatio,
+                round = _props2.round,
+                unstyled = _props2.unstyled;
+
             var size = (0, _utils.parseSize)(this.props.size);
-            var textSizeRatio = this.props.textSizeRatio;
-            var round = this.props.round;
-            var initialsStyle = this.props.unstyled ? null : {
+
+            var initialsStyle = unstyled ? null : {
                 width: size.str,
                 height: size.str,
                 fontSize: (size.value / textSizeRatio).toFixed(4) + size.unit,
@@ -590,11 +603,12 @@ var Avatar = function (_PureComponent) {
                 textTransform: 'uppercase',
                 color: this.props.fgColor,
                 background: this.state.color,
-                borderRadius: round ? '100%' : 0
+                borderRadius: round === true ? '100%' : round
             };
+
             return _react2.default.createElement(
                 'div',
-                { className: this.props.className + ' sb-avatar__text',
+                { className: className + ' sb-avatar__text',
                     style: initialsStyle },
                 this.state.value
             );
@@ -602,19 +616,28 @@ var Avatar = function (_PureComponent) {
     }, {
         key: 'render',
         value: function render() {
+            var _props3 = this.props,
+                className = _props3.className,
+                unstyled = _props3.unstyled,
+                round = _props3.round,
+                style = _props3.style,
+                onClick = _props3.onClick;
+
             var size = (0, _utils.parseSize)(this.props.size);
-            var hostStyle = this.props.unstyled ? null : (0, _extends3.default)({
+
+            var hostStyle = unstyled ? null : (0, _extends3.default)({
                 display: 'inline-block',
                 verticalAlign: 'middle',
                 width: size.str,
                 height: size.str,
-                borderRadius: this.props.round ? 500 : 0,
+                borderRadius: round === true ? '100%' : round,
                 fontFamily: 'Helvetica, Arial, sans-serif'
-            }, this.props.style);
+            }, style);
+
             return _react2.default.createElement(
                 'div',
-                { className: this.props.className + 'sb-avatar',
-                    onClick: this.props.onClick,
+                { className: className + 'sb-avatar',
+                    onClick: onClick,
                     style: hostStyle },
                 this.state.src ? this._renderAsImage() : this._renderAsText()
             );
@@ -640,7 +663,7 @@ Avatar.propTypes = {
     twitterHandle: _propTypes2.default.string,
     vkontakteId: _propTypes2.default.string,
     skypeId: _propTypes2.default.string,
-    round: _propTypes2.default.bool,
+    round: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.string]),
     style: _propTypes2.default.object,
     size: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
     textSizeRatio: _propTypes2.default.number,
