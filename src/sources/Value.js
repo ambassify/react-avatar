@@ -38,7 +38,7 @@ class ValueSource {
 
     getColor() {
         const {color, colors, name, email} = this.props;
-        const colorValue = email || name;
+        const colorValue = name || email;
         return color || getRandomColor(colorValue, colors);
     }
 
