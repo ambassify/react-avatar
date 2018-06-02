@@ -2,7 +2,19 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Avatar from './index.js';
+import Avatar, {getRandomColor} from './index.js';
+
+const customColors = [
+    '#5E005E',
+    '#AB2F52',
+    '#E55D4A',
+    '#E88554',
+    '#4194A6',
+    '#82CCD9',
+    '#FFCC6B',
+    '#F2855C',
+    '#7D323B'
+];
 
 export default
 class Demo extends React.Component {
@@ -131,6 +143,16 @@ class Demo extends React.Component {
           <Avatar name={this.state.name} size="6vw" round={true} textSizeRatio={4} />
           <Avatar name={this.state.name} size="10vw" round="20px" textSizeRatio={4} />
           <Avatar name={this.state.name} size="15vw" textSizeRatio={4} />
+        </div>
+      </section>
+
+      <section>
+        <h2>Custom colors</h2>
+        <div>
+          <Avatar name={this.state.name} color={getRandomColor('Jim Jones', customColors)} size={40} />
+          <Avatar name={this.state.name} color={getRandomColor('Jamie Jones', customColors)} size={100} round={true} />
+          <Avatar name={this.state.name} color={getRandomColor('JJ', customColors)} size={150} round="20px" />
+          <Avatar name={this.state.name} color={getRandomColor(this.state.name, customColors)} size={200} />
         </div>
       </section>
 
