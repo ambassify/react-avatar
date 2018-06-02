@@ -56,7 +56,7 @@ export default class Avatar extends PureComponent {
     }
 
     static defaultProps = {
-        className: 'sb-avatar',
+        className: '',
         fgColor: '#FFF',
         color: null,
         name: null,
@@ -208,7 +208,8 @@ export default class Avatar extends PureComponent {
             borderRadius: (round ? 500 : 0)
         };
         return (
-            <img width={size.str}
+            <img className={this.props.className + ' sb-avatar__image'}
+                width={size.str}
                 height={size.str}
                 style={imageStyle}
                 src={this.state.src}
@@ -224,7 +225,7 @@ export default class Avatar extends PureComponent {
         const initialsStyle = this.props.unstyled ? null : {
             width: size.str,
             height: size.str,
-            font: (size.value / textSizeRatio).toFixed(4) + size.unit + ' Helvetica, Arial, sans-serif',
+            fontSize: (size.value / textSizeRatio).toFixed(4) + size.unit,
             lineHeight: size.str,
             textAlign: 'center',
             textTransform: 'uppercase',
@@ -233,7 +234,8 @@ export default class Avatar extends PureComponent {
             borderRadius: (round ? '100%' : 0)
         };
         return (
-            <div style={initialsStyle}>
+            <div className={this.props.className + ' sb-avatar__text'}
+                style={initialsStyle}>
                 {this.state.value}
             </div>
         );
@@ -247,10 +249,12 @@ export default class Avatar extends PureComponent {
             width: size.str,
             height: size.str,
             borderRadius: (this.props.round ? 500 : 0),
+            fontFamily: 'Helvetica, Arial, sans-serif',
             ...this.props.style
         };
         return (
-            <div className={this.props.className} onClick={this.props.onClick}
+            <div className={this.props.className + 'sb-avatar'}
+                onClick={this.props.onClick}
                 style={hostStyle}>
                 {this.state.src ? this._renderAsImage() : this._renderAsText()}
             </div>
