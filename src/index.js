@@ -44,7 +44,10 @@ export default class Avatar extends PureComponent {
         twitterHandle: PropTypes.string,
         vkontakteId: PropTypes.string,
         skypeId: PropTypes.string,
-        round: PropTypes.bool,
+        round: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.string
+        ]),
         style: PropTypes.object,
         size: PropTypes.oneOfType([
             PropTypes.number,
@@ -198,17 +201,19 @@ export default class Avatar extends PureComponent {
     };
 
     _renderAsImage() {
+        const { className, round, unstyled, name, value } = this.props;
         const size = parseSize(this.props.size);
-        const round = this.props.round;
-        const alt = this.props.name || this.props.value;
-        const imageStyle = this.props.unstyled ? null : {
+        const alt = name || value;
+
+        const imageStyle = unstyled ? null : {
             maxWidth: '100%',
             width: size.str,
             height: size.str,
-            borderRadius: (round ? 500 : 0)
+            borderRadius: (round === true ? '100%' : round)
         };
+
         return (
-            <img className={this.props.className + ' sb-avatar__image'}
+            <img className={className + ' sb-avatar__image'}
                 width={size.str}
                 height={size.str}
                 style={imageStyle}
@@ -219,10 +224,10 @@ export default class Avatar extends PureComponent {
     }
 
     _renderAsText() {
+        const { className, textSizeRatio, round, unstyled } = this.props;
         const size = parseSize(this.props.size);
-        const textSizeRatio = this.props.textSizeRatio;
-        const round = this.props.round;
-        const initialsStyle = this.props.unstyled ? null : {
+
+        const initialsStyle = unstyled ? null : {
             width: size.str,
             height: size.str,
             fontSize: (size.value / textSizeRatio).toFixed(4) + size.unit,
@@ -231,10 +236,11 @@ export default class Avatar extends PureComponent {
             textTransform: 'uppercase',
             color: this.props.fgColor,
             background: this.state.color,
-            borderRadius: (round ? '100%' : 0)
+            borderRadius: (round === true ? '100%' : round)
         };
+
         return (
-            <div className={this.props.className + ' sb-avatar__text'}
+            <div className={className + ' sb-avatar__text'}
                 style={initialsStyle}>
                 {this.state.value}
             </div>
@@ -242,19 +248,22 @@ export default class Avatar extends PureComponent {
     }
 
     render() {
+        const { className, unstyled, round, style, onClick } = this.props;
         const size = parseSize(this.props.size);
-        const hostStyle = this.props.unstyled ? null : {
+
+        const hostStyle = unstyled ? null : {
             display: 'inline-block',
             verticalAlign: 'middle',
             width: size.str,
             height: size.str,
-            borderRadius: (this.props.round ? 500 : 0),
+            borderRadius: (round === true ? '100%' : round),
             fontFamily: 'Helvetica, Arial, sans-serif',
-            ...this.props.style
+            ...style
         };
+
         return (
-            <div className={this.props.className + 'sb-avatar'}
-                onClick={this.props.onClick}
+            <div className={className + 'sb-avatar'}
+                onClick={onClick}
                 style={hostStyle}>
                 {this.state.src ? this._renderAsImage() : this._renderAsText()}
             </div>
