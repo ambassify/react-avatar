@@ -39,6 +39,8 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var customColors = ['#5E005E', '#AB2F52', '#E55D4A', '#E88554', '#4194A6', '#82CCD9', '#FFCC6B', '#F2855C', '#7D323B'];
+
 var Demo = function (_React$Component) {
   (0, _inherits3.default)(Demo, _React$Component);
 
@@ -258,6 +260,23 @@ var Demo = function (_React$Component) {
           _react2.default.createElement(
             'h2',
             null,
+            'Custom colors'
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_index2.default, { name: this.state.name, color: (0, _index.getRandomColor)('Jim Jones', customColors), size: 40 }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, color: (0, _index.getRandomColor)('Jamie Jones', customColors), size: 100, round: true }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, color: (0, _index.getRandomColor)('JJ', customColors), size: 150, round: '20px' }),
+            _react2.default.createElement(_index2.default, { name: this.state.name, color: (0, _index.getRandomColor)(this.state.name, customColors), size: 200 })
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          null,
+          _react2.default.createElement(
+            'h2',
+            null,
             'Initials with maximum number of characters'
           ),
           _react2.default.createElement(
@@ -366,6 +385,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.getRandomColor = undefined;
 
 var _extends2 = require('babel-runtime/helpers/extends');
 
@@ -395,6 +415,15 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _utils = require('./utils.js');
+
+Object.defineProperty(exports, 'getRandomColor', {
+    enumerable: true,
+    get: function get() {
+        return _utils.getRandomColor;
+    }
+});
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -402,8 +431,6 @@ var _react2 = _interopRequireDefault(_react);
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _utils = require('./utils.js');
 
 var _Gravatar = require('./sources/Gravatar.js');
 
@@ -693,8 +720,8 @@ Avatar.defaultProps = {
     textSizeRatio: 3,
     unstyled: false
 };
+Avatar.getRandomColor = _utils.getRandomColor;
 exports.default = Avatar;
-module.exports = exports['default'];
 },{"./sources/Facebook.js":3,"./sources/Google.js":4,"./sources/Gravatar.js":5,"./sources/Icon.js":6,"./sources/Skype.js":7,"./sources/Src.js":8,"./sources/Twitter.js":9,"./sources/Value.js":10,"./sources/Vkontakte.js":11,"./utils.js":12,"babel-runtime/core-js/object/get-prototype-of":19,"babel-runtime/core-js/object/keys":20,"babel-runtime/helpers/classCallCheck":24,"babel-runtime/helpers/createClass":25,"babel-runtime/helpers/extends":26,"babel-runtime/helpers/inherits":27,"babel-runtime/helpers/possibleConstructorReturn":28,"prop-types":159,"react":313}],3:[function(require,module,exports){
 'use strict';
 
@@ -1225,12 +1252,27 @@ var defaultColors = ['#d73d32', '#7e3794', '#4285f4', '#67ae3f', '#d61a7f', '#ff
 // https://developer.mozilla.org/en-US/docs/Web/CSS/length
 var reSize = /^([-+]?(?:\d+(?:\.\d+)?|\.\d+))([a-z]{2,4})?$/;
 
-function _stringAsciiCodeSum(value) {
-    return [].concat((0, _toConsumableArray3.default)(value)).map(function (letter) {
+// https://en.wikipedia.org/wiki/Linear_congruential_generator
+function _stringAsciiPRNG(value, m) {
+    // Xn+1 = (a * Xn + c) % m
+    // 0 < a < m
+    // 0 <= c < m
+    // 0 <= X0 < m
+
+    var charCodes = [].concat((0, _toConsumableArray3.default)(value)).map(function (letter) {
         return letter.charCodeAt(0);
-    }).reduce(function (current, previous) {
-        return previous + current;
     });
+    var len = charCodes.length;
+
+    var a = len % (m - 1) + 1;
+    var c = charCodes.reduce(function (current, next) {
+        return current + next;
+    }) % m;
+
+    var random = charCodes[0] % m;
+    for (var i = 0; i < len; i++) {
+        random = (a * random + c) % m;
+    }return random;
 }
 
 function getRandomColor(value) {
@@ -1246,8 +1288,8 @@ function getRandomColor(value) {
     // the reason we don't just use a random number is to make sure that
     // a certain value will always get the same color assigned given
     // a fixed set of colors
-    var sum = _stringAsciiCodeSum(value);
-    var colorIndex = sum % colors.length;
+    var colorIndex = _stringAsciiPRNG(value, colors.length);
+    console.log(colorIndex);
     return colors[colorIndex];
 }
 

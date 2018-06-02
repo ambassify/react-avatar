@@ -67,6 +67,14 @@ Some examples:
 <Avatar name="Wim Mostmans" unstyled="true" />
 ```
 
+Manually generating a color:
+
+```html
+import Avatar from 'react-avatar';
+
+<Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} name="Wim Mostmans" />
+```
+
 ## Options
 
 |   Attribute   |      Options      | Default |                                              Description                                               |

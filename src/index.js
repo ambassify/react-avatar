@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {cacheFailingSource, hasSourceFailedBefore, parseSize} from './utils.js';
+import {getRandomColor, cacheFailingSource, hasSourceFailedBefore, parseSize} from './utils.js';
 
 import gravatarSource from './sources/Gravatar.js';
 import facebookSource from './sources/Facebook.js';
@@ -25,6 +25,8 @@ const SOURCES = [
     valueSource,
     iconSource
 ];
+
+export {getRandomColor} from './utils.js';
 
 export default class Avatar extends PureComponent {
     static displayName = 'Avatar'
@@ -137,6 +139,8 @@ export default class Avatar extends PureComponent {
             this.setState(nextState, this.fetch);
         }
     }
+
+    static getRandomColor = getRandomColor
 
     tryNextsource = (Source, next) => {
 
