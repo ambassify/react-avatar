@@ -137,6 +137,11 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 
 For detailed changelog, check [Releases](https://github.com/sitebase/react-avatar/releases).
 
+## Maintainers
+
+ - [@Sitebase](https://github.com/Sitebase) (Creator)
+ - [@JorgenEvens](https://github.com/JorgenEvens)
+
 ## License
 
 [MIT License](http://opensource.org/licenses/MIT)
