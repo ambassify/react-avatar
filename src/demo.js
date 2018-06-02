@@ -40,6 +40,9 @@ class Demo extends React.Component {
       <section>
         <h2>Invalid gravatar</h2>
         <Avatar email="bla" name="Jim Jones" size={80} />
+        <Avatar email="foo" name="Jamie Jones" size={80} />
+        <Avatar name="Jessica Jones" size={80} />
+        <Avatar name="Jeronimo Jones" size={80} />
       </section>
 
       <section>

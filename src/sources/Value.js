@@ -15,8 +15,7 @@ class ValueSource {
         return !!this.props.name || !!this.props.value;
     }
 
-    getInitials()
-    {
+    getInitials() {
         const name = this.props.name;
         const maxInitials = this.props.maxInitials;
         const parts = name.split(' ');
@@ -38,16 +37,17 @@ class ValueSource {
         return null;
     }
 
-    getColor(value) {
-        const {color, colors} = this.props;
-        return color || getRandomColor(value, colors);
+    getColor() {
+        const {color, colors, name, email} = this.props;
+        const colorValue = name || email;
+        return color || getRandomColor(colorValue, colors);
     }
 
     get = (setState) => {
         const value = this.getValue();
         const state = value ? {
             value: value,
-            color: this.getColor(value)
+            color: this.getColor()
         } : null;
         setState(state);
     }
