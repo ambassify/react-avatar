@@ -47,7 +47,7 @@ const defaultColors = [
 
 // https://regex101.com/r/YEsPER/1
 // https://developer.mozilla.org/en-US/docs/Web/CSS/length
-const reSize = /^([-+]?(?:\d+(?:\.\d+)?|\.\d+))([a-z]{2,4})?$/;
+const reSize = /^([-+]?(?:\d+(?:\.\d+)?|\.\d+))([a-z]{2,4}|%)?$/;
 
 // https://en.wikipedia.org/wiki/Linear_congruential_generator
 function _stringAsciiPRNG(value, m) {

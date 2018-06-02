@@ -1250,7 +1250,7 @@ var defaultColors = ['#d73d32', '#7e3794', '#4285f4', '#67ae3f', '#d61a7f', '#ff
 
 // https://regex101.com/r/YEsPER/1
 // https://developer.mozilla.org/en-US/docs/Web/CSS/length
-var reSize = /^([-+]?(?:\d+(?:\.\d+)?|\.\d+))([a-z]{2,4})?$/;
+var reSize = /^([-+]?(?:\d+(?:\.\d+)?|\.\d+))([a-z]{2,4}|%)?$/;
 
 // https://en.wikipedia.org/wiki/Linear_congruential_generator
 function _stringAsciiPRNG(value, m) {
