@@ -71,7 +71,7 @@ Some examples:
 
 |   Attribute   |      Options      | Default |                                              Description                                               |
 | ------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------------ |
-| `className`       | *string*          | sb-avatar        | Name of the CSS class you want to add to this component.                             |
+| `className`   | *string*          |         | Name of the CSS class you want to add to this component alongside the default `sb-avatar`.             |
 | `email`       | *string*          |         | String of the email address of the user.                             |
 | `md5Email` | *string* |         | String of the MD5 hash of email address of the user. |
 | `facebook-id` | *string* |         |                                                                                                        |

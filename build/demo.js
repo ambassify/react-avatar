@@ -327,6 +327,23 @@ var Demo = function (_React$Component) {
           _react2.default.createElement(_index2.default, {
             name: 'Wim Mostmans',
             unstyled: true })
+        ),
+        _react2.default.createElement(
+          'section',
+          null,
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Vertical Alignment'
+          ),
+          _react2.default.createElement(_index2.default, { name: 'Wim Mostmans', size: 50 }),
+          'Wim Mostmans',
+          _react2.default.createElement(_index2.default, { name: 'Wim Mostmans', size: 50, round: true }),
+          'Wim Mostmans',
+          _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 50, round: true }),
+          'Wim Mostmans',
+          _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 150 }),
+          'Wim Mostmans'
         )
       );
     }
@@ -459,6 +476,7 @@ var Avatar = function (_PureComponent) {
             if (event && event.type === 'error') {
                 (0, _utils.cacheFailingSource)(_this.state.src);
                 _this.setState({ src: null });
+                return;
             }
 
             // console.log('## fetch');
@@ -549,7 +567,8 @@ var Avatar = function (_PureComponent) {
                 height: size.str,
                 borderRadius: round ? 500 : 0
             };
-            return _react2.default.createElement('img', { width: size.str,
+            return _react2.default.createElement('img', { className: this.props.className + ' sb-avatar__image',
+                width: size.str,
                 height: size.str,
                 style: imageStyle,
                 src: this.state.src,
@@ -565,7 +584,7 @@ var Avatar = function (_PureComponent) {
             var initialsStyle = this.props.unstyled ? null : {
                 width: size.str,
                 height: size.str,
-                font: (size.value / textSizeRatio).toFixed(4) + size.unit + ' Helvetica, Arial, sans-serif',
+                fontSize: (size.value / textSizeRatio).toFixed(4) + size.unit,
                 lineHeight: size.str,
                 textAlign: 'center',
                 textTransform: 'uppercase',
@@ -575,7 +594,8 @@ var Avatar = function (_PureComponent) {
             };
             return _react2.default.createElement(
                 'div',
-                { style: initialsStyle },
+                { className: this.props.className + ' sb-avatar__text',
+                    style: initialsStyle },
                 this.state.value
             );
         }
@@ -585,13 +605,16 @@ var Avatar = function (_PureComponent) {
             var size = (0, _utils.parseSize)(this.props.size);
             var hostStyle = this.props.unstyled ? null : (0, _extends3.default)({
                 display: 'inline-block',
+                verticalAlign: 'middle',
                 width: size.str,
                 height: size.str,
-                borderRadius: this.props.round ? 500 : 0
+                borderRadius: this.props.round ? 500 : 0,
+                fontFamily: 'Helvetica, Arial, sans-serif'
             }, this.props.style);
             return _react2.default.createElement(
                 'div',
-                { className: this.props.className, onClick: this.props.onClick,
+                { className: this.props.className + 'sb-avatar',
+                    onClick: this.props.onClick,
                     style: hostStyle },
                 this.state.src ? this._renderAsImage() : this._renderAsText()
             );
@@ -625,7 +648,7 @@ Avatar.propTypes = {
     onClick: _propTypes2.default.func
 };
 Avatar.defaultProps = {
-    className: 'sb-avatar',
+    className: '',
     fgColor: '#FFF',
     color: null,
     name: null,
