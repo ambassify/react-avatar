@@ -8,7 +8,7 @@
     },
     "extends": "eslint:recommended",
     "rules": {
-        "no-console": 0,
+        "no-console": 2,
         "no-debugger": 0,
         "no-shadow": 2,
         "no-use-before-define": 2,

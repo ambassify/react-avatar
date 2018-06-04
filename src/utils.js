@@ -84,7 +84,6 @@ function getRandomColor(value, colors = defaultColors)
     // a certain value will always get the same color assigned given
     // a fixed set of colors
     const colorIndex = _stringAsciiPRNG(value, colors.length);
-    console.log(colorIndex);
     return colors[colorIndex];
 }
 
@@ -105,13 +104,13 @@ function parseSize(size) {
 }
 
 function isLocalStorageAvailable() {
-	try {
-		return ('localStorage' in window && window['localStorage'])
-	} catch(err) {
-		return false
-	}
+    try {
+        return ('localStorage' in window && window['localStorage']);
+    } catch(err) {
+        return false;
+    }
 }
-const _hasLocalStorage = isLocalStorageAvailable()
+const _hasLocalStorage = isLocalStorageAvailable();
 
 
 const CACHE_KEY = 'react-avatar';
@@ -138,7 +137,7 @@ function cacheFailingSource(source)
         localStorage.setItem(CACHE_KEY, cacheList.join(';'));
     } catch(e) {
         // failsafe for mobile Safari private mode
-        console.error(e);
+        console.error(e); // eslint-disable-line no-console
     }
 }
 

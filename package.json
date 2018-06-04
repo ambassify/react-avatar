@@ -8,7 +8,7 @@
     "transpile": "babel ./src --out-dir ./lib",
     "demo": "browserify ./lib/demo.js -o ./build/demo.js --transform browserify-global-shim --standalone ReactAvatarDemo",
     "dev": "npm run clean && npm run transpile && npm run demo",
-    "test": "eslint src/index.js",
+    "test": "eslint src",
     "serve": "python -m SimpleHTTPServer"
   },
   "license": "MIT",
