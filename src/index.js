@@ -266,7 +266,7 @@ export default class Avatar extends PureComponent {
         };
 
         return (
-            <div className={className + 'sb-avatar'}
+            <div className={className + ' sb-avatar'}
                 onClick={onClick}
                 style={hostStyle}>
                 {this.state.src ? this._renderAsImage() : this._renderAsText()}
