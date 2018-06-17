@@ -3,7 +3,7 @@
 import {fetchJSONP} from '../utils';
 
 export default
-class GoogleSource {
+class VkontakteSource {
 
     props = null;
 
@@ -34,9 +34,10 @@ class GoogleSource {
         const url = `https://api.vk.com/method/users.get?user_id=${vkontakteId}&v=5.8&fields=${size}`;
 
         fetchJSONP(url, (data) => {
-            const src = data.response[0][size];
+            const img = data && data.response && data.response[0];
+
             setState({
-                src: src
+                src: img ? img[size] : null
             });
         }, () => {
             // on error

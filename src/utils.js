@@ -36,6 +36,7 @@ function fetchJSONP(url, successCb, errorCb) {
     };
 }
 
+export
 const defaultColors = [
     '#d73d32',
     '#7e3794',
@@ -101,51 +102,4 @@ function parseSize(size) {
         str: value + unit,
         unit
     };
-}
-
-function isLocalStorageAvailable() {
-    try {
-        return ('localStorage' in window && window['localStorage']);
-    } catch(err) {
-        return false;
-    }
-}
-const _hasLocalStorage = isLocalStorageAvailable();
-
-
-const CACHE_KEY = 'react-avatar';
-export
-function cacheFailingSource(source)
-{
-    // cache not available
-    if(!_hasLocalStorage)
-        return;
-
-    const cache = localStorage.getItem(CACHE_KEY) || '';
-
-    // already in cache
-    if(cache.indexOf(source) > -1)
-        return;
-
-    let cacheList = cache.split(';');
-    cacheList.push(source);
-
-    // only keep the last 20 results so we don't fill up local storage
-    cacheList = cacheList.slice(-20);
-
-    try {
-        localStorage.setItem(CACHE_KEY, cacheList.join(';'));
-    } catch(e) {
-        // failsafe for mobile Safari private mode
-        console.error(e); // eslint-disable-line no-console
-    }
-}
-
-export
-function hasSourceFailedBefore(source)
-{
-    if(!_hasLocalStorage)
-        return;
-    const cache = localStorage.getItem(CACHE_KEY) || '';
-    return cache.indexOf(source) > -1;
 }

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Avatar, {getRandomColor} from './index.js';
+import Avatar, {getRandomColor, ConfigProvider} from './index.js';
 
 const customColors = [
     '#5E005E',
@@ -215,6 +215,19 @@ class Demo extends React.Component {
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150} />
                     Wim Mostmans
                 </section>
+
+                <ConfigProvider colors={customColors}>
+                    <section>
+                        <h2>Configuration Context</h2>
+                        <div>
+                            <Avatar name="Jim Jones" size={40} />
+                            <Avatar name="Jamie Jones" size={100} round={true} />
+                            <Avatar name="JJ" size={150} round="20px" />
+                            <Avatar name={this.state.name} size={200} />
+                        </div>
+                    </section>
+                </ConfigProvider>
+
             </div>
         );
     }
