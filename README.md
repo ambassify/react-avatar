@@ -52,7 +52,7 @@ Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip
     <Avatar name="Foo Bar" />
     ```
 
-Some examples:
+**Some examples:**
 
 ```html
 <Avatar googleId="118096717852922241760" size="100" round={true} />
@@ -67,7 +67,7 @@ Some examples:
 <Avatar name="Wim Mostmans" unstyled="true" />
 ```
 
-Manually generating a color:
+**Manually generating a color:**
 
 ```html
 import Avatar from 'react-avatar';
@@ -75,7 +75,24 @@ import Avatar from 'react-avatar';
 <Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} name="Wim Mostmans" />
 ```
 
+**Configuring React Avatar globally**
+
+```html
+import Avatar, { ConfigProvider } from 'react-avatar';
+
+<ConfigProvider colors={['red', 'green', 'blue']}>
+    <YourApp>
+        ...
+        <Avatar name="Wim Mostmans" />
+        ...
+    </YourApp>
+</ConfigProvider>
+
+```
+
 ## Options
+
+### Avatar
 
 |   Attribute   |      Options      | Default |                                              Description                                               |
 | ------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------------ |
@@ -99,6 +116,13 @@ import Avatar from 'react-avatar';
 | `unstyled`    | *bool*            | false   | Disable all styles                                                                                     |
 | `onClick`    | *function*            |        | Mouse click event                                                                                     |
 
+### ConfigProvider
+
+|   Attribute   |      Options      | Default |                                              Description                                               |
+| ------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| `colors`       | *array(string)*  | [default colors](https://github.com/Sitebase/react-avatar/tree/master/src/utils.js#L39-L47)  | A list of color values as strings from which the `getRandomColor` picks one at random. |
+| `cache`       | *[cache](#implementing-a-custom-cache)*          | [internal cache](https://github.com/Sitebase/react-avatar/tree/master/src/cache.js)  | Cache implementation used to track broken img URLs |
+
 ## Development
 
 In order to run it locally you'll need to fetch some dependencies and a basic server setup.
@@ -120,6 +144,17 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
     ```sh
     $ python -m SimpleHTTPServer
     ```
+    
+### Implementing a custom cache
+
+`cache` as provided to the `ConfigProvider` should be an object implementing the methods below. The default cache implementation can be found [here](https://github.com/Sitebase/react-avatar/tree/master/src/cache.js)
+
+|   Method   |                                              Description                                               |
+| ------------- | ------------------------------------------------------------------------------------------------------ |
+| `set(key, value)`                 | Save `value` at `key`, such that it can be retrieved using `get(key)`. Returns `undefined` |
+| `get(key)`                        | Retrieve the value stored at `key`, if the cache does not contain a value for `key` return `null` |
+| `sourceFailed(source)`            | Mark the image URL specified in `source` as failed. Returns `undefined` |
+| `hasSourceFailedBefore(source)`   | Returns `true` if the `source` has been tagged as failed using `sourceFailed(source)`, otherwise `false`. |
 
 ## Products using React Avatar
 * [BuboBox](https://www.bubobox.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
