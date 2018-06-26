@@ -82,10 +82,10 @@ import Avatar from 'react-avatar';
 | `className`   | *string*          |         | Name of the CSS class you want to add to this component alongside the default `sb-avatar`.             |
 | `email`       | *string*          |         | String of the email address of the user.                             |
 | `md5Email` | *string* |         | String of the MD5 hash of email address of the user. |
-| `facebook-id` | *string* |         |                                                                                                        |
-| `twitter-handle` | *string* |         |                                                                                                        |
-| `google-id`   | *string*             |         |                                                                                                        |
-| `skype-id`    | *string*          |         |                                                                                                        |
+| `facebookId` | *string* |         |                                                                                                        |
+| `twitterHandle` | *string* |         |                                                                                                        |
+| `googleId`   | *string*             |         |                                                                                                        |
+| `skypeId`    | *string*          |         |                                                                                                        |
 | `name`        | *string*          |         | Will be used to generate avatar based on the initials of the person                                    |
 | `maxInitials` | *number*          |         | Set max nr of characters used for the initials. If maxInitials=2 and the name is Foo Bar Var the initials will be FB  |
 | `value`       | *string*          |         | Show a value as avatar                                                                                 |
