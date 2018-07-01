@@ -210,10 +210,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _stringify = require('babel-runtime/core-js/json/stringify');
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -272,13 +268,6 @@ var Demo = function (_React$Component) {
                 name: 'Foo Bar',
                 skypeId: null
             });
-        }, _this._onToggleEmail = function () {
-            _this.setState(function (state) {
-                return {
-                    email: state.email ? null : 'jorgen@evens.eu',
-                    name: 'Jorgen Evens'
-                };
-            });
         }, _this._onSetSkype = function () {
             _this.setState({ skypeId: 'sitebase' });
         }, _this._onClick = function () {
@@ -303,22 +292,7 @@ var Demo = function (_React$Component) {
                     _react2.default.createElement(_index2.default, { className: 'myCustomClass', md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 40 }),
                     _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 100, round: true }),
                     _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 150, round: '20px' }),
-                    _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 200 }),
-                    _react2.default.createElement(_index2.default, { email: this.state.email, name: this.state.name, size: 200 }),
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement(
-                            'button',
-                            { onClick: this._onToggleEmail },
-                            'Toggle Email'
-                        ),
-                        _react2.default.createElement(
-                            'pre',
-                            null,
-                            (0, _stringify2.default)(this.state, null, 2)
-                        )
-                    )
+                    _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 200 })
                 ),
                 _react2.default.createElement(
                     'section',
@@ -634,7 +608,7 @@ exports.default = Demo;
 var mountNode = document.getElementById('container');
 _reactDom2.default.render(_react2.default.createElement(Demo, null), mountNode);
 module.exports = exports['default'];
-},{"./index.js":4,"babel-runtime/core-js/json/stringify":18,"babel-runtime/core-js/object/get-prototype-of":22,"babel-runtime/helpers/classCallCheck":26,"babel-runtime/helpers/createClass":27,"babel-runtime/helpers/inherits":29,"babel-runtime/helpers/possibleConstructorReturn":30,"react":314,"react-dom":162}],4:[function(require,module,exports){
+},{"./index.js":4,"babel-runtime/core-js/object/get-prototype-of":22,"babel-runtime/helpers/classCallCheck":26,"babel-runtime/helpers/createClass":27,"babel-runtime/helpers/inherits":29,"babel-runtime/helpers/possibleConstructorReturn":30,"react":314,"react-dom":162}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -906,6 +880,9 @@ var Avatar = exports.Avatar = function (_PureComponent) {
                 round = _props3.round,
                 style = _props3.style,
                 onClick = _props3.onClick;
+            var _state = this.state,
+                src = _state.src,
+                sourceName = _state.sourceName;
 
             var size = (0, _utils.parseSize)(this.props.size);
 
@@ -918,12 +895,20 @@ var Avatar = exports.Avatar = function (_PureComponent) {
                 fontFamily: 'Helvetica, Arial, sans-serif'
             }, style);
 
+            var classNames = [className, 'sb-avatar'];
+
+            if (sourceName) {
+                var source = sourceName.toLowerCase().replace(/[^a-z0-9-]+/g, '-') // only allow alphanumeric
+                .replace(/^-+|-+$/g, ''); // trim `-`
+                classNames.push('sb-avatar--' + source);
+            }
+
             return _react2.default.createElement(
                 'div',
-                { className: className + ' sb-avatar',
+                { className: classNames.join(' '),
                     onClick: onClick,
                     style: hostStyle },
-                this.state.src ? this._renderAsImage() : this._renderAsText()
+                src ? this._renderAsImage() : this._renderAsText()
             );
         }
     }]);
@@ -994,7 +979,10 @@ var FacebookSource = function FacebookSource(props) {
 
         var url = 'https://graph.facebook.com/' + (facebookId + '/picture?width=' + size + '&height=' + size);
 
-        setState({ src: url });
+        setState({
+            sourceName: 'facebook',
+            src: url
+        });
     };
 
     this.props = props;
@@ -1051,6 +1039,7 @@ var GoogleSource = function GoogleSource(props) {
             var src = data.entry.gphoto$thumbnail.$t;
             var srcWithCorrectSize = src.replace('s64', 's' + size);
             setState({
+                sourceName: 'google',
                 src: srcWithCorrectSize
             });
         }, function () {
@@ -1124,7 +1113,10 @@ var _initialiseProps = function _initialiseProps() {
         var size = IS_RETINA ? props.size * 2 : props.size;
         var url = 'https://secure.gravatar.com/avatar/' + email + '?s=' + size + '&d=404';
 
-        setState({ src: url });
+        setState({
+            sourceName: 'gravatar',
+            src: url
+        });
     };
 };
 
@@ -1158,6 +1150,7 @@ var IconSource = function IconSource(props) {
 
     this.get = function (setState) {
         setState({
+            sourceName: 'icon',
             value: _this.icon,
             color: (0, _utils.getRandomColor)(_this.icon, _this.props.colors)
         });
@@ -1200,7 +1193,10 @@ var SkypeSource = function SkypeSource(props) {
 
         var url = 'https://api.skype.com/users/' + skypeId + '/profile/avatar';
 
-        setState({ src: url });
+        setState({
+            sourceName: 'skype',
+            src: url
+        });
     };
 
     this.props = props;
@@ -1240,6 +1236,7 @@ var SrcSource = function SrcSource(props) {
 
     this.get = function (setState) {
         setState({
+            sourceName: 'src',
             src: _this.props.src
         });
     };
@@ -1289,9 +1286,12 @@ var TwitterSource = function () {
 
             var size = _this.getImageSize();
 
-            var url = 'https://cors-anywhere.herokuapp.com/https://twitter.com/' + twitterHandle + '/profile_image?size=' + size;
+            var url = 'https://twitter.com/' + twitterHandle + '/profile_image?size=' + size;
 
-            setState({ src: url });
+            setState({
+                sourceName: 'twitter',
+                src: url
+            });
         };
 
         this.props = props;
@@ -1356,11 +1356,14 @@ var ValueSource = function () {
 
         this.get = function (setState) {
             var value = _this.getValue();
-            var state = value ? {
+
+            if (!value) return setState(null);
+
+            setState({
+                sourceName: 'text',
                 value: value,
                 color: _this.getColor()
-            } : null;
-            setState(state);
+            });
         };
 
         this.props = props;
@@ -1460,7 +1463,10 @@ var VkontakteSource = function () {
 
                 if (!src) return onError();
 
-                setState({ src: src });
+                setState({
+                    sourceName: 'vkontakte',
+                    src: src
+                });
             }, onError);
         };
 
