@@ -53,10 +53,14 @@ class ValueSource {
 
     get = (setState) => {
         const value = this.getValue();
-        const state = value ? {
+
+        if (!value)
+            return setState(null);
+
+        setState({
+            sourceName: 'text',
             value: value,
             color: this.getColor()
-        } : null;
-        setState(state);
+        });
     }
 }

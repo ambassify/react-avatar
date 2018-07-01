@@ -19,6 +19,7 @@ class SrcSource {
 
     get = (setState) => {
         setState({
+            sourceName: 'src',
             src: this.props.src
         });
     }

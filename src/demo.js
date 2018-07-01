@@ -32,13 +32,6 @@ class Demo extends React.Component {
         });
     }
 
-    _onToggleEmail = () => {
-        this.setState(state => ({
-            email: state.email ? null : 'jorgen@evens.eu',
-            name: 'Jorgen Evens'
-        }));
-    }
-
     _onSetSkype = () => {
         this.setState({skypeId: 'sitebase'});
     }
@@ -56,11 +49,6 @@ class Demo extends React.Component {
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={100} round={true} />
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150} round="20px" />
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={200} />
-                    <Avatar email={this.state.email} name={this.state.name} size={200} />
-                    <div>
-                        <button onClick={this._onToggleEmail}>Toggle Email</button>
-                        <pre>{JSON.stringify(this.state, null, 2)}</pre>
-                    </div>
                 </section>
 
                 <section>

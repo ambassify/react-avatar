@@ -38,6 +38,9 @@ class TwitterSource {
 
         const url = `https://twitter.com/${twitterHandle}/profile_image?size=${size}`;
 
-        setState({src: url});
+        setState({
+            sourceName: 'twitter',
+            src: url
+        });
     }
 }

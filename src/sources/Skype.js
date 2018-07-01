@@ -21,6 +21,9 @@ class SkypeSource {
         const { skypeId } = this.props;
         const url = `https://api.skype.com/users/${skypeId}/profile/avatar`;
 
-        setState({src: url});
+        setState({
+            sourceName: 'skype',
+            src: url
+        });
     }
 }

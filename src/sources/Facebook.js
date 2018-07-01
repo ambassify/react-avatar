@@ -21,6 +21,9 @@ class FacebookSource {
         const url = 'https://graph.facebook.com/' +
             `${facebookId}/picture?width=${size}&height=${size}`;
 
-        setState({src: url});
+        setState({
+            sourceName: 'facebook',
+            src: url
+        });
     }
 }

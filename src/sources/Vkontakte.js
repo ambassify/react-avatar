@@ -45,7 +45,10 @@ class VkontakteSource {
             if (!src)
                 return onError();
 
-            setState({ src });
+            setState({
+                sourceName: 'vkontakte',
+                src
+            });
         }, onError);
     }
 }
