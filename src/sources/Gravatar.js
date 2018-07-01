@@ -1,5 +1,6 @@
 'use strict';
 
+import PropTypes from 'prop-types';
 import retina from 'is-retina';
 import md5 from 'md5';
 
@@ -7,6 +8,11 @@ const IS_RETINA = retina();
 
 export default
 class GravatarSource {
+
+    static propTypes = {
+        email: PropTypes.string,
+        md5Email: PropTypes.string
+    }
 
     props = null;
 

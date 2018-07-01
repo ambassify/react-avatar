@@ -1,9 +1,17 @@
 'use strict';
 
+import PropTypes from 'prop-types';
 import {getRandomColor} from '../utils';
 
 export default
 class ValueSource {
+
+    static propTypes = {
+        name: PropTypes.string,
+        value: PropTypes.string,
+        email: PropTypes.string,
+        maxInitials: PropTypes.number
+    }
 
     props = null
 
@@ -12,7 +20,7 @@ class ValueSource {
     }
 
     isCompatible = () => {
-        return !!this.props.name || !!this.props.value;
+        return !!(this.props.name || this.props.value || this.props.email);
     }
 
     getInitials() {

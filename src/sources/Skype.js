@@ -1,7 +1,13 @@
 'use strict';
 
+import PropTypes from 'prop-types';
+
 export default
 class SkypeSource {
+
+    static propTypes = {
+        skypeId: PropTypes.string
+    }
 
     props = null;
 

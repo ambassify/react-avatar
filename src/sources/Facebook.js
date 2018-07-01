@@ -1,7 +1,12 @@
 'use strict';
+import PropTypes from 'prop-types';
 
 export default
 class FacebookSource {
+
+    static propTypes = {
+        facebookId: PropTypes.string
+    }
 
     props = null;
 
