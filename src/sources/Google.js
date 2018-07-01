@@ -1,6 +1,6 @@
 'use strict';
 
-import {fetch,cacheFailingSource,hasSourceFailedBefore} from '../utils';
+import {fetch} from '../utils';
 
 export default
 class GoogleSource {
@@ -14,10 +14,10 @@ class GoogleSource {
     isCompatible = () => !!this.props.googleId
 
     get = (setState) => {
-        const { size, googleId } = this.props;
+        const { cache, size, googleId } = this.props;
         const url = `https://picasaweb.google.com/data/entry/api/user/${googleId}?alt=json`;
 
-        if(hasSourceFailedBefore(url)) {
+        if (cache.hasSourceFailedBefore(url)) {
             setState(null);
             return;
         }
@@ -30,7 +30,7 @@ class GoogleSource {
             });
         }, () => {
             // on error
-            cacheFailingSource(url);
+            cache.sourceFailed(url);
             setState(null);
         });
     }

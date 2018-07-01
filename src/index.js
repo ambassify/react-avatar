@@ -2,17 +2,18 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {getRandomColor, cacheFailingSource, hasSourceFailedBefore, parseSize} from './utils.js';
+import {withConfig, ConfigProvider} from './context';
+import {getRandomColor, parseSize} from './utils';
 
-import gravatarSource from './sources/Gravatar.js';
-import facebookSource from './sources/Facebook.js';
-import vkontakteSource from './sources/Vkontakte.js';
-import twitterSource from './sources/Twitter.js';
-import googleSource from './sources/Google.js';
-import skypeSource from './sources/Skype.js';
-import valueSource from './sources/Value.js';
-import srcSource from './sources/Src.js';
-import iconSource from './sources/Icon.js';
+import gravatarSource from './sources/Gravatar';
+import facebookSource from './sources/Facebook';
+import vkontakteSource from './sources/Vkontakte';
+import twitterSource from './sources/Twitter';
+import googleSource from './sources/Google';
+import skypeSource from './sources/Skype';
+import valueSource from './sources/Value';
+import srcSource from './sources/Src';
+import iconSource from './sources/Icon';
 
 const SOURCES = [
     facebookSource,
@@ -26,15 +27,19 @@ const SOURCES = [
     iconSource
 ];
 
-export {getRandomColor} from './utils.js';
+export {getRandomColor} from './utils';
+export {ConfigProvider} from './context';
 
-export default class Avatar extends PureComponent {
+export
+class Avatar extends PureComponent {
+
     static displayName = 'Avatar'
+
     static propTypes = {
         className: PropTypes.string,
         fgColor: PropTypes.string,
         color: PropTypes.string,
-        colors: PropTypes.array,
+        colors: PropTypes.arrayOf(PropTypes.string),
         name: PropTypes.string,
         maxInitials: PropTypes.number,
         value: PropTypes.string,
@@ -57,6 +62,7 @@ export default class Avatar extends PureComponent {
         ]),
         textSizeRatio: PropTypes.number,
         unstyled: PropTypes.bool,
+        cache: PropTypes.object,
         onClick: PropTypes.func
     }
 
@@ -141,9 +147,10 @@ export default class Avatar extends PureComponent {
     }
 
     static getRandomColor = getRandomColor
+    static ConfigProvider = ConfigProvider
 
     tryNextsource = (Source, next) => {
-
+        const { cache } = this.props;
         const instance = new Source(this.props);
 
         if(!instance.isCompatible(this.props))
@@ -152,7 +159,7 @@ export default class Avatar extends PureComponent {
         instance.get((state) => {
             const failedBefore = state &&
                 state.hasOwnProperty('src') &&
-                hasSourceFailedBefore(state.src);
+                cache.hasSourceFailedBefore(state.src);
 
             if(!failedBefore && state) {
                 // console.log(state);
@@ -164,12 +171,14 @@ export default class Avatar extends PureComponent {
     };
 
     fetch = (event) => {
+        const { cache } = this.props;
+
         // If fetch was triggered by img onError
         // then set state src back to null so render will
         // automatically switch a text avatar if there is no
         // other social ID available to try
         if( event && event.type === 'error' ) {
-            cacheFailingSource(this.state.src);
+            cache.sourceFailed(this.state.src);
             this.setState({src: null});
             return;
         }
@@ -274,3 +283,8 @@ export default class Avatar extends PureComponent {
         );
     }
 }
+
+export default Object.assign(withConfig(Avatar), {
+    getRandomColor,
+    ConfigProvider
+});
