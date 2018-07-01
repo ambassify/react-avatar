@@ -1,7 +1,13 @@
 'use strict';
 
+import PropTypes from 'prop-types';
+
 export default
 class TwitterSource {
+
+    static propTypes = {
+        twitterHandle: PropTypes.string
+    }
 
     props = null;
 

@@ -1,9 +1,14 @@
 'use strict';
 
+import PropTypes from 'prop-types';
 import {fetch} from '../utils';
 
 export default
 class GoogleSource {
+
+    static propTypes = {
+        googleId: PropTypes.string
+    }
 
     props = null;
 

@@ -1,7 +1,13 @@
 'use strict';
 
+import PropTypes from 'prop-types';
+
 export default
 class SrcSource {
+
+    static propTypes = {
+        src: PropTypes.string
+    }
 
     props = null
 

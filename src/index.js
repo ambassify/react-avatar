@@ -27,8 +27,31 @@ const SOURCES = [
     iconSource
 ];
 
+// Collect propTypes for each individual source
+const sourcePropTypes = SOURCES.reduce((r, s) => Object.assign(r, s.propTypes), {});
+
 export {getRandomColor} from './utils';
 export {ConfigProvider} from './context';
+
+function matchSource(Source, props, cb) {
+    const { cache } = props;
+    const instance = new Source(props);
+
+    if(!instance.isCompatible(props))
+        return cb();
+
+    instance.get((state) => {
+        const failedBefore = state &&
+            state.hasOwnProperty('src') &&
+            cache.hasSourceFailedBefore(state.src);
+
+        if(!failedBefore && state) {
+            cb(state);
+        } else {
+            cb();
+        }
+    });
+}
 
 export
 class Avatar extends PureComponent {
@@ -36,21 +59,13 @@ class Avatar extends PureComponent {
     static displayName = 'Avatar'
 
     static propTypes = {
+        // PropTypes defined on sources
+        ...sourcePropTypes,
+
         className: PropTypes.string,
         fgColor: PropTypes.string,
         color: PropTypes.string,
         colors: PropTypes.arrayOf(PropTypes.string),
-        name: PropTypes.string,
-        maxInitials: PropTypes.number,
-        value: PropTypes.string,
-        email: PropTypes.string,
-        md5Email: PropTypes.string,
-        src: PropTypes.string,
-        facebookId: PropTypes.string,
-        googleId: PropTypes.string,
-        twitterHandle: PropTypes.string,
-        vkontakteId: PropTypes.string,
-        skypeId: PropTypes.string,
         round: PropTypes.oneOfType([
             PropTypes.bool,
             PropTypes.string
@@ -64,35 +79,23 @@ class Avatar extends PureComponent {
         unstyled: PropTypes.bool,
         cache: PropTypes.object,
         onClick: PropTypes.func
+
     }
 
     static defaultProps = {
         className: '',
         fgColor: '#FFF',
-        color: null,
-        name: null,
-        maxInitials: null,
-        value: null,
-        email: null,
-        md5Email: null,
-        facebookId: null,
-        googleId: null,
-        twitterHandle: null,
-        vkontakteId: null,
-        skypeId: null,
         round: false,
         size: 100,
-        style: null,
         textSizeRatio: 3,
         unstyled: false
     }
 
     constructor(props) {
         super(props);
+
         this.state = {
-            _internal: {
-                sourcePointer: 0
-            },
+            internal: { sourcePointer: 0 },
             src: props.src,
             value: null,
             color: props.color
@@ -104,117 +107,71 @@ class Avatar extends PureComponent {
     }
 
     componentWillReceiveProps(newProps) {
-        const nextState = {};
-        if (newProps.src !== this.props.src)
-            nextState.src = newProps.src;
+        let needsUpdate = false;
 
-        if (newProps.name !== this.props.name)
-            nextState.name = newProps.name;
+        // This seems redundant
+        //
+        // Props that need to be in `state` are
+        // `value`, `src` and `color`
+        for (const prop in sourcePropTypes)
+            needsUpdate = needsUpdate || (newProps[prop] !== this.props[prop]);
 
-        if (newProps.maxInitials !== this.props.maxInitials)
-            nextState.maxInitials = newProps.maxInitials;
-
-        if (newProps.value !== this.props.value)
-            nextState.value = newProps.value;
-
-        if (newProps.email !== this.props.email)
-            nextState.email = newProps.email;
-
-        if (newProps.md5Email !== this.props.md5Email)
-            nextState.md5Email = newProps.md5Email;
-
-        if (newProps.facebookId !== this.props.facebookId)
-            nextState.facebookId = newProps.facebookId;
-
-        if (newProps.googleId !== this.props.googleId)
-            nextState.googleId = newProps.googleId;
-
-        if (newProps.twitterHandle !== this.props.twitterHandle)
-            nextState.twitterHandle = newProps.twitterHandle;
-
-        if (newProps.vkontakteId !== this.props.vkontakteId)
-            nextState.vkontakteId = newProps.vkontakteId;
-
-        if (newProps.skypeId !== this.props.skypeId)
-            nextState.skypeId = newProps.skypeId;
-
-
-        if(Object.keys(nextState) !== 0) {
-            nextState._internal = this.state._internal;
-            nextState._internal.sourcePointer = 0;
-            this.setState(nextState, this.fetch);
-        }
+        if (needsUpdate)
+            setTimeout(this.fetch, 0);
     }
 
     static getRandomColor = getRandomColor
     static ConfigProvider = ConfigProvider
 
-    tryNextsource = (Source, next) => {
-        const { cache } = this.props;
-        const instance = new Source(this.props);
-
-        if(!instance.isCompatible(this.props))
-            return next();
-
-        instance.get((state) => {
-            const failedBefore = state &&
-                state.hasOwnProperty('src') &&
-                cache.hasSourceFailedBefore(state.src);
-
-            if(!failedBefore && state) {
-                // console.log(state);
-                this.setState(state);
-            } else {
-                next();
-            }
-        });
-    };
-
-    fetch = (event) => {
+    _createFetcher = (internal) => (errEvent) => {
         const { cache } = this.props;
 
-        // If fetch was triggered by img onError
-        // then set state src back to null so render will
-        // automatically switch a text avatar if there is no
-        // other social ID available to try
-        if( event && event.type === 'error' ) {
-            cache.sourceFailed(this.state.src);
-            this.setState({src: null});
+        // Internal state has been reset => we received new props
+        if (internal !== this.state.internal)
             return;
-        }
 
-        // console.log('## fetch');
+        // Mark img source as failed for future reference
+        if( errEvent && errEvent.type === 'error' )
+            cache.sourceFailed(errEvent.target.src);
 
-        const id = this._fetchId = this._fetchId ? this._fetchId + 1 : 1;
+        const pointer = internal.sourcePointer;
+        if(SOURCES.length === pointer)
+            return;
 
-        var tryFetch = () => {
-            if(SOURCES.length === this.state._internal.sourcePointer)
-                return;
+        const source = SOURCES[pointer];
 
-            const source = SOURCES[this.state._internal.sourcePointer];
+        internal.sourcePointer++;
 
-            const internal = this.state._internal;
-            internal.sourcePointer++;
+        matchSource(source, this.props, (nextState) => {
+            if (!nextState)
+                return setTimeout(internal.fetch, 0);
 
-            // console.log('## try fetch', id, this._fetchId, internal.sourcePointer-1);
-            this.setState({
-                _internal: internal
-            }, () => {
-                this.tryNextsource(source, () => {
-                    // console.log('-- next', id, this._fetchId);
-                    if (id === this._fetchId) {
-                        tryFetch();
-                    }
-                });
+            // Reset other values to prevent them from sticking (#51)
+            nextState = {
+                src: null,
+                value: null,
+                color: null,
+
+                ...nextState
+            };
+
+            this.setState(state => {
+                // Internal state has been reset => we received new props
+                return internal === state.internal ? nextState : {};
             });
-        };
+        });
+    }
 
-        tryFetch();
+    fetch = () => {
+        const internal = { sourcePointer: 0 };
+        internal.fetch = this._createFetcher(internal);
 
+        this.setState({ internal }, internal.fetch);
     };
 
     _renderAsImage() {
         const { className, round, unstyled, name, value } = this.props;
+        const { internal } = this.state;
         const size = parseSize(this.props.size);
         const alt = name || value;
 
@@ -232,7 +189,7 @@ class Avatar extends PureComponent {
                 style={imageStyle}
                 src={this.state.src}
                 alt={alt}
-                onError={this.fetch} />
+                onError={internal.fetch} />
         );
     }
 
