@@ -31,6 +31,7 @@ class GoogleSource {
             const src = data.entry.gphoto$thumbnail.$t;
             const srcWithCorrectSize = src.replace('s64', 's' + size);
             setState({
+                sourceName: 'google',
                 src: srcWithCorrectSize
             });
         }, () => {

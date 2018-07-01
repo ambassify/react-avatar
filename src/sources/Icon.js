@@ -16,6 +16,7 @@ class IconSource {
 
     get = (setState) => {
         setState({
+            sourceName: 'icon',
             value: this.icon,
             color: getRandomColor(this.icon, this.props.colors)
         });

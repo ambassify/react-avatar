@@ -30,6 +30,9 @@ class GravatarSource {
         const size = IS_RETINA ? props.size * 2 : props.size;
         const url = `https://secure.gravatar.com/avatar/${email}?s=${size}&d=404`;
 
-        setState({src: url});
+        setState({
+            sourceName: 'gravatar',
+            src: url
+        });
     }
 }

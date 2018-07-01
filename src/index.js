@@ -219,6 +219,7 @@ class Avatar extends PureComponent {
 
     render() {
         const { className, unstyled, round, style, onClick } = this.props;
+        const { src, sourceName } = this.state;
         const size = parseSize(this.props.size);
 
         const hostStyle = unstyled ? null : {
@@ -231,11 +232,20 @@ class Avatar extends PureComponent {
             ...style
         };
 
+        const classNames = [ className, 'sb-avatar' ];
+
+        if (sourceName) {
+            const source = sourceName.toLowerCase()
+                .replace(/[^a-z0-9-]+/g, '-') // only allow alphanumeric
+                .replace(/^-+|-+$/g, ''); // trim `-`
+            classNames.push('sb-avatar--' + source);
+        }
+
         return (
-            <div className={className + ' sb-avatar'}
+            <div className={classNames.join(' ')}
                 onClick={onClick}
                 style={hostStyle}>
-                {this.state.src ? this._renderAsImage() : this._renderAsText()}
+                {src ? this._renderAsImage() : this._renderAsText()}
             </div>
         );
     }
