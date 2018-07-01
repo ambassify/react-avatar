@@ -78,7 +78,7 @@ class Avatar extends PureComponent {
         textSizeRatio: PropTypes.number,
         unstyled: PropTypes.bool,
         cache: PropTypes.object,
-        onClick: PropTypes.func,
+        onClick: PropTypes.func
 
     }
 
