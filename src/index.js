@@ -2,8 +2,10 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
 import {withConfig, ConfigProvider} from './context';
 import {getRandomColor, parseSize} from './utils';
+import InternalState from './internal-state';
 
 import gravatarSource from './sources/Gravatar';
 import facebookSource from './sources/Facebook';
@@ -95,14 +97,14 @@ class Avatar extends PureComponent {
         super(props);
 
         this.state = {
-            internal: { sourcePointer: 0 },
+            internal: null,
             src: props.src,
             value: null,
             color: props.color
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.fetch();
     }
 
@@ -120,14 +122,17 @@ class Avatar extends PureComponent {
             setTimeout(this.fetch, 0);
     }
 
+    componentWillUnmount() {
+        this.state.internal.active = false;
+    }
+
     static getRandomColor = getRandomColor
     static ConfigProvider = ConfigProvider
 
     _createFetcher = (internal) => (errEvent) => {
         const { cache } = this.props;
 
-        // Internal state has been reset => we received new props
-        if (internal !== this.state.internal)
+        if (!internal.isActive(this.state))
             return;
 
         // Mark img source as failed for future reference
@@ -146,6 +151,9 @@ class Avatar extends PureComponent {
             if (!nextState)
                 return setTimeout(internal.fetch, 0);
 
+            if (!internal.isActive(this.state))
+                return;
+
             // Reset other values to prevent them from sticking (#51)
             nextState = {
                 src: null,
@@ -157,13 +165,13 @@ class Avatar extends PureComponent {
 
             this.setState(state => {
                 // Internal state has been reset => we received new props
-                return internal === state.internal ? nextState : {};
+                return internal.isActive(state) ? nextState : {};
             });
         });
     }
 
     fetch = () => {
-        const internal = { sourcePointer: 0 };
+        const internal = new InternalState();
         internal.fetch = this._createFetcher(internal);
 
         this.setState({ internal }, internal.fetch);
@@ -189,7 +197,7 @@ class Avatar extends PureComponent {
                 style={imageStyle}
                 src={this.state.src}
                 alt={alt}
-                onError={internal.fetch} />
+                onError={internal && internal.fetch} />
         );
     }
 
