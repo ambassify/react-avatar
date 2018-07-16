@@ -3,6 +3,7 @@
   "version": "3.1.0",
   "description": "Universal React avatar component makes it possible to generate avatars based on user information.",
   "main": "lib/index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "prepack": "npm -s run test && npm -s run clean && npm -s run transpile",
     "clean": "rm -rf ./lib/*",
@@ -34,6 +35,7 @@
   },
   "browserify-global-shim": {},
   "devDependencies": {
+    "@types/react": "^15.0.0",
     "babel": "6.5.0",
     "babel-cli": "^6.24.1",
     "babel-core": "6.5.0",
