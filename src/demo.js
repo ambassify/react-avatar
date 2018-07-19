@@ -22,7 +22,8 @@ class Demo extends React.Component {
 
     state = {
         name: 'Wim Mostmans',
-        skypeId: null
+        skypeId: null,
+        toggle: true
     }
 
     _onChangeName = () => {
@@ -38,6 +39,12 @@ class Demo extends React.Component {
 
     _onClick = () => {
         alert('Clicked!');
+    }
+
+    _onToggle = () => {
+        this.setState({
+            toggle: !this.state.toggle
+        });
     }
 
     render() {
@@ -214,6 +221,20 @@ class Demo extends React.Component {
                     Wim Mostmans
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150} />
                     Wim Mostmans
+                </section>
+                <section>
+                    <h2>Toggle with cached Avatars</h2>
+                    <div>
+                        <button onClick={this._onToggle}>Click to toggle</button>
+                    </div>
+                    {this.state.toggle &&
+                        <div>
+                            <Avatar name="Wim Mostmans" size={50} />
+                            <Avatar name="Wim Mostmans" size={50} round={true} />
+                            <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={50} round={true} />
+                            <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150} />
+                        </div>
+                    }
                 </section>
 
                 <ConfigProvider colors={customColors}>

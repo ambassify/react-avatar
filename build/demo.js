@@ -262,7 +262,8 @@ var Demo = function (_React$Component) {
 
         return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Demo.__proto__ || (0, _getPrototypeOf2.default)(Demo)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             name: 'Wim Mostmans',
-            skypeId: null
+            skypeId: null,
+            toggle: true
         }, _this._onChangeName = function () {
             _this.setState({
                 name: 'Foo Bar',
@@ -272,6 +273,10 @@ var Demo = function (_React$Component) {
             _this.setState({ skypeId: 'sitebase' });
         }, _this._onClick = function () {
             alert('Clicked!');
+        }, _this._onToggle = function () {
+            _this.setState({
+                toggle: !_this.state.toggle
+            });
         }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
     }
 
@@ -575,6 +580,32 @@ var Demo = function (_React$Component) {
                     'Wim Mostmans'
                 ),
                 _react2.default.createElement(
+                    'section',
+                    null,
+                    _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Toggle with cached Avatars'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'button',
+                            { onClick: this._onToggle },
+                            'Click to toggle'
+                        )
+                    ),
+                    this.state.toggle && _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(_index2.default, { name: 'Wim Mostmans', size: 50 }),
+                        _react2.default.createElement(_index2.default, { name: 'Wim Mostmans', size: 50, round: true }),
+                        _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 50, round: true }),
+                        _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 150 })
+                    )
+                ),
+                _react2.default.createElement(
                     _index.ConfigProvider,
                     { colors: customColors },
                     _react2.default.createElement(
@@ -820,7 +851,9 @@ var Avatar = exports.Avatar = function (_PureComponent) {
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            this.state.internal.active = false;
+            if (this.state.internal) {
+                this.state.internal.active = false;
+            }
         }
     }, {
         key: '_renderAsImage',
