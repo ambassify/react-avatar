@@ -15,10 +15,11 @@ class IconSource {
     isCompatible = () => true
 
     get = (setState) => {
+        const { color, colors } = this.props;
         setState({
             sourceName: 'icon',
             value: this.icon,
-            color: getRandomColor(this.icon, this.props.colors)
+            color: color || getRandomColor(this.icon, colors)
         });
     }
 }
