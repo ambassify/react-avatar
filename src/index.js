@@ -123,7 +123,9 @@ class Avatar extends PureComponent {
     }
 
     componentWillUnmount() {
-        this.state.internal.active = false;
+        if (this.state.internal) {
+            this.state.internal.active = false;
+        }
     }
 
     static getRandomColor = getRandomColor
