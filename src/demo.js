@@ -82,13 +82,25 @@ class Demo extends React.Component {
                     <Avatar facebookId="100008343750912" size={200} />
                 </section>
 
-                <section>
-                    <h2>Twitter</h2>
-                    <Avatar twitterHandle="sitebase" size={40} />
-                    <Avatar twitterHandle="sitebase" size={100} round={true} />
-                    <Avatar twitterHandle="sitebase" size={150} round="20px" />
-                    <Avatar twitterHandle="sitebase" size={200} />
-                </section>
+                <ConfigProvider avatarRedirectUrl="https://avatar-redirect.appspot.com">
+                    <section>
+                        <h2>Twitter using Avatar Redirect</h2>
+                        <Avatar twitterHandle="sitebase" size={40} />
+                        <Avatar twitterHandle="sitebase" size={100} round={true} />
+                        <Avatar twitterHandle="sitebase" size={150} round="20px" />
+                        <Avatar twitterHandle="sitebase" size={200} />
+                    </section>
+                </ConfigProvider>
+
+                <ConfigProvider avatarRedirectUrl="https://avatar-redirect.appspot.com">
+                    <section>
+                        <h2>Instagram using Avatar Redirect</h2>
+                        <Avatar instagramId="sitebase" size={40} />
+                        <Avatar instagramId="sitebase" size={100} round={true} />
+                        <Avatar instagramId="sitebase" size={150} round="20px" />
+                        <Avatar instagramId="sitebase" size={200} />
+                    </section>
+                </ConfigProvider>
 
                 <section>
                     <h2>Vkontakte</h2>

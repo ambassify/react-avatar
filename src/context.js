@@ -6,8 +6,11 @@ import {defaultColors} from './utils';
 
 const defaults = {
     cache: defaultCache,
-    colors: defaultColors
+    colors: defaultColors,
+    avatarRedirectUrl: null
 };
+
+const contextKeys = Object.keys(defaults);
 
 /**
  * withConfig and ConfigProvider provide a compatibility layer for different
@@ -49,6 +52,7 @@ export class ConfigProvider extends React.Component {
     static propTypes = {
         cache: PropTypes.object,
         colors: PropTypes.arrayOf(PropTypes.string),
+        avatarRedirectUrl: PropTypes.string,
 
         children: PropTypes.node
     }
@@ -64,9 +68,14 @@ export class ConfigProvider extends React.Component {
     }
 
     _getContext() {
-        const { cache, colors } = this.props;
+        const context = {};
 
-        return { cache, colors };
+        contextKeys.forEach(key => {
+            if (typeof this.props[key] !== 'undefined')
+                context[key] = this.props[key];
+        });
+
+        return context;
     }
 
     render() {

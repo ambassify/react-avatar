@@ -16,11 +16,14 @@ import skypeSource from './sources/Skype';
 import valueSource from './sources/Value';
 import srcSource from './sources/Src';
 import iconSource from './sources/Icon';
+import redirectSource from './sources/AvatarRedirect';
 
 const SOURCES = [
     facebookSource,
     googleSource,
     twitterSource,
+    redirectSource('twitter', 'twitterHandle'),
+    redirectSource('instagram', 'instagramId'),
     vkontakteSource,
     skypeSource,
     gravatarSource,
