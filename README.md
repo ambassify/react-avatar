@@ -5,9 +5,11 @@ We use a fallback system that if for example an invalid Facebook ID is used it w
 ![React Avatar component preview](example1.jpg)
 
 For the moment we support following types:
+
 * Facebook
 * Google
-* Twitter
+* Twitter (using [Avatar Redirect](#avatar-redirect))
+* Instagram (using [Avatar Redirect](#avatar-redirect))
 * Vkontakte
 * Skype
 * Gravatar
@@ -101,6 +103,7 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | `md5Email` | *string* |         | String of the MD5 hash of email address of the user. |
 | `facebookId` | *string* |         |                                                                                                        |
 | `twitterHandle` | *string* |         |                                                                                                        |
+| `instagramId` | *string* |         |                                                                                                        |
 | `googleId`   | *string*             |         |                                                                                                        |
 | `skypeId`    | *string*          |         |                                                                                                        |
 | `name`        | *string*          |         | Will be used to generate avatar based on the initials of the person                                    |
@@ -122,6 +125,21 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | ------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------------ |
 | `colors`       | *array(string)*  | [default colors](https://github.com/Sitebase/react-avatar/tree/master/src/utils.js#L39-L47)  | A list of color values as strings from which the `getRandomColor` picks one at random. |
 | `cache`       | *[cache](#implementing-a-custom-cache)*          | [internal cache](https://github.com/Sitebase/react-avatar/tree/master/src/cache.js)  | Cache implementation used to track broken img URLs |
+| `avatarRedirectUrl`  | *URL*          | `undefined`  | Base URL to a [Avatar Redirect](#avatar-redirect) instance |
+
+
+### Avatar Redirect
+
+[Avatar Redirect][2] adds support for social networks which require a server-side service to find the correct avatar URL.
+
+Examples of this are:
+
+- Twitter
+- Instagram
+
+An open Avatar Redirect endpoint is provided at `https://avatar-redirect.appspot.com`. However this endpoint is provided for free and as such an explicit opt-in is required as no guarantees can be made about uptime of this endpoint.
+
+Avatar Redirect is enabled by setting the `avatarRedirectUrl` property on the [ConfigProvider context](#configprovider)
 
 ## Development
 
@@ -182,3 +200,4 @@ For detailed changelog, check [Releases](https://github.com/sitebase/react-avata
 [MIT License](http://opensource.org/licenses/MIT)
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/CSS/length
+[2]: https://github.com/JorgenEvens/avatar-redirect
