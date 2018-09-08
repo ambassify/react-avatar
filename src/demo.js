@@ -23,7 +23,8 @@ class Demo extends React.Component {
     state = {
         name: 'Wim Mostmans',
         skypeId: null,
-        toggle: true
+        toggle: true,
+        color: customColors[0]
     }
 
     _onChangeName = () => {
@@ -45,6 +46,13 @@ class Demo extends React.Component {
         this.setState({
             toggle: !this.state.toggle
         });
+    }
+
+    _onToggleColor = () => {
+        const current = customColors.indexOf(this.state.color);
+        const next = (current + 1) % customColors.length;
+
+        this.setState({ color: customColors[next] });
     }
 
     render() {
@@ -247,6 +255,21 @@ class Demo extends React.Component {
                             <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150} />
                         </div>
                     }
+                </section>
+                <section>
+                    <h2>Toggle color</h2>
+                    <div>
+                        <button onClick={this._onToggleColor}>Click to toggle</button>
+                    </div>
+                    <div>
+                        {this.state.color}
+                    </div>
+                    <div>
+                        <Avatar name="Wim Mostmans" size={50} color={this.state.color} />
+                        <Avatar name="Wim Mostmans" size={50} round={true} color={this.state.color} />
+                        <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={50} round={true} color={this.state.color} />
+                        <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150} color={this.state.color} />
+                    </div>
                 </section>
 
                 <ConfigProvider colors={customColors}>
