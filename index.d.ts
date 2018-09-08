@@ -113,4 +113,5 @@ export interface Cache {
  */
 declare const ReactAvatar: React.ComponentType<ReactAvatarProps>;
 
+export const ConfigProvider: React.ComponentType<ConfigProvider>;
 export default ReactAvatar;
