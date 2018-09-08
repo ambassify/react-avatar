@@ -3,8 +3,7 @@
     "parser": "babel-eslint",
     "plugins": [ "react" ],
     "env": {
-        "browser": true,
-        "node": true
+        "browser": true
     },
     "extends": "eslint:recommended",
     "rules": {

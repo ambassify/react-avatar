@@ -2,7 +2,7 @@
 Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
 We use a fallback system that if for example an invalid Facebook ID is used it will try Google, and so on.
 
-![React Avatar component preview](example1.jpg)
+![React Avatar component preview](docs/example1.jpg)
 
 For the moment we support following types:
 
@@ -153,17 +153,17 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
     $ npm install
     ```
 
-* Auto build new test version when developing that can be run with `grunt connect`:
+* To test your react-avatar and your changes, start the development server and open `http://localhost:8000/index.html`.
 
     ```sh
     $ npm run dev
     ```
+    
+* To create a local production build into the `lib` and `es` folders.
 
-* To test your project, start the development server and open `http://localhost:8000/index.html`.
-
-    ```sh
-    $ python -m SimpleHTTPServer
-    ```
+   ```sh
+   $ npm run build
+   ```
     
 ### Implementing a custom cache
 

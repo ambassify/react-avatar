@@ -2,7 +2,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Avatar, {getRandomColor, ConfigProvider} from './index.js';
+import Avatar, {getRandomColor, ConfigProvider} from './../src';
+
+import './index.html';
+import './demo.css';
+import './favicon.png';
 
 const customColors = [
     '#5E005E',

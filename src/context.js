@@ -32,11 +32,13 @@ export const withConfig = (Component) => {
         if (!ConfigConsumer)
             return ( <Component {...defaults} {...reactAvatar} {...props} /> );
 
+        /* eslint-disable react/display-name */
         return (
             <ConfigConsumer>
                 {config => ( <Component {...defaults} {...config} {...props} /> )}
             </ConfigConsumer>
         );
+        /* eslint-enable react/display-name */
     }
 
     withAvatarConfig.contextTypes = {
