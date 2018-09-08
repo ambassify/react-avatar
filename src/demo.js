@@ -162,16 +162,30 @@ class Demo extends React.Component {
                 <section>
                     <h2>Size in different units</h2>
                     <div>
-                        <Avatar name={this.state.name} skypeId={this.state.skypeId} size="30pt" textSizeRatio={4} />
-                        <Avatar name={this.state.name} size="90pt" round={true} textSizeRatio={4} />
-                        <Avatar name={this.state.name} size="130pt" round="20px" textSizeRatio={4} />
-                        <Avatar name={this.state.name} size="170pt" textSizeRatio={4} />
+                        <Avatar value="30pt" skypeId={this.state.skypeId} size="30pt" textSizeRatio={4} />
+                        <Avatar value="90pt" size="90pt" round={true} textSizeRatio={4} />
+                        <Avatar value="130pt" size="130pt" round="20px" textSizeRatio={4} />
+                        <Avatar value="170pt" size="170pt" textSizeRatio={4} />
                     </div>
                     <div>
-                        <Avatar name={this.state.name} skypeId={this.state.skypeId} size="4vw" textSizeRatio={4} />
-                        <Avatar name={this.state.name} size="6vw" round={true} textSizeRatio={4} />
-                        <Avatar name={this.state.name} size="10vw" round="20px" textSizeRatio={4} />
-                        <Avatar name={this.state.name} size="15vw" textSizeRatio={4} />
+                        <Avatar value="4vw" skypeId={this.state.skypeId} size="4vw" textSizeRatio={4} />
+                        <Avatar value="6vw" size="6vw" round={true} textSizeRatio={4} />
+                        <Avatar value="10vw" size="10vw" round="20px" textSizeRatio={4} />
+                        <Avatar value="15vw" size="15vw" textSizeRatio={4} />
+                    </div>
+                    <div style={{ overflow: 'hidden', margin: '0 auto', width: '800px', textAlign: 'center' }}>
+                        <div style={{ width: '200px', height: '200px', float: 'left' }}>
+                            <Avatar value="30%" skypeId={this.state.skypeId} size="30%" />
+                        </div>
+                        <div style={{ width: '200px', height: '200px', float: 'left' }}>
+                            <Avatar value="45%" size="45%" round={true} />
+                        </div>
+                        <div style={{ width: '200px', height: '200px', float: 'left' }}>
+                            <Avatar value="60%" size="60%" round="20px" />
+                        </div>
+                        <div style={{ width: '200px', height: '200px', float: 'left' }}>
+                            <Avatar value="100%" size="100%" />
+                        </div>
                     </div>
                 </section>
 

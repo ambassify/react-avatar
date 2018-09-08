@@ -182,6 +182,24 @@ class Avatar extends PureComponent {
         this.setState({ internal }, internal.fetch);
     };
 
+    _scaleTextNode = (node) => {
+        const { unstyled, textSizeRatio } = this.props;
+
+        if (!node || unstyled) return;
+
+        const parent = node.parentNode;
+        const textWidth = node.getBoundingClientRect().width;
+        if (textWidth < 0)
+            return;
+
+        const containerWidth = parent.getBoundingClientRect().width;
+        const ratio = containerWidth / textWidth;
+
+        // Set font-size on parent span, otherwise the `table-cell` span
+        // will cause alignment issues.
+        node.parentNode.style.fontSize = `calc((100% * ${ratio}) / ${textSizeRatio})`;
+    }
+
     _renderAsImage() {
         const { className, round, unstyled, name, value } = this.props;
         const { internal } = this.state;
@@ -207,25 +225,34 @@ class Avatar extends PureComponent {
     }
 
     _renderAsText() {
-        const { className, textSizeRatio, round, unstyled } = this.props;
+        const { className, round, unstyled } = this.props;
         const size = parseSize(this.props.size);
 
         const initialsStyle = unstyled ? null : {
             width: size.str,
             height: size.str,
-            fontSize: (size.value / textSizeRatio).toFixed(4) + size.unit,
-            lineHeight: size.str,
+            lineHeight: 'initial',
             textAlign: 'center',
             textTransform: 'uppercase',
             color: this.props.fgColor,
             background: this.state.color,
-            borderRadius: (round === true ? '100%' : round)
+            borderRadius: (round === true ? '100%' : round),
+            display: 'table'
+        };
+
+        const spanStyle = unstyled ? null : {
+            display: 'table-cell',
+            verticalAlign: 'middle'
         };
 
         return (
             <div className={className + ' sb-avatar__text'}
                 style={initialsStyle}>
-                {this.state.value}
+                <span style={spanStyle}>
+                    <span ref={this._scaleTextNode} key={this.state.value}>
+                        {this.state.value}
+                    </span>
+                </span>
             </div>
         );
     }
