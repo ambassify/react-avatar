@@ -274,7 +274,8 @@ var Demo = function (_React$Component) {
         return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Demo.__proto__ || (0, _getPrototypeOf2.default)(Demo)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             name: 'Wim Mostmans',
             skypeId: null,
-            toggle: true
+            toggle: true,
+            color: customColors[0]
         }, _this._onChangeName = function () {
             _this.setState({
                 name: 'Foo Bar',
@@ -288,6 +289,11 @@ var Demo = function (_React$Component) {
             _this.setState({
                 toggle: !_this.state.toggle
             });
+        }, _this._onToggleColor = function () {
+            var current = customColors.indexOf(_this.state.color);
+            var next = (current + 1) % customColors.length;
+
+            _this.setState({ color: customColors[next] });
         }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
     }
 
@@ -635,6 +641,37 @@ var Demo = function (_React$Component) {
                         _react2.default.createElement(_index2.default, { name: 'Wim Mostmans', size: 50, round: true }),
                         _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 50, round: true }),
                         _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 150 })
+                    )
+                ),
+                _react2.default.createElement(
+                    'section',
+                    null,
+                    _react2.default.createElement(
+                        'h2',
+                        null,
+                        'Toggle color'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'button',
+                            { onClick: this._onToggleColor },
+                            'Click to toggle'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        this.state.color
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(_index2.default, { name: 'Wim Mostmans', size: 50, color: this.state.color }),
+                        _react2.default.createElement(_index2.default, { name: 'Wim Mostmans', size: 50, round: true, color: this.state.color }),
+                        _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 50, round: true, color: this.state.color }),
+                        _react2.default.createElement(_index2.default, { md5Email: '8c5d4c4b9ef6c68c4ff91c319d4c56be', size: 150, color: this.state.color })
                     )
                 ),
                 _react2.default.createElement(
@@ -1313,6 +1350,10 @@ var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _utils = require('../utils');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -1343,9 +1384,12 @@ var IconSource = function IconSource(props) {
     this.props = props;
 };
 
+IconSource.propTypes = {
+    color: _propTypes2.default.string
+};
 exports.default = IconSource;
 module.exports = exports['default'];
-},{"../utils":16,"babel-runtime/helpers/classCallCheck":29}],11:[function(require,module,exports){
+},{"../utils":16,"babel-runtime/helpers/classCallCheck":29,"prop-types":154}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1592,6 +1636,7 @@ var ValueSource = function () {
 }();
 
 ValueSource.propTypes = {
+    color: _propTypes2.default.string,
     name: _propTypes2.default.string,
     value: _propTypes2.default.string,
     email: _propTypes2.default.string,

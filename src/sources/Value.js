@@ -7,6 +7,7 @@ export default
 class ValueSource {
 
     static propTypes = {
+        color: PropTypes.string,
         name: PropTypes.string,
         value: PropTypes.string,
         email: PropTypes.string,
