@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import defaultCache from './cache';
-import {defaultColors} from './utils';
+import {defaultColors, defaultInitials} from './utils';
 
 const defaults = {
     cache: defaultCache,
     colors: defaultColors,
+    initials: defaultInitials,
     avatarRedirectUrl: null
 };
 
@@ -52,6 +53,7 @@ export class ConfigProvider extends React.Component {
     static propTypes = {
         cache: PropTypes.object,
         colors: PropTypes.arrayOf(PropTypes.string),
+        initials: PropTypes.func,
         avatarRedirectUrl: PropTypes.string,
 
         children: PropTypes.node

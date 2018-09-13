@@ -108,6 +108,7 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | `skypeId`    | *string*          |         |                                                                                                        |
 | `name`        | *string*          |         | Will be used to generate avatar based on the initials of the person                                    |
 | `maxInitials` | *number*          |         | Set max nr of characters used for the initials. If maxInitials=2 and the name is Foo Bar Var the initials will be FB  |
+| `initials` | *string or function* | [defaultInitials][3] | Set the initials to show or a function that derives them from the component props, the method should have the signature `fn(name, props)` |
 | `value`       | *string*          |         | Show a value as avatar                                                                                 |
 | `color`       | *string*          | random  | Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example #FF0000 |
 | `fgColor`     | *string*          | #FFF  | Used in combination with `name` and `value`. Give the text a fixed color with a hex like for example #FF0000 |
@@ -125,6 +126,7 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | ------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------------ |
 | `colors`       | *array(string)*  | [default colors](https://github.com/Sitebase/react-avatar/tree/master/src/utils.js#L39-L47)  | A list of color values as strings from which the `getRandomColor` picks one at random. |
 | `cache`       | *[cache](#implementing-a-custom-cache)*          | [internal cache](https://github.com/Sitebase/react-avatar/tree/master/src/cache.js)  | Cache implementation used to track broken img URLs |
+| `initials` | *function* | [defaultInitials][3] | A function that derives the initials from the component props, the method should have the signature `fn(name, props)`  |
 | `avatarRedirectUrl`  | *URL*          | `undefined`  | Base URL to a [Avatar Redirect](#avatar-redirect) instance |
 
 
@@ -201,3 +203,4 @@ For detailed changelog, check [Releases](https://github.com/sitebase/react-avata
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/CSS/length
 [2]: https://github.com/JorgenEvens/avatar-redirect
+[3]: https://github.com/Sitebase/react-avatar/blob/master/src/utils.js

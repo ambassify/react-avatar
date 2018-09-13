@@ -117,6 +117,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var defaults = {
     cache: _cache2.default,
     colors: _utils.defaultColors,
+    initials: _utils.defaultInitials,
     avatarRedirectUrl: null
 };
 
@@ -207,6 +208,7 @@ ConfigProvider.displayName = 'ConfigProvider';
 ConfigProvider.propTypes = {
     cache: _propTypes2.default.object,
     colors: _propTypes2.default.arrayOf(_propTypes2.default.string),
+    initials: _propTypes2.default.func,
     avatarRedirectUrl: _propTypes2.default.string,
 
     children: _propTypes2.default.node
@@ -708,6 +710,29 @@ var Demo = function (_React$Component) {
                             'h2',
                             null,
                             'Configuration Context'
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(_index2.default, { name: 'Jim Jones', size: 40 }),
+                            _react2.default.createElement(_index2.default, { name: 'Jamie Jones', size: 100, round: true }),
+                            _react2.default.createElement(_index2.default, { name: 'JJ', size: 150, round: '20px' }),
+                            _react2.default.createElement(_index2.default, { name: this.state.name, size: 200 })
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    _index.ConfigProvider,
+                    { initials: function initials(name) {
+                            return name.split(/\s+/)[0];
+                        } },
+                    _react2.default.createElement(
+                        'section',
+                        null,
+                        _react2.default.createElement(
+                            'h2',
+                            null,
+                            'Custom Initials Function'
                         ),
                         _react2.default.createElement(
                             'div',
@@ -1656,14 +1681,16 @@ var ValueSource = function () {
     (0, _createClass3.default)(ValueSource, [{
         key: 'getInitials',
         value: function getInitials() {
-            var name = this.props.name;
-            var maxInitials = this.props.maxInitials;
-            var parts = name.split(' ');
-            var initials = '';
-            for (var i = 0; i < parts.length; i++) {
-                initials += parts[i].substr(0, 1).toUpperCase();
-            }
-            return maxInitials ? initials.slice(0, maxInitials) : initials;
+            var _props = this.props,
+                name = _props.name,
+                initials = _props.initials;
+
+
+            if (typeof initials === 'string') return initials;
+
+            if (typeof initials === 'function') return initials(name, this.props);
+
+            return (0, _utils.defaultInitials)(name, this.props);
         }
     }, {
         key: 'getValue',
@@ -1677,12 +1704,12 @@ var ValueSource = function () {
     }, {
         key: 'getColor',
         value: function getColor() {
-            var _props = this.props,
-                color = _props.color,
-                colors = _props.colors,
-                name = _props.name,
-                email = _props.email,
-                value = _props.value;
+            var _props2 = this.props,
+                color = _props2.color,
+                colors = _props2.colors,
+                name = _props2.name,
+                email = _props2.email,
+                value = _props2.value;
 
             var colorValue = name || email || value;
             return color || (0, _utils.getRandomColor)(colorValue, colors);
@@ -1696,7 +1723,8 @@ ValueSource.propTypes = {
     name: _propTypes2.default.string,
     value: _propTypes2.default.string,
     email: _propTypes2.default.string,
-    maxInitials: _propTypes2.default.number
+    maxInitials: _propTypes2.default.number,
+    initials: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.func])
 };
 exports.default = ValueSource;
 module.exports = exports['default'];
@@ -1801,6 +1829,7 @@ exports.fetch = fetch;
 exports.fetchJSONP = fetchJSONP;
 exports.getRandomColor = getRandomColor;
 exports.parseSize = parseSize;
+exports.defaultInitials = defaultInitials;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1899,6 +1928,16 @@ function parseSize(size) {
         str: value + unit,
         unit: unit
     };
+}
+
+function defaultInitials(name, _ref3) {
+    var maxInitials = _ref3.maxInitials;
+
+    return name.split(/\s/).map(function (part) {
+        return part.substring(0, 1).toUpperCase();
+    }).filter(function (v) {
+        return !!v;
+    }).slice(0, maxInitials).join('');
 }
 },{"babel-runtime/helpers/slicedToArray":35,"babel-runtime/helpers/toConsumableArray":36}],17:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/array/from"), __esModule: true };

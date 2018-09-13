@@ -1,7 +1,7 @@
 'use strict';
 
 import PropTypes from 'prop-types';
-import {getRandomColor} from '../utils';
+import {getRandomColor, defaultInitials} from '../utils';
 
 export default
 class ValueSource {
@@ -11,7 +11,11 @@ class ValueSource {
         name: PropTypes.string,
         value: PropTypes.string,
         email: PropTypes.string,
-        maxInitials: PropTypes.number
+        maxInitials: PropTypes.number,
+        initials: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.func
+        ])
     }
 
     props = null
@@ -25,15 +29,15 @@ class ValueSource {
     }
 
     getInitials() {
-        const name = this.props.name;
-        const maxInitials = this.props.maxInitials;
-        const parts = name.split(' ');
-        let initials = '';
-        for(let i = 0 ; i < parts.length ; i++)
-        {
-            initials += parts[i].substr(0, 1).toUpperCase();
-        }
-        return maxInitials ? initials.slice(0, maxInitials) : initials;
+        const { name, initials } = this.props;
+
+        if (typeof initials === 'string')
+            return initials;
+
+        if (typeof initials === 'function')
+            return initials(name, this.props);
+
+        return defaultInitials(name, this.props);
     }
 
     getValue() {
