@@ -103,3 +103,12 @@ function parseSize(size) {
         unit
     };
 }
+
+export
+function defaultInitials(name, { maxInitials }) {
+    return name.split(/\s/)
+        .map(part => part.substring(0, 1).toUpperCase())
+        .filter(v => !!v)
+        .slice(0, maxInitials)
+        .join('');
+}

@@ -298,6 +298,18 @@ class Demo extends React.Component {
                     </section>
                 </ConfigProvider>
 
+                <ConfigProvider initials={name => name.split(/\s+/)[0]}>
+                    <section>
+                        <h2>Custom Initials Function</h2>
+                        <div>
+                            <Avatar name="Jim Jones" size={40} />
+                            <Avatar name="Jamie Jones" size={100} round={true} />
+                            <Avatar name="JJ" size={150} round="20px" />
+                            <Avatar name={this.state.name} size={200} />
+                        </div>
+                    </section>
+                </ConfigProvider>
+
             </div>
         );
     }
