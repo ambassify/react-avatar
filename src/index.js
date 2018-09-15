@@ -236,8 +236,13 @@ class Avatar extends PureComponent {
             textTransform: 'uppercase',
             color: this.props.fgColor,
             background: this.state.color,
-            borderRadius: (round === true ? '100%' : round),
-            display: 'table'
+            borderRadius: (round === true ? '100%' : round)
+        };
+
+        const tableStyle = unstyled ? null : {
+            display: 'table',
+            width: '100%',
+            height: '100%'
         };
 
         const spanStyle = unstyled ? null : {
@@ -248,11 +253,13 @@ class Avatar extends PureComponent {
         return (
             <div className={className + ' sb-avatar__text'}
                 style={initialsStyle}>
-                <span style={spanStyle}>
-                    <span ref={this._scaleTextNode} key={this.state.value}>
-                        {this.state.value}
+                <div style={tableStyle}>
+                    <span style={spanStyle}>
+                        <span ref={this._scaleTextNode} key={this.state.value}>
+                            {this.state.value}
+                        </span>
                     </span>
-                </span>
+                </div>
             </div>
         );
     }
