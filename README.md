@@ -30,12 +30,9 @@ Install the component using [NPM](https://www.npmjs.com/):
 ```sh
 $ npm install react-avatar --save
 
-# besides React, react-avatar also has react-addons-shallow-compare and prop-types
-# as peer dependencies, make sure to install the correct version
-# for your version of react
-$ npm install react-addons-shallow-compare@^0.14 --save
-# OR
-$ npm install react-addons-shallow-compare@^15 --save
+# besides React, react-avatar also has prop-types as peer dependency,
+# make sure to install it into your project
+$ npm install prop-types --save
 ```
 
 Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip).
@@ -178,7 +175,7 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 | `hasSourceFailedBefore(source)`   | Returns `true` if the `source` has been tagged as failed using `sourceFailed(source)`, otherwise `false`. |
 
 ## Products using React Avatar
-* [BuboBox](https://www.bubobox.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
+
 * [Ambassify](https://www.ambassify.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
 
 ## Contributing
