@@ -27,6 +27,13 @@ export interface ReactAvatarProps {
      */
     maxInitials?: number;
     /**
+     * Initials to show or a method converting name into initials
+     * @param {string} name
+     * @param {any} value
+     * @returns {string}
+     */
+    initials?: string | ((name: string, props: any) => string);
+    /**
      * Show a value as avatar
      */
     value?: string;
@@ -79,6 +86,17 @@ export interface ConfigProvider {
      * Cache implementation used to track broken img URLs
      */
     cache?: Cache;
+    /**
+     * Method converting name into initials
+     * @param {string} name
+     * @param {any} value
+     * @returns {string}
+     */
+    initials?: (name: string, props: any) => string;
+    /**
+     * The baseUrl for a avatar-redirect service
+     */
+    avatarRedirectUrl?: string;
 }
 
 export interface Cache {
