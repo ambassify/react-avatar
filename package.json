@@ -4,6 +4,7 @@
   "description": "Universal React avatar component makes it possible to generate avatars based on user information.",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "index.d.ts",
   "typings": "index.d.ts",
   "scripts": {
     "prepack": "npm -s run test && npm -s run build",
@@ -35,7 +36,7 @@
     "react-component",
     "avatar"
   ],
-  "homepage": "https://github.com/sitebase/react-avatar",
+  "homepage": "https://www.sitebase.be/react-avatar/",
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
     "prop-types": "^15.0.0 || ^16.0.0"

@@ -1,4 +1,5 @@
-# &lt;Avatar&gt;[![Build Status](https://travis-ci.org/Sitebase/react-avatar.svg?branch=master)](https://travis-ci.org/Sitebase/react-avatar)
+# &lt;Avatar&gt; [![Build Status](https://travis-ci.org/Sitebase/react-avatar.svg?branch=master)](https://travis-ci.org/Sitebase/react-avatar) [![npm downloads](https://img.shields.io/npm/dm/react-avatar.svg)](https://www.npmjs.com/package/react-avatar) [![version](https://img.shields.io/npm/v/react-avatar.svg)](https://www.npmjs.com/package/react-avatar) ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/react-avatar.svg) ![npm type definitions](https://img.shields.io/npm/types/react-avatar.svg)
+
 Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
 We use a fallback system that if for example an invalid Facebook ID is used it will try Google, and so on.
 
@@ -29,12 +30,9 @@ Install the component using [NPM](https://www.npmjs.com/):
 ```sh
 $ npm install react-avatar --save
 
-# besides React, react-avatar also has react-addons-shallow-compare and prop-types
-# as peer dependencies, make sure to install the correct version
-# for your version of react
-$ npm install react-addons-shallow-compare@^0.14 --save
-# OR
-$ npm install react-addons-shallow-compare@^15 --save
+# besides React, react-avatar also has prop-types as peer dependency,
+# make sure to install it into your project
+$ npm install prop-types --save
 ```
 
 Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip).
@@ -177,7 +175,7 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 | `hasSourceFailedBefore(source)`   | Returns `true` if the `source` has been tagged as failed using `sourceFailed(source)`, otherwise `false`. |
 
 ## Products using React Avatar
-* [BuboBox](https://www.bubobox.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
+
 * [Ambassify](https://www.ambassify.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
 
 ## Contributing
