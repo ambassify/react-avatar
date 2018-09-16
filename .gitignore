@@ -1,2 +1,5 @@
 node_modules/
+build
+lib
+es
 .DS_Store
