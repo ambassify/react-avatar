@@ -1,4 +1,5 @@
-# &lt;Avatar&gt;[![Build Status](https://travis-ci.org/Sitebase/react-avatar.svg?branch=master)](https://travis-ci.org/Sitebase/react-avatar)
+# &lt;Avatar&gt; [![Build Status](https://travis-ci.org/Sitebase/react-avatar.svg?branch=master)](https://travis-ci.org/Sitebase/react-avatar) [![npm downloads](https://img.shields.io/npm/dm/react-avatar.svg)](https://www.npmjs.com/package/react-avatar) [![version](https://img.shields.io/npm/v/react-avatar.svg)](https://www.npmjs.com/package/react-avatar) ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/react-avatar.svg) ![npm type definitions](https://img.shields.io/npm/types/react-avatar.svg)
+
 Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
 We use a fallback system that if for example an invalid Facebook ID is used it will try Google, and so on.
 
