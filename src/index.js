@@ -101,7 +101,7 @@ class Avatar extends PureComponent {
 
         this.state = {
             internal: null,
-            src: props.src,
+            src: null,
             value: null,
             color: props.color
         };
