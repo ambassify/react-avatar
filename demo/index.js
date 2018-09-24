@@ -31,10 +31,16 @@ class Demo extends React.Component {
         color: customColors[0]
     }
 
-    _onChangeName = () => {
+    _onToggleName = () => {
         this.setState({
             name: 'Foo Bar',
             skypeId: null
+        });
+    }
+
+    _onChangeName = (e) => {
+        this.setState({
+            name: e.target.value
         });
     }
 
@@ -63,6 +69,16 @@ class Demo extends React.Component {
         return (
             <div>
                 <section>
+                    <h2>Configure</h2>
+                    <p>Set a name to use in the examples below.</p>
+                    <label style={{ display: 'block' }}>
+                        <span>Name:</span>&nbsp;
+                        <input type="text"
+                            value={this.state.name}
+                            onChange={this._onChangeName} />
+                    </label>
+                </section>
+                <section>
                     <h2>Gravatar</h2>
                     <Avatar className="myCustomClass" md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={40} />
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={100} round={true} />
@@ -76,6 +92,14 @@ class Demo extends React.Component {
                     <Avatar email="foo" name="Jamie Jones" size={80} />
                     <Avatar name="Jessica Jones" size={80} />
                     <Avatar name="Jeronimo Jones" size={80} />
+                </section>
+
+                <section>
+                    <h2>Initials Text Size</h2>
+                    <Avatar name={this.state.name} size={80} />
+                    <Avatar name="Wim Mostmans" size={80} />
+                    <Avatar name="Jeronimo Jones" size={80} />
+                    <Avatar name="Wim Test Mostmans" size={80} />
                 </section>
 
                 <section>
@@ -133,7 +157,7 @@ class Demo extends React.Component {
                 <section>
                     <h2>Initials</h2>
                     <div>
-                        <button onClick={this._onChangeName}>Change name</button>
+                        <button onClick={this._onToggleName}>Change name</button>
                         <button onClick={this._onSetSkype}>Set skype ID</button>
                     </div>
                     <Avatar name={this.state.name} skypeId={this.state.skypeId} size={40} />
