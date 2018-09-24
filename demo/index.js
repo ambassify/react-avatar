@@ -218,6 +218,42 @@ class Demo extends React.Component {
                 </section>
 
                 <section>
+                    <h2>Initials are always restrained to a margin</h2>
+                    <div>
+                        <Avatar name="A B C B W X Y Z" size={40} textSizeRatio={1} />
+                        <Avatar name="A B C B W X Y Z" size={100} round={true} textSizeRatio={1} />
+                        <Avatar name="A B C B W X Y Z" size={150} round="20px" textSizeRatio={1} />
+                        <Avatar name="A B C B W X Y Z" size={200} textSizeRatio={1} />
+                    </div>
+                    <div>
+                        <Avatar name="A B C B W X Y Z" size="30pt" textSizeRatio={1} />
+                        <Avatar name="A B C B W X Y Z" size="90pt" round={true} textSizeRatio={1} />
+                        <Avatar name="A B C B W X Y Z" size="130pt" round="20px" textSizeRatio={1} />
+                        <Avatar name="A B C B W X Y Z" size="170pt" textSizeRatio={1} />
+                    </div>
+                    <div>
+                        <Avatar value="A B C B W X Y Z" size="4vw" textSizeRatio={1} />
+                        <Avatar value="A B C B W X Y Z" size="6vw" round={true} textSizeRatio={1} />
+                        <Avatar value="A B C B W X Y Z" size="10vw" round="20px" textSizeRatio={1} />
+                        <Avatar value="A B C B W X Y Z" size="15vw" textSizeRatio={1} />
+                    </div>
+                    <div style={{ overflow: 'hidden', margin: '0 auto', width: '800px', textAlign: 'center' }}>
+                        <div style={{ width: '200px', height: '200px', float: 'left' }}>
+                            <Avatar value="A B C B W X Y Z" skypeId={this.state.skypeId} size="30%" />
+                        </div>
+                        <div style={{ width: '200px', height: '200px', float: 'left' }}>
+                            <Avatar value="A B C B W X Y Z" size="45%" round={true} />
+                        </div>
+                        <div style={{ width: '200px', height: '200px', float: 'left' }}>
+                            <Avatar value="A B C B W X Y Z" size="60%" round="20px" />
+                        </div>
+                        <div style={{ width: '200px', height: '200px', float: 'left' }}>
+                            <Avatar value="A B C B W X Y Z" size="100%" />
+                        </div>
+                    </div>
+                </section>
+
+                <section>
                     <h2>Custom colors</h2>
                     <div>
                         <Avatar name={this.state.name} color={getRandomColor('Jim Jones', customColors)} size={40} />

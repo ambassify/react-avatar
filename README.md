@@ -112,6 +112,7 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | `fgColor`     | *string*          | #FFF  | Used in combination with `name` and `value`. Give the text a fixed color with a hex like for example #FF0000 |
 | `size`        | *[length][1]*             | 50px      | Size of the avatar                                                                                     |
 | `textSizeRatio` | *number*             | 3      | For text based avatars the size of the text as a fragment of size (size / textSizeRatio)                                 |
+| `textMarginRatio` | *number*             | .15      | For text based avatars. The size of the minimum margin between the text and the avatar's edge, used to make sure the text will always fit inside the avatar. (calculated as `size * textMarginRatio`)                                 |
 | `round`       | *bool or [length][1]*            | false   | The amount of `border-radius` to apply to the avatar corners, `true` shows the avatar in a circle.          |
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
 | `style`         | *object*          |         | Style that will be applied on the root element                                                       |
