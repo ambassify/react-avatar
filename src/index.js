@@ -187,7 +187,12 @@ class Avatar extends PureComponent {
 
         if (!node || unstyled) return;
 
+
         const parent = node.parentNode;
+
+        // Reset font-size such that scaling works correctly (#133)
+        parent.style.fontSize = null;
+
         const textWidth = node.getBoundingClientRect().width;
         if (textWidth < 0)
             return;
@@ -197,7 +202,7 @@ class Avatar extends PureComponent {
 
         // Set font-size on parent span, otherwise the `table-cell` span
         // will cause alignment issues.
-        node.parentNode.style.fontSize = `calc((100% * ${ratio}) / ${textSizeRatio})`;
+        parent.style.fontSize = `calc((100% * ${ratio}) / ${textSizeRatio})`;
     }
 
     _renderAsImage() {
