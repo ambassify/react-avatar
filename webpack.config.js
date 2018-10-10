@@ -31,6 +31,7 @@ module.exports = {
             use: 'eslint-loader'
         }, {
             test: /\.js$/,
+            exclude: /node_modules/,
             use: 'babel-loader'
         }, {
             test: /\.(css|html|jpe?g|png)$/,
