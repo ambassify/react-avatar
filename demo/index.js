@@ -138,13 +138,15 @@ class Demo extends React.Component {
                     </section>
                 </ConfigProvider>
 
-                <section>
-                    <h2>Vkontakte</h2>
-                    <Avatar vkontakteId="1" size={40} />
-                    <Avatar vkontakteId="1" size={100} round={true} />
-                    <Avatar vkontakteId="1" size={150} round="20px" />
-                    <Avatar vkontakteId="1" size={200} />
-                </section>
+                <ConfigProvider avatarRedirectUrl="https://avatar-redirect.appspot.com">
+                    <section>
+                        <h2>Vkontakte</h2>
+                        <Avatar vkontakteId="1" size={40} />
+                        <Avatar vkontakteId="1" size={100} round={true} />
+                        <Avatar vkontakteId="1" size={150} round="20px" />
+                        <Avatar vkontakteId="1" size={200} />
+                    </section>
+                </ConfigProvider>
 
                 <section>
                     <h2>Skype</h2>
