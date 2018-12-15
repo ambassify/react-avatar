@@ -9,7 +9,6 @@ import InternalState from './internal-state';
 
 import gravatarSource from './sources/Gravatar';
 import facebookSource from './sources/Facebook';
-import vkontakteSource from './sources/Vkontakte';
 import twitterSource from './sources/Twitter';
 import googleSource from './sources/Google';
 import skypeSource from './sources/Skype';
@@ -24,7 +23,7 @@ const SOURCES = [
     twitterSource,
     redirectSource('twitter', 'twitterHandle'),
     redirectSource('instagram', 'instagramId'),
-    vkontakteSource,
+    redirectSource('vkontakte', 'vkontakteId'),
     skypeSource,
     gravatarSource,
     srcSource,
