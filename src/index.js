@@ -80,6 +80,7 @@ class Avatar extends PureComponent {
             PropTypes.string
         ]),
         textSizeRatio: PropTypes.number,
+        textMarginRatio: PropTypes.number,
         unstyled: PropTypes.bool,
         cache: PropTypes.object,
         onClick: PropTypes.func
@@ -92,6 +93,7 @@ class Avatar extends PureComponent {
         round: false,
         size: 100,
         textSizeRatio: 3,
+        textMarginRatio: .15,
         unstyled: false
     }
 
@@ -182,26 +184,37 @@ class Avatar extends PureComponent {
     };
 
     _scaleTextNode = (node) => {
-        const { unstyled, textSizeRatio } = this.props;
+        const { unstyled, textSizeRatio, textMarginRatio } = this.props;
 
-        if (!node || unstyled) return;
+        if (!node || unstyled)
+            return;
 
+        const spanNode = node.parentNode;
+        const tableNode = spanNode.parentNode;
+        const {
+            width: containerWidth,
+            height: containerHeight
+        } = spanNode.getBoundingClientRect();
 
-        const parent = node.parentNode;
+        // If the tableNode (outer-container) does not have its fontSize set yet,
+        // we'll set it according to "textSizeRatio"
+        if (!tableNode.style.fontSize) {
+            const baseFontSize = containerHeight / textSizeRatio;
+            tableNode.style.fontSize = `${baseFontSize}px`;
+        }
 
-        // Reset font-size such that scaling works correctly (#133)
-        parent.style.fontSize = null;
+        // Measure the actual width of the text after setting the container size
+        const { width: textWidth } = node.getBoundingClientRect();
 
-        const textWidth = node.getBoundingClientRect().width;
         if (textWidth < 0)
             return;
 
-        const containerWidth = parent.getBoundingClientRect().width;
-        const ratio = containerWidth / textWidth;
+        // Calculate the maximum width for the text based on "textMarginRatio"
+        const maxTextWidth = containerWidth * (1 - (2 * textMarginRatio));
 
-        // Set font-size on parent span, otherwise the `table-cell` span
-        // will cause alignment issues.
-        parent.style.fontSize = `calc((100% * ${ratio}) / ${textSizeRatio})`;
+        // If the text is too wide, scale it down by (maxWidth / actualWidth)
+        if (textWidth > maxTextWidth)
+            spanNode.style.fontSize = `calc(100% * ${maxTextWidth / textWidth})`;
     }
 
     _renderAsImage() {
@@ -245,13 +258,16 @@ class Avatar extends PureComponent {
 
         const tableStyle = unstyled ? null : {
             display: 'table',
+            tableLayout: 'fixed',
             width: '100%',
             height: '100%'
         };
 
         const spanStyle = unstyled ? null : {
             display: 'table-cell',
-            verticalAlign: 'middle'
+            verticalAlign: 'middle',
+            fontSize: '100%',
+            whiteSpace: 'nowrap'
         };
 
         return (
