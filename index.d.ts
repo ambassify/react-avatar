@@ -17,6 +17,7 @@ export interface ReactAvatarProps {
     facebookId?: string;
     twitterHandle?: string;
     googleId?: string;
+    githubHandle?: string;
     skypeId?: string;
     /**
      * Will be used to generate avatar based on the initials of the person
