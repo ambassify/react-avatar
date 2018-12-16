@@ -157,6 +157,14 @@ class Demo extends React.Component {
                 </section>
 
                 <section>
+                    <h2>Github</h2>
+                    <Avatar githubHandle="sitebase" size={40} />
+                    <Avatar githubHandle="sitebase" size={100} round={true} />
+                    <Avatar githubHandle="sitebase" size={150} round="20px" />
+                    <Avatar githubHandle="sitebase" size={200} />
+                </section>
+
+                <section>
                     <h2>Initials</h2>
                     <div>
                         <button onClick={this._onToggleName}>Change name</button>

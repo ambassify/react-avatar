@@ -9,6 +9,7 @@ For the moment we support following types:
 
 * Facebook
 * Google
+* GitHub
 * Twitter (using [Avatar Redirect](#avatar-redirect))
 * Instagram (using [Avatar Redirect](#avatar-redirect))
 * Vkontakte
@@ -57,6 +58,7 @@ Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip
 ```html
 <Avatar googleId="118096717852922241760" size="100" round={true} />
 <Avatar facebookId="100008343750912" size="150" />
+<Avatar githubHandle="sitebase" size={150} round="20px" />
 <Avatar vkontakteId="1" size="150" />
 <Avatar skypeId="sitebase" size="200" />
 <Avatar twitterHandle="sitebase" size="40" />
@@ -103,6 +105,7 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | `twitterHandle` | *string* |         |                                                                                                        |
 | `instagramId` | *string* |         |                                                                                                        |
 | `googleId`   | *string*             |         |                                                                                                        |
+| `githubHandle`| *string*          |         | String of the user's GitHub handle.  |
 | `skypeId`    | *string*          |         |                                                                                                        |
 | `name`        | *string*          |         | Will be used to generate avatar based on the initials of the person                                    |
 | `maxInitials` | *number*          |         | Set max nr of characters used for the initials. If maxInitials=2 and the name is Foo Bar Var the initials will be FB  |

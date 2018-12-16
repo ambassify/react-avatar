@@ -11,6 +11,7 @@ import gravatarSource from './sources/Gravatar';
 import facebookSource from './sources/Facebook';
 import twitterSource from './sources/Twitter';
 import googleSource from './sources/Google';
+import githubSource from './sources/Github';
 import skypeSource from './sources/Skype';
 import valueSource from './sources/Value';
 import srcSource from './sources/Src';
@@ -20,6 +21,7 @@ import redirectSource from './sources/AvatarRedirect';
 const SOURCES = [
     facebookSource,
     googleSource,
+    githubSource,
     twitterSource,
     redirectSource('twitter', 'twitterHandle'),
     redirectSource('instagram', 'instagramId'),
