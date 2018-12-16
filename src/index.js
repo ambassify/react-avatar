@@ -217,7 +217,7 @@ class Avatar extends PureComponent {
 
         // If the text is too wide, scale it down by (maxWidth / actualWidth)
         if (textWidth > maxTextWidth)
-            spanNode.style.fontSize = `calc(100% * ${maxTextWidth / textWidth})`;
+            spanNode.style.fontSize = `calc(1em * ${maxTextWidth / textWidth})`;
     }
 
     _renderAsImage() {
