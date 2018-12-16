@@ -54,6 +54,10 @@ export interface ReactAvatarProps {
      */
     textSizeRatio?: number;
     /**
+     * For text based avatars. The size of the minimum margin between the text and the avatar's edge, used to make sure the text will always fit inside the avatar. (calculated as `size * textMarginRatio`)
+     */
+    textMarginRatio?: number;
+    /**
      * The amount of `border-radius` to apply to the avatar corners, `true` shows the avatar in a circle.
      */
     round?: boolean | string;
