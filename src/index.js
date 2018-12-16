@@ -203,6 +203,9 @@ class Avatar extends PureComponent {
             tableNode.style.fontSize = `${baseFontSize}px`;
         }
 
+        // Reset font-size such that scaling works correctly (#133)
+        spanNode.style.fontSize = null;
+
         // Measure the actual width of the text after setting the container size
         const { width: textWidth } = node.getBoundingClientRect();
 
