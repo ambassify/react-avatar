@@ -28,7 +28,7 @@ export default {
         // cache not available
         if (!_hasLocalStorage)
             return null;
-            
+
         const value = localStorage.getItem(CACHE_PREFIX + key);
 
         if (value)
