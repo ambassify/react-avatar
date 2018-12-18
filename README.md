@@ -12,7 +12,7 @@ For the moment we support following types:
 * GitHub
 * Twitter (using [Avatar Redirect](#avatar-redirect))
 * Instagram (using [Avatar Redirect](#avatar-redirect))
-* Vkontakte
+* Vkontakte (using [Avatar Redirect](#avatar-redirect))
 * Skype
 * Gravatar
 * Custom image
