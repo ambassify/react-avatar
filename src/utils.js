@@ -1,4 +1,5 @@
 'use strict';
+import Parser from 'uri-parser';
 
 export
 function fetch(url, successCb, errorCb) {
@@ -112,3 +113,18 @@ function defaultInitials(name, { maxInitials }) {
         .slice(0, maxInitials)
         .join('');
 }
+
+
+/**
+ * takes in a uri and maps it to a object
+ * that mimics a source avatar
+ * @param {String} uri
+ */
+export const parseURI = uri => {
+    const { protocol, host, queryKey } = Parser.parse(uri);
+    return {
+        source: protocol,
+        src: host,
+        otherProps: queryKey || {}
+    };
+};
