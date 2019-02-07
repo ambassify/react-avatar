@@ -87,7 +87,8 @@ class Avatar extends PureComponent {
         unstyled: PropTypes.bool,
         cache: PropTypes.object,
         onClick: PropTypes.func,
-        uri: PropTypes.string // protocol gh://patricksimonian?
+        uri: PropTypes.string,
+        allowUriProps: PropTypes.bool // allows the query string to map to props
 
     }
 
@@ -99,7 +100,8 @@ class Avatar extends PureComponent {
         textSizeRatio: 3,
         textMarginRatio: .15,
         unstyled: false,
-        uri: ''
+        uri: '',
+        allowUriProps: true
     }
 
     constructor(props) {
@@ -129,10 +131,12 @@ class Avatar extends PureComponent {
 
                     props = {
                         ...this.props,
-                        ...normalizedAvatarSourceMapping,
-                        ...otherProps
+                        ...normalizedAvatarSourceMapping
                     };
 
+                    if(this.props.allowUriProps) {
+                        props = {...props, ...otherProps};
+                    }
                 }
             } catch(e) {
                 // this failed for one of many reasons, incorrect data types
