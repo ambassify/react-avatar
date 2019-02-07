@@ -12,8 +12,7 @@ export const SOURCE_TYPES = {
     VKONTAKTE: 'VKONTAKTE'
 };
 
-// maps the unified source attribute to the appropriate value that is used by each source
-// instance to fetch is data
+// maps the source attribute required by a source to fetch its data
 export const SOURCE_TYPE_SRC_MAPPING = {
     [SOURCE_TYPES.FACEBOOK]: 'facebookId',
     [SOURCE_TYPES.GITHUB]: 'githubHandle',

@@ -121,7 +121,7 @@ class Avatar extends PureComponent {
             try {
                 const {source, src, otherProps} = parseURI(this.props.uri);
                 const normalizedSource = source.toUpperCase();
-                // does the normalized objects source type actually exist as apart of the enum?
+                // does the normalized source type actually exist as apart of the SOURCE TYPES enum?
                 if(Object.prototype.hasOwnProperty.call(SOURCE_TYPES, normalizedSource)) {
                     // returns the required prop that is needed by the matcher for the given source.
                     const normalizedAvatarSourceMapping = {
@@ -138,8 +138,7 @@ class Avatar extends PureComponent {
                     }
                 }
             } catch(e) {
-                // this failed for one of many reasons, incorrect data types
-                // failure to parse uri
+                // this failed most likely because uri was invalid or bad datatype
                 warning(true, 'Failed to parse uri');
             }
         }
