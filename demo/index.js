@@ -178,7 +178,7 @@ class Demo extends React.Component {
 
                 <section>
                     <h2>Github</h2>
-                    <Avatar githubHandle="patricksimonian" size={40} />
+                    <Avatar githubHandle="sitebase" size={40} />
                     <Avatar githubHandle="sitebase" size={100} round={true} />
                     <Avatar githubHandle="sitebase" size={150} round="20px" />
                     <Avatar githubHandle="sitebase" size={200} />
