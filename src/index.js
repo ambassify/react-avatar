@@ -2,9 +2,10 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
+import warning from 'warning';
 import {withConfig, ConfigProvider} from './context';
-import {getRandomColor, parseSize} from './utils';
+import {getRandomColor, parseSize, parseURI} from './utils';
+import { SOURCE_TYPES, SOURCE_TYPE_SRC_MAPPING } from './constants';
 import InternalState from './internal-state';
 
 import gravatarSource from './sources/Gravatar';
@@ -85,7 +86,8 @@ class Avatar extends PureComponent {
         textMarginRatio: PropTypes.number,
         unstyled: PropTypes.bool,
         cache: PropTypes.object,
-        onClick: PropTypes.func
+        onClick: PropTypes.func,
+        uri: PropTypes.string // protocol gh://patricksimonian?
 
     }
 
@@ -96,7 +98,8 @@ class Avatar extends PureComponent {
         size: 100,
         textSizeRatio: 3,
         textMarginRatio: .15,
-        unstyled: false
+        unstyled: false,
+        uri: ''
     }
 
     constructor(props) {
@@ -111,7 +114,33 @@ class Avatar extends PureComponent {
     }
 
     componentDidMount() {
-        this.fetch();
+        let props = this.props;
+        // do we have a uri?
+        if(this.props.uri) {
+            try {
+                const {source, src, otherProps} = parseURI(this.props.uri);
+                const normalizedSource = source.toUpperCase();
+                // does the normalized objects source type actually exist as apart of the enum?
+                if(Object.prototype.hasOwnProperty.call(SOURCE_TYPES, normalizedSource)) {
+                    // returns the required prop that is needed by the matcher for the given source.
+                    const normalizedAvatarSourceMapping = {
+                        [SOURCE_TYPE_SRC_MAPPING[normalizedSource]]: src
+                    };
+
+                    props = {
+                        ...this.props,
+                        ...normalizedAvatarSourceMapping,
+                        ...otherProps
+                    };
+
+                }
+            } catch(e) {
+                // this failed for one of many reasons, incorrect data types
+                // failure to parse uri
+                warning(true, 'Failed to parse uri');
+            }
+        }
+        this.fetch(props);
     }
 
     componentWillReceiveProps(newProps) {
@@ -137,8 +166,8 @@ class Avatar extends PureComponent {
     static getRandomColor = getRandomColor
     static ConfigProvider = ConfigProvider
 
-    _createFetcher = (internal) => (errEvent) => {
-        const { cache } = this.props;
+    _createFetcher = (internal, props) => (errEvent) => {
+        const { cache } = props;
 
         if (!internal.isActive(this.state))
             return;
@@ -155,7 +184,7 @@ class Avatar extends PureComponent {
 
         internal.sourcePointer++;
 
-        matchSource(source, this.props, (nextState) => {
+        matchSource(source, props, (nextState) => {
             if (!nextState)
                 return setTimeout(internal.fetch, 0);
 
@@ -178,9 +207,9 @@ class Avatar extends PureComponent {
         });
     }
 
-    fetch = () => {
+    fetch = (props) => {
         const internal = new InternalState();
-        internal.fetch = this._createFetcher(internal);
+        internal.fetch = this._createFetcher(internal, props);
 
         this.setState({ internal }, internal.fetch);
     };
