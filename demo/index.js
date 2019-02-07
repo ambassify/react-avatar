@@ -79,6 +79,26 @@ class Demo extends React.Component {
                     </label>
                 </section>
                 <section>
+                    <h2>By URI</h2>
+                    <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center'}}>
+                        <div>
+                            <h3>Github</h3>
+                            <Avatar className="myCustomClass" uri="github://patricksimonian?size=100" />
+                        </div>
+                        <div>
+                            <h3>Instagram</h3>
+                    <ConfigProvider avatarRedirectUrl="https://avatar-redirect.appspot.com">
+                            <Avatar className="myCustomClass" uri="instagram://sitebase?size=100" />
+                    </ConfigProvider>
+                        </div>
+                        <div>
+                            <h3>Facebook</h3>
+                            <Avatar className="myCustomClass" uri="facebook://100008343750912?size=100" />
+                        </div>
+
+                    </div>
+                </section>
+                <section>
                     <h2>Gravatar</h2>
                     <Avatar className="myCustomClass" md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={40} />
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={100} round={true} />
@@ -158,7 +178,7 @@ class Demo extends React.Component {
 
                 <section>
                     <h2>Github</h2>
-                    <Avatar githubHandle="sitebase" size={40} />
+                    <Avatar githubHandle="patricksimonian" size={40} />
                     <Avatar githubHandle="sitebase" size={100} round={true} />
                     <Avatar githubHandle="sitebase" size={150} round="20px" />
                     <Avatar githubHandle="sitebase" size={200} />

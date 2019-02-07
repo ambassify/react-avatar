@@ -46,7 +46,6 @@ function matchSource(Source, props, cb) {
 
     if(!instance.isCompatible(props))
         return cb();
-
     instance.get((state) => {
         const failedBefore = state &&
             state.hasOwnProperty('src') &&

@@ -7,7 +7,9 @@ export const SOURCE_TYPES = {
     ICON: 'ICON',
     SKYPE: 'SKYPE',
     TWITTER: 'TWITTER',
-    SRC: 'SRC'
+    SRC: 'SRC',
+    INSTAGRAM: 'INSTAGRAM',
+    VKONTAKTE: 'VKONTAKTE'
 };
 
 // maps the unified source attribute to the appropriate value that is used by each source
@@ -19,5 +21,7 @@ export const SOURCE_TYPE_SRC_MAPPING = {
     [SOURCE_TYPES.GRAVATAR]: 'email',
     [SOURCE_TYPES.SKYPE]: 'skypeId',
     [SOURCE_TYPES.ICON]: 'icon',
-    [SOURCE_TYPES.SRC]: 'src'
+    [SOURCE_TYPES.SRC]: 'src',
+    [SOURCE_TYPES.INSTAGRAM]: 'instagramId',
+    [SOURCE_TYPES.VKONTAKTE]: 'vkontakteId'
 };
