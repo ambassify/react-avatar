@@ -65,6 +65,8 @@
   "dependencies": {
     "core-js": "^2.5.7",
     "is-retina": "^1.0.3",
-    "md5": "^2.0.0"
+    "md5": "^2.0.0",
+    "uri-parser": "^1.0.1",
+    "warning": "^4.0.2"
   }
 }
