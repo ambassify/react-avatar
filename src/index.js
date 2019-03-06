@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import {withConfig, ConfigProvider} from './context';
-import {getRandomColor, parseSize} from './utils';
+import {getRandomColor, parseSize, setGroupedTimeout} from './utils';
 import InternalState from './internal-state';
 
 import gravatarSource from './sources/Gravatar';
@@ -111,6 +111,7 @@ class Avatar extends PureComponent {
     }
 
     componentDidMount() {
+        this.mounted = true;
         this.fetch();
     }
 
@@ -129,6 +130,7 @@ class Avatar extends PureComponent {
     }
 
     componentWillUnmount() {
+        this.mounted = false;
         if (this.state.internal) {
             this.state.internal.active = false;
         }
@@ -185,18 +187,31 @@ class Avatar extends PureComponent {
         this.setState({ internal }, internal.fetch);
     };
 
-    _scaleTextNode = (node) => {
+    _scaleTextNode = (node, retryTTL = 16) => {
         const { unstyled, textSizeRatio, textMarginRatio } = this.props;
 
-        if (!node || unstyled)
+        if (!node || unstyled || this.state.src || !this.mounted)
             return;
 
         const spanNode = node.parentNode;
         const tableNode = spanNode.parentNode;
+
         const {
             width: containerWidth,
             height: containerHeight
         } = spanNode.getBoundingClientRect();
+
+        // Whenever the avatar element is not visible due to some CSS
+        // (such as display: none) on any parent component we will check
+        // whether the component has become visible.
+        //
+        // The time between checks grows up to half a second in an attempt
+        // to reduce flicker / performance issues.
+        if (containerWidth == 0 && containerHeight == 0) {
+            const ttl = Math.min(retryTTL * 1.5, 500);
+            setGroupedTimeout(() => this._scaleTextNode(node, ttl), ttl);
+            return;
+        }
 
         // If the tableNode (outer-container) does not have its fontSize set yet,
         // we'll set it according to "textSizeRatio"

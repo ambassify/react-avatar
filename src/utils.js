@@ -112,3 +112,26 @@ function defaultInitials(name, { maxInitials }) {
         .slice(0, maxInitials)
         .join('');
 }
+
+/**
+ * Grouped timeouts reduce the amount of timeouts trigged
+ * by grouping multiple handlers into a single setTimeout call.
+ *
+ * This reduces accuracy of the timeout but will be less expensive
+ * when multiple avatar have been loaded into view.
+ */
+const timeoutGroups = {};
+
+export
+function setGroupedTimeout(fn, ttl) {
+    if (timeoutGroups[ttl]) {
+        timeoutGroups[ttl].push(fn);
+        return;
+    }
+
+    const callbacks = timeoutGroups[ttl] = [fn];
+    setTimeout(() => {
+        delete timeoutGroups[ttl];
+        callbacks.forEach(cb => cb());
+    }, ttl);
+}
