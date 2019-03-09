@@ -131,6 +131,60 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | `initials` | *function* | [defaultInitials][3] | A function that derives the initials from the component props, the method should have the signature `fn(name, props)`  |
 | `avatarRedirectUrl`  | *URL*          | `undefined`  | Base URL to a [Avatar Redirect](#avatar-redirect) instance |
 
+**Example**
+
+```html
+import Avatar, { ConfigProvider } from 'react-avatar';
+
+<ConfigProvider colors={['red', 'green', 'blue']}>
+    <YourApp>
+        ...
+        <Avatar name="Wim Mostmans" />
+        ...
+    </YourApp>
+</ConfigProvider>
+
+```
+
+### Cache
+
+This class represents the default implementation of the cache used by react-avatar.
+
+Looking to implement more complex [custom cache behaviour](#implementing-a-custom-cache)?
+
+|   Attribute   |      Options      | Default |                                              Description                                               |
+| ------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| `cachePrefix`   | *string*          | `react-avatar/`  | The prefix for `localStorage` keys used by the cache. |
+| `sourceTTL`   | *number*          | 604800000 (7 days)  | The amount of time a failed source is kept in cache. (in milliseconds) |
+| `sourceSize`  | *number*          | 20      | The maximum number of failed source entries to keep in cache at any time. |
+
+**usage**
+
+```html
+import Avatar, { Cache, ConfigProvider } from 'react-avatar';
+
+const cache = new Cache({
+
+    // Keep cached source failures for up to 7 days
+    sourceTTL: 7 * 24 * 3600 * 1000,
+
+    // Keep a maximum of 20 entries in the source cache
+    sourceSize: 20
+});
+
+// Apply cache globally
+<ConfigProvider cache={cache}>
+    <YourApp>
+        ...
+        <Avatar name="Wim Mostmans" />
+        ...
+    </YourApp>
+</ConfigProvider>
+
+// For specific instances
+<Avatar name="Wim Mostmans" cache={cache} />
+
+```
 
 ### Avatar Redirect
 

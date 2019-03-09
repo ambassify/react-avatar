@@ -3,6 +3,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+import { Cache } from './cache';
 import {withConfig, ConfigProvider} from './context';
 import {getRandomColor, parseSize, setGroupedTimeout} from './utils';
 import InternalState from './internal-state';
@@ -38,6 +39,7 @@ const sourcePropTypes = SOURCES.reduce((r, s) => Object.assign(r, s.propTypes), 
 
 export {getRandomColor} from './utils';
 export {ConfigProvider} from './context';
+export {Cache} from './cache';
 
 function matchSource(Source, props, cb) {
     const { cache } = props;
@@ -137,6 +139,8 @@ class Avatar extends PureComponent {
     }
 
     static getRandomColor = getRandomColor
+
+    static Cache = Cache;
     static ConfigProvider = ConfigProvider
 
     _createFetcher = (internal) => (errEvent) => {
@@ -340,5 +344,6 @@ class Avatar extends PureComponent {
 
 export default Object.assign(withConfig(Avatar), {
     getRandomColor,
-    ConfigProvider
+    ConfigProvider,
+    Cache
 });
