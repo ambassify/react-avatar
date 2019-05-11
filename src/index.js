@@ -70,6 +70,7 @@ class Avatar extends PureComponent {
         // PropTypes defined on sources
         ...sourcePropTypes,
 
+        alt: PropTypes.string,
         className: PropTypes.string,
         fgColor: PropTypes.string,
         color: PropTypes.string,
@@ -242,10 +243,9 @@ class Avatar extends PureComponent {
     }
 
     _renderAsImage() {
-        const { className, round, unstyled, name, value } = this.props;
+        const { className, round, unstyled, alt, name, value } = this.props;
         const { internal } = this.state;
         const size = parseSize(this.props.size);
-        const alt = name || value;
 
         const imageStyle = unstyled ? null : {
             maxWidth: '100%',
@@ -260,7 +260,7 @@ class Avatar extends PureComponent {
                 height={size.str}
                 style={imageStyle}
                 src={this.state.src}
-                alt={alt}
+                alt={alt || name || value}
                 onError={internal && internal.fetch} />
         );
     }
