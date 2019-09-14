@@ -118,7 +118,7 @@ class Avatar extends PureComponent {
         this.fetch();
     }
 
-    componentWillReceiveProps(newProps) {
+    componentDidUpdate(prevProps) {
         let needsUpdate = false;
 
         // This seems redundant
@@ -126,7 +126,7 @@ class Avatar extends PureComponent {
         // Props that need to be in `state` are
         // `value`, `src` and `color`
         for (const prop in sourcePropTypes)
-            needsUpdate = needsUpdate || (newProps[prop] !== this.props[prop]);
+            needsUpdate = needsUpdate || (prevProps[prop] !== this.props[prop]);
 
         if (needsUpdate)
             setTimeout(this.fetch, 0);
