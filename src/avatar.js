@@ -270,12 +270,20 @@ function createAvatarComponent({ sources = [] }) {
                 whiteSpace: 'nowrap'
             };
 
+            // Ensure the text node is updated and scaled when any of these
+            // values changed by calling the `_scaleTextNode` method using
+            // the correct `ref`.
+            const key = [
+                this.state.value,
+                this.props.size
+            ].join('');
+
             return (
                 <div className={className + ' sb-avatar__text'}
                     style={initialsStyle}>
                     <div style={tableStyle}>
                         <span style={spanStyle}>
-                            <span ref={this._scaleTextNode} key={this.state.value}>
+                            <span ref={this._scaleTextNode} key={key}>
                                 {this.state.value}
                             </span>
                         </span>
