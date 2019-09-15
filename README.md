@@ -233,6 +233,56 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 | `sourceFailed(source)`            | Mark the image URL specified in `source` as failed. Returns `undefined` |
 | `hasSourceFailedBefore(source)`   | Returns `true` if the `source` has been tagged as failed using `sourceFailed(source)`, otherwise `false`. |
 
+## Reducing bundle size
+
+### Webpack 4
+
+When using webpack 4 you can rely on [tree shaking](https://webpack.js.org/guides/tree-shaking/) to drop unused sources when creating your Avatar component like the example below.
+
+```javascript
+import { createAvatarComponent, TwitterSource } from 'react-avatar';
+
+const Avatar = createAvatarComponent({
+    sources: [ TwitterSource ]
+});
+```
+
+Exported sources:
+- GravatarSource
+- FacebookSource
+- TwitterSource
+- GoogleSource
+- GithubSource
+- SkypeSource
+- ValueSource
+- SrcSource
+- IconSource
+- RedirectSource
+
+### Without Webpack >= 4
+
+If you are using a version of webpack that does not support tree shaking or are using a different bundler you'll need to import only those files you need.
+
+#### ES6 modules
+```javascript
+import createAvatarComponent from 'react-avatar/es/avatar';
+import TwitterSource from 'react-avatar/es/sources/Twitter';
+
+const Avatar = createAvatarComponent({
+    sources: [ TwitterSource ]
+});
+```
+
+#### Transpiled ES5 javascript / commonjs
+```javascript
+const createAvatarComponent = require('react-avatar/lib/avatar').default;
+const TwitterSource = require('react-avatar/lib/sources/Twitter').default;
+
+const Avatar = createAvatarComponent({
+    sources: [ TwitterSource ]
+});
+```
+
 ## Products using React Avatar
 
 * [Ambassify](https://www.ambassify.com/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)

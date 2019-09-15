@@ -6,6 +6,7 @@
   "module": "es/index.js",
   "types": "index.d.ts",
   "typings": "index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "prepack": "npm -s run test && npm -s run build",
     "clean": "rm -rf ./{lib,es}/*",
