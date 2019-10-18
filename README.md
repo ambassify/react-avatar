@@ -112,6 +112,7 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | `initials` | *string or function* | [defaultInitials][3] | Set the initials to show or a function that derives them from the component props, the method should have the signature `fn(name, props)` |
 | `value`       | *string*          |         | Show a value as avatar                                                                                 |
 | `alt`         | *string*          | `name` or `value` | The `alt` attribute used on the avatar `img` tag. If not set we will fallback to either `name` or `value` |
+| `title`       | *string*          | `name` or `value` | The `title` attribute used on the avatar `img` tag. If not set we will fallback to either `name` or `value` |
 | `color`       | *string*          | random  | Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example #FF0000 |
 | `fgColor`     | *string*          | #FFF  | Used in combination with `name` and `value`. Give the text a fixed color with a hex like for example #FF0000 |
 | `size`        | *[length][1]*             | 50px      | Size of the avatar                                                                                     |
