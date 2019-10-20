@@ -21,7 +21,7 @@ function matchSource(Source, props, cb) {
 
     instance.get((state) => {
         const failedBefore = state &&
-            state.hasOwnProperty('src') &&
+            state.src &&
             cache.hasSourceFailedBefore(state.src);
 
         if(!failedBefore && state) {
@@ -111,7 +111,7 @@ function createAvatarComponent({ sources = [] }) {
         componentWillUnmount() {
             this.mounted = false;
             if (this.state.internal) {
-                this.state.internal.active = false;
+                this.setState({ internal: { active: false }});
             }
         }
 

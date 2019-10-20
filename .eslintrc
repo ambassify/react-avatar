@@ -5,7 +5,10 @@
     "env": {
         "browser": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "rules": {
         "no-console": 2,
         "no-debugger": 0,
@@ -27,7 +30,6 @@
         "no-lonely-if": 2,
         "no-negated-condition": 2,
         "no-multiple-empty-lines": 2,
-        "react/display-name": 1,
         "new-parens": 2,
         "new-cap": 2,
         "eol-last": 2,
@@ -38,22 +40,6 @@
         "no-class-assign": 2,
         "no-dupe-class-members": 2,
         "no-this-before-super": 2,
-        "prefer-const": 1,
-        "react/jsx-boolean-value": [2, "always"],
-        "react/jsx-closing-bracket-location": [2, { "location": "after-props" }],
-        "react/jsx-curly-spacing": 2,
-        "react/jsx-indent-props": [2, 4],
-        "react/jsx-max-props-per-line": [2, { "maximum": 4}],
-        "react/jsx-no-duplicate-props": 2,
-        "react/jsx-no-undef": 2,
-        "react/jsx-uses-react": 2,
-        "react/jsx-uses-vars": 2,
-        "react/no-did-mount-set-state": [2, "allow-in-func"],
-        "react/no-did-update-set-state": [2, "allow-in-func"],
-        "react/no-unknown-property": 2,
-        "react/prop-types": 2,
-        "react/self-closing-comp": 2,
-        "react/sort-comp": 2,
-        "react/wrap-multilines": 2
+        "prefer-const": 1
     }
 }
