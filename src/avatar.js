@@ -47,6 +47,7 @@ function createAvatarComponent({ sources = [] }) {
             ...sourcePropTypes,
 
             alt: PropTypes.string,
+            title: PropTypes.string,
             className: PropTypes.string,
             fgColor: PropTypes.string,
             color: PropTypes.string,
@@ -219,7 +220,7 @@ function createAvatarComponent({ sources = [] }) {
         }
 
         _renderAsImage() {
-            const { className, round, unstyled, alt, name, value } = this.props;
+            const { className, round, unstyled, alt, title, name, value } = this.props;
             const { internal } = this.state;
             const size = parseSize(this.props.size);
 
@@ -237,12 +238,13 @@ function createAvatarComponent({ sources = [] }) {
                     style={imageStyle}
                     src={this.state.src}
                     alt={alt || name || value}
+                    title={title || name || value}
                     onError={internal && internal.fetch} />
             );
         }
 
         _renderAsText() {
-            const { className, round, unstyled } = this.props;
+            const { className, round, unstyled, title } = this.props;
             const size = parseSize(this.props.size);
 
             const initialsStyle = unstyled ? null : {
@@ -280,7 +282,8 @@ function createAvatarComponent({ sources = [] }) {
 
             return (
                 <div className={className + ' sb-avatar__text'}
-                    style={initialsStyle}>
+                    style={initialsStyle}
+                    title={title}>
                     <div style={tableStyle}>
                         <span style={spanStyle}>
                             <span ref={this._scaleTextNode} key={key}>

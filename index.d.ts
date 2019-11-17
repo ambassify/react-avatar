@@ -43,6 +43,10 @@ export interface ReactAvatarProps {
      */
     alt?: string;
     /**
+     * The title attribute used on the avatar img tag. If not set we will fallback to either name or value
+     */
+    title?: string;
+    /**
      * Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example #FF0000
      */
     color?: string;
