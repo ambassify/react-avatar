@@ -20,8 +20,7 @@ function matchSource(Source, props, cb) {
         return cb();
 
     instance.get((state) => {
-        const failedBefore = state &&
-            state.hasOwnProperty('src') &&
+        const failedBefore = state && state.src &&
             cache.hasSourceFailedBefore(state.src);
 
         if(!failedBefore && state) {
