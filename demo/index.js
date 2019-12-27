@@ -102,13 +102,15 @@ class Demo extends React.Component {
                     <Avatar name="Wim Test Mostmans" size={80} />
                 </section>
 
-                <section>
-                    <h2>Google+</h2>
-                    <Avatar googleId="116933859726289749306" size={40} />
-                    <Avatar googleId="116933859726289749306" size={100} round={true} />
-                    <Avatar googleId="116933859726289749306" size={150} round="20px" />
-                    <Avatar googleId="116933859726289749306" size={200} />
-                </section>
+                <ConfigProvider avatarRedirectUrl="https://avatar-redirect.appspot.com">
+                    <section>
+                        <h2>Google</h2>
+                        <Avatar googleId="116933859726289749306" size={40} />
+                        <Avatar googleId="116933859726289749306" size={100} round={true} />
+                        <Avatar googleId="116933859726289749306" size={150} round="20px" />
+                        <Avatar googleId="116933859726289749306" size={200} />
+                    </section>
+                </ConfigProvider>
 
                 <section>
                     <h2>Facebook</h2>
