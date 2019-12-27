@@ -243,7 +243,7 @@ function createAvatarComponent({ sources = [] }) {
         }
 
         _renderAsText() {
-            const { className, round, unstyled, title } = this.props;
+            const { className, round, unstyled, title, name, value } = this.props;
             const size = parseSize(this.props.size);
 
             const initialsStyle = unstyled ? null : {
@@ -282,7 +282,7 @@ function createAvatarComponent({ sources = [] }) {
             return (
                 <div className={className + ' sb-avatar__text'}
                     style={initialsStyle}
-                    title={title}>
+                    title={title || name || value}>
                     <div style={tableStyle}>
                         <span style={spanStyle}>
                             <span ref={this._scaleTextNode} key={key}>
