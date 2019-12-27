@@ -7,7 +7,8 @@ module.exports = {
         ["@babel/preset-env", {
             "targets": "> 0.25%, not dead",
             "modules": BABEL_MODULES,
-            "useBuiltIns": "usage"
+            "useBuiltIns": "usage",
+            "corejs": { version: 3 }
         }],
         "@babel/preset-react"
     ],

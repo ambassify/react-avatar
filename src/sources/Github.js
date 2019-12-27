@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 export default
-    class GithubSource {
+class GithubSource {
 
     static propTypes = {
         githubHandle: PropTypes.string
