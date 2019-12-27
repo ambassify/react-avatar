@@ -8,8 +8,8 @@ We use a fallback system that if for example an invalid Facebook ID is used it w
 For the moment we support following types:
 
 * Facebook
-* Google
 * GitHub
+* Google (using [Avatar Redirect](#avatar-redirect))
 * Twitter (using [Avatar Redirect](#avatar-redirect))
 * Instagram (using [Avatar Redirect](#avatar-redirect))
 * Vkontakte (using [Avatar Redirect](#avatar-redirect))
@@ -251,13 +251,15 @@ const Avatar = createAvatarComponent({
 Exported sources:
 - GravatarSource
 - FacebookSource
-- TwitterSource
-- GoogleSource
 - GithubSource
 - SkypeSource
 - ValueSource
 - SrcSource
 - IconSource
+- VKontakteSource
+- InstagramSource
+- TwitterSource
+- GoogleSource
 - RedirectSource
 
 ### Without Webpack >= 4
