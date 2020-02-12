@@ -17,6 +17,7 @@ export interface ReactAvatarProps {
     facebookId?: string;
     twitterHandle?: string;
     googleId?: string;
+    instagramId?: string;
     githubHandle?: string;
     skypeId?: string;
     /**
