@@ -138,6 +138,16 @@ export interface Cache {
     hasSourceFailedBefore: (source: string) => boolean;
 }
 
+export interface CacheOptions {
+    cachePrefix?: string,
+    sourceTTL?: number,
+    sourceSize?: number
+}
+
+export interface CacheConstructor {
+    new (options: CacheOptions): Cache;
+}
+
 /**
  * Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
  * We use a fallback system that if for example an invalid Facebook ID is used it will try Google, and so on.
@@ -145,4 +155,5 @@ export interface Cache {
 declare const ReactAvatar: React.ComponentType<ReactAvatarProps>;
 
 export const ConfigProvider: React.ComponentType<ConfigProvider>;
+export const Cache: CacheConstructor;
 export default ReactAvatar;
