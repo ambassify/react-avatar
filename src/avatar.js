@@ -251,7 +251,6 @@ function createAvatarComponent({ sources = [] }) {
                 height: size.str,
                 lineHeight: 'initial',
                 textAlign: 'center',
-                textTransform: 'uppercase',
                 color: this.props.fgColor,
                 background: this.state.color,
                 borderRadius: (round === true ? '100%' : round)

@@ -110,7 +110,8 @@ function defaultInitials(name, { maxInitials }) {
         .map(part => part.substring(0, 1).toUpperCase())
         .filter(v => !!v)
         .slice(0, maxInitials)
-        .join('');
+        .join('')
+        .toUpperCase();
 }
 
 /**
