@@ -1,5 +1,9 @@
 'use strict';
 
+import retina from 'is-retina';
+
+const IS_RETINA = retina();
+
 export
 function fetch(url, successCb, errorCb) {
     const request = new XMLHttpRequest();
@@ -102,6 +106,30 @@ function parseSize(size) {
         str: value + unit,
         unit
     };
+}
+
+/**
+ * Calculate absolute size in pixels we want for the images
+ * that get requested from the various sources. They don't
+ * understand relative sizes like `em` or `vww`.  We select
+ * a fixed size of 512px when we can't detect the true pixel size.
+ */
+export function getImageSize(size) {
+    size = parseSize(size);
+
+    if (isNaN(size.value)) // invalid size, use fallback
+        size = 512;
+    else if (size.unit === 'px') // px are good, use them
+        size = size.value;
+    else if (size.value === 0) // relative 0 === absolute 0
+        size = 0;
+    else // anything else is unknown, use fallback
+        size = 512;
+
+    if (IS_RETINA)
+        size = size * 2;
+
+    return size;
 }
 
 export

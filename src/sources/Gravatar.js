@@ -1,10 +1,10 @@
 'use strict';
 
 import PropTypes from 'prop-types';
-import retina from 'is-retina';
 import md5 from 'md5';
 
-const IS_RETINA = retina();
+import { getImageSize } from '../utils';
+
 
 export default
 class GravatarSource {
@@ -27,8 +27,12 @@ class GravatarSource {
     get = (setState) => {
         const { props } = this;
         const email = props.md5Email || md5(props.email);
-        const size = IS_RETINA ? props.size * 2 : props.size;
-        const url = `https://secure.gravatar.com/avatar/${email}?s=${size}&d=404`;
+        const size = getImageSize(props.size);
+
+        let url = `https://secure.gravatar.com/avatar/${email}?d=404`;
+
+        if (size)
+            url += `&s=${size}`;
 
         setState({
             sourceName: 'gravatar',
