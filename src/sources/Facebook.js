@@ -1,5 +1,6 @@
 'use strict';
 import PropTypes from 'prop-types';
+import { getImageSize } from '../utils';
 
 export default
 class FacebookSource {
@@ -17,9 +18,13 @@ class FacebookSource {
     isCompatible = () => !!this.props.facebookId
 
     get = (setState) => {
-        const { size, facebookId } = this.props;
-        const url = 'https://graph.facebook.com/' +
-            `${facebookId}/picture?width=${size}&height=${size}`;
+        const { facebookId } = this.props;
+        const size = getImageSize(this.props.size);
+
+        let url = `https://graph.facebook.com/${facebookId}/picture`;
+
+        if (size)
+            url += `?width=${size}&height=${size}`;
 
         setState({
             sourceName: 'facebook',

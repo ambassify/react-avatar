@@ -1,5 +1,6 @@
 'use strict';
 import PropTypes from 'prop-types';
+import { getImageSize } from '../utils';
 
 export default
 function createRedirectSource(network, property) {
@@ -23,12 +24,13 @@ function createRedirectSource(network, property) {
         }
 
         get = (setState) => {
-            const { size, avatarRedirectUrl } = this.props;
+            const { avatarRedirectUrl } = this.props;
+            const size = getImageSize(this.props.size);
 
             const baseUrl = avatarRedirectUrl.replace(/\/*$/, '/');
             const id = this.props[property];
 
-            const query = size ? '' : `size=${size}`;
+            const query = size ? `size=${size}` : '';
             const src = `${baseUrl}${network}/${id}?${query}`;
 
             setState({ source: 'network', src });

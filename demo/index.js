@@ -227,6 +227,13 @@ class Demo extends React.Component {
                             <Avatar value="100%" size="100%" />
                         </div>
                     </div>
+                    <div style={{ fontSize: 15, padding: 10 }}>
+                        <Avatar facebookId="100008343750912" size="10em" />
+                        <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size="10em" />
+                        <ConfigProvider avatarRedirectUrl="https://avatar-redirect.appspot.com">
+                            <Avatar googleId="116933859726289749306" size="10em" />
+                        </ConfigProvider>
+                    </div>
                 </section>
 
                 <section>

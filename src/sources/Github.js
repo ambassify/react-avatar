@@ -1,5 +1,6 @@
 'use strict';
 import PropTypes from 'prop-types';
+import { getImageSize } from '../utils';
 
 export default
 class GithubSource {
@@ -17,8 +18,13 @@ class GithubSource {
     isCompatible = () => !!this.props.githubHandle
 
     get = (setState) => {
-        const { size, githubHandle } = this.props;
-        const url = `https://avatars.githubusercontent.com/${githubHandle}?v=4&s=${size}`;
+        const { githubHandle } = this.props;
+        const size = getImageSize(this.props.size);
+
+        let url = `https://avatars.githubusercontent.com/${githubHandle}?v=4`;
+
+        if (size)
+            url += `&s=${size}`;
 
         setState({
             sourceName: 'github',
