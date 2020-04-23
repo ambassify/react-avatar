@@ -38,6 +38,12 @@ $ npm install prop-types --save
 
 Or [download as ZIP](https://github.com/sitebase/react-avatar/archive/master.zip).
 
+#### Note on usage in Gatsby projects
+
+Users of **Gatsby** who are experiencing issues with the latest release should install `react-avatar@corejs2` instead. This is an older version (v3.7.0) release of `react-avatar` that still used `core-js@2`.
+
+If you'd like to use the latest version of `react-avatar` have a look at [#187](https://github.com/Sitebase/react-avatar/issues/187) for a workaround and [#187](https://github.com/Sitebase/react-avatar/issues/187#issuecomment-587187113), [#181](https://github.com/Sitebase/react-avatar/issues/181) and [#198](https://github.com/Sitebase/react-avatar/issues/198) for a description of the issue.
+
 
 ## Usage
 
