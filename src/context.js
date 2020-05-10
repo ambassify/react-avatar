@@ -21,32 +21,10 @@ const contextKeys = Object.keys(defaults);
  * fall back to the legacy context api.
  */
 
-
 const ConfigContext = React.createContext && React.createContext();
-const ConfigConsumer = ConfigContext ? ConfigContext.Consumer : null;
+const isLegacyContext = !ConfigContext;
 
-export const withConfig = (Component) => {
-    function withAvatarConfig(props, context = {}) {
-        const { reactAvatar } = context;
-
-        if (!ConfigConsumer)
-            return ( <Component {...defaults} {...reactAvatar} {...props} /> );
-
-        /* eslint-disable react/display-name */
-        return (
-            <ConfigConsumer>
-                {config => ( <Component {...defaults} {...config} {...props} /> )}
-            </ConfigConsumer>
-        );
-        /* eslint-enable react/display-name */
-    }
-
-    withAvatarConfig.contextTypes = {
-        reactAvatar: PropTypes.object
-    };
-
-    return withAvatarConfig;
-};
+const ConfigConsumer = isLegacyContext ? null : ConfigContext.Consumer;
 
 export class ConfigProvider extends React.Component {
 
@@ -59,16 +37,6 @@ export class ConfigProvider extends React.Component {
         avatarRedirectUrl: PropTypes.string,
 
         children: PropTypes.node
-    }
-
-    static childContextTypes = {
-        reactAvatar: PropTypes.object
-    }
-
-    getChildContext() {
-        return {
-            reactAvatar: this._getContext()
-        };
     }
 
     _getContext() {
@@ -85,7 +53,7 @@ export class ConfigProvider extends React.Component {
     render() {
         const { children } = this.props;
 
-        if (!ConfigContext)
+        if (isLegacyContext)
             return React.Children.only(children);
 
         return (
@@ -95,4 +63,32 @@ export class ConfigProvider extends React.Component {
         );
     }
 
+}
+
+export const withConfig = (Component) => {
+    function withAvatarConfig(props, context = {}) {
+
+        if (!ConfigConsumer)
+            return ( <Component {...defaults} {...context.reactAvatar} {...props} /> );
+
+        /* eslint-disable react/display-name */
+        return (
+            <ConfigConsumer>
+                {config => ( <Component {...defaults} {...config} {...props} /> )}
+            </ConfigConsumer>
+        );
+        /* eslint-enable react/display-name */
+    }
+
+    // Legacy support, only set when legacy is detected
+    withAvatarConfig.contextTypes = ConfigProvider.childContextTypes;
+
+    return withAvatarConfig;
+};
+
+if (isLegacyContext) {
+    ConfigProvider.childContextTypes = { reactAvatar: PropTypes.object };
+    ConfigProvider.prototype.getChildContext = function() {
+        return { reactAvatar: this._getContext() };
+    };
 }
