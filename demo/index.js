@@ -399,4 +399,12 @@ class Demo extends React.Component {
 }
 
 var mountNode = document.getElementById('container');
-ReactDOM.render(<Demo />, mountNode);
+
+// Enable strict mode when supported by react version
+var Wrapper = React.StrictMode || 'div';
+
+ReactDOM.render((
+    <Wrapper>
+        <Demo />
+    </Wrapper>
+), mountNode);
