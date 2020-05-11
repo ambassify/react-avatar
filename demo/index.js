@@ -2,7 +2,17 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Avatar, {getRandomColor, ConfigProvider} from './../src';
+import Avatar, {
+    getRandomColor,
+    ConfigProvider,
+    createAvatarComponent,
+    GravatarSource,
+    ValueSource
+} from './../src';
+
+const CustomAvatar = createAvatarComponent({
+    sources: [ GravatarSource, ValueSource ]
+});
 
 import './index.html';
 import './demo.css';
@@ -67,8 +77,10 @@ class Demo extends React.Component {
 
     _onAttachRef(ref) {
         // Dummy function to test errors on reference
-        // eslint-disable-next-line no-console
-        console && console.log('Ref received', ref);
+        if(console) {
+            // eslint-disable-next-line no-console
+            console.log('Ref received', ref);
+        }
     }
 
     render() {
@@ -398,6 +410,13 @@ class Demo extends React.Component {
                         </div>
                     </section>
                 </ConfigProvider>
+
+                <section>
+                    <h2>Avatar with only support for gravatar and value</h2>
+                    <CustomAvatar value="JE" />
+                    <CustomAvatar value="JE" md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" />
+                    <CustomAvatar githubHandle="JorgenEvens" color="#E88554" />
+                </section>
 
             </div>
         );
