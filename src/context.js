@@ -23,8 +23,17 @@ const contextKeys = Object.keys(defaults);
 
 const ConfigContext = React.createContext && React.createContext();
 const isLegacyContext = !ConfigContext;
-
 const ConfigConsumer = isLegacyContext ? null : ConfigContext.Consumer;
+
+/**
+ * This was introduced in React 16.3.0 we need this to
+ * prevent errors in newer versions. But we will just forward the
+ * component for any version lower than 16.3.0
+ *
+ * https://github.com/Sitebase/react-avatar/issues/201
+ * https://github.com/facebook/react/blob/master/CHANGELOG.md#1630-march-29-2018
+ */
+const forwardRef = React.forwardRef || (C => C);
 
 export class ConfigProvider extends React.Component {
 
@@ -66,15 +75,23 @@ export class ConfigProvider extends React.Component {
 }
 
 export const withConfig = (Component) => {
-    function withAvatarConfig(props, context = {}) {
+    function withAvatarConfig(props, refOrContext) {
 
-        if (!ConfigConsumer)
-            return ( <Component {...defaults} {...context.reactAvatar} {...props} /> );
+        // If legacy context is enabled, there is no support for forwardedRefs either
+        if (isLegacyContext) {
+            const ctx = refOrContext && refOrContext.reactAvatar;
+            return ( <Component {...defaults} {...ctx} {...props} /> );
+        }
 
         /* eslint-disable react/display-name */
         return (
             <ConfigConsumer>
-                {config => ( <Component {...defaults} {...config} {...props} /> )}
+                {config => (
+                    <Component ref={refOrContext}
+                        {...defaults}
+                        {...config}
+                        {...props} />
+                )}
             </ConfigConsumer>
         );
         /* eslint-enable react/display-name */
@@ -83,7 +100,7 @@ export const withConfig = (Component) => {
     // Legacy support, only set when legacy is detected
     withAvatarConfig.contextTypes = ConfigProvider.childContextTypes;
 
-    return withAvatarConfig;
+    return forwardRef(withAvatarConfig);
 };
 
 if (isLegacyContext) {

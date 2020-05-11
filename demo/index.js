@@ -65,6 +65,12 @@ class Demo extends React.Component {
         this.setState({ color: customColors[next] });
     }
 
+    _onAttachRef(ref) {
+        // Dummy function to test errors on reference
+        // eslint-disable-next-line no-console
+        console && console.log('Ref received', ref);
+    }
+
     render() {
         return (
             <div>
@@ -80,7 +86,7 @@ class Demo extends React.Component {
                 </section>
                 <section>
                     <h2>Gravatar</h2>
-                    <Avatar className="myCustomClass" md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={40} />
+                    <Avatar ref={this._onAttachRef} className="myCustomClass" md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={40} />
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={100} round={true} />
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={150} round="20px" />
                     <Avatar md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" size={200} />
