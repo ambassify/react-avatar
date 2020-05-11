@@ -1,6 +1,5 @@
 import * as React from "react";
 
-
 export interface ReactAvatarProps {
     /**
      * Name of the CSS class you want to add to this component alongside the default sb-avatar.
@@ -91,6 +90,10 @@ export interface ReactAvatarProps {
     onClick?: (e: React.SyntheticEvent<any>) => any;
 }
 
+interface CreateAvatarOptions {
+    sources?: SourceConstructor[]
+}
+
 export interface ConfigProvider {
     /**
      * A list of color values as strings from which the getRandomColor picks one at random.
@@ -145,9 +148,17 @@ export interface CacheOptions {
     sourceSize?: number
 }
 
-export interface CacheConstructor {
-    new (options: CacheOptions): Cache;
+type CacheConstructor = new (options: CacheOptions) => Cache;
+
+interface Source {
+    isCompatible: () => boolean;
+    get: (setState: (update: object) => void) => void;
 }
+
+type SourceConstructor = new (props: object) => Source;
+
+const AvatarRedirectSource = SourceConstructor;
+export const RedirectSource = (network: string, property: string) => AvatarRedirectSource
 
 /**
  * Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
@@ -155,6 +166,22 @@ export interface CacheConstructor {
  */
 declare const ReactAvatar: React.ComponentType<ReactAvatarProps>;
 
+export const createAvatarComponent: (options: CreateAvatarOptions) => ReactAvatar;
+
 export const ConfigProvider: React.ComponentType<ConfigProvider>;
 export const Cache: CacheConstructor;
+
+export const GravatarSource: SourceConstructor;
+export const FacebookSource: SourceConstructor;
+export const GithubSource: SourceConstructor;
+export const SkypeSource: SourceConstructor;
+export const ValueSource: SourceConstructor;
+export const SrcSource: SourceConstructor;
+export const IconSource: SourceConstructor;
+
+export const VKontakteSource: SourceConstructor;
+export const InstagramSource: SourceConstructor;
+export const TwitterSource: SourceConstructor;
+export const GoogleSource: SourceConstructor;
+
 export default ReactAvatar;
