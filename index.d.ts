@@ -157,8 +157,8 @@ interface Source {
 
 type SourceConstructor = new (props: object) => Source;
 
-const AvatarRedirectSource = SourceConstructor;
-export const RedirectSource = (network: string, property: string) => AvatarRedirectSource
+const AvatarRedirectSource: SourceConstructor;
+export const RedirectSource: (network: string, property: string) => AvatarRedirectSource
 
 /**
  * Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
