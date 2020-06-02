@@ -157,14 +157,14 @@ interface Source {
 
 type SourceConstructor = new (props: object) => Source;
 
-const AvatarRedirectSource: SourceConstructor;
-export const RedirectSource: (network: string, property: string) => AvatarRedirectSource
+export const RedirectSource: (network: string, property: string) => SourceConstructor
 
 /**
  * Universal avatar makes it possible to fetch/generate an avatar based on the information you have about that user.
  * We use a fallback system that if for example an invalid Facebook ID is used it will try Google, and so on.
  */
-declare const ReactAvatar: React.ComponentType<ReactAvatarProps>;
+type ReactAvatar = React.ComponentType<ReactAvatarProps>;
+declare const Avatar : ReactAvatar;
 
 export const createAvatarComponent: (options: CreateAvatarOptions) => ReactAvatar;
 
@@ -184,4 +184,4 @@ export const InstagramSource: SourceConstructor;
 export const TwitterSource: SourceConstructor;
 export const GoogleSource: SourceConstructor;
 
-export default ReactAvatar;
+export default Avatar;
