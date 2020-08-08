@@ -9,6 +9,8 @@ import Avatar, {
     GravatarSource,
     ValueSource
 } from './../src';
+import { faCoffee, faCamera } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CustomAvatar = createAvatarComponent({
     sources: [ GravatarSource, ValueSource ]
@@ -416,6 +418,17 @@ class Demo extends React.Component {
                     <CustomAvatar value="JE" />
                     <CustomAvatar value="JE" md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be" />
                     <CustomAvatar githubHandle="JorgenEvens" color="#E88554" />
+                </section>
+
+                <section>
+                    <h2>Custom Icons (as children)</h2>
+                    <h4>Note: FontAwesome not included</h4>
+                    <Avatar>
+                        <FontAwesomeIcon icon={faCoffee} />
+                    </Avatar>
+                    <Avatar>
+                        <FontAwesomeIcon icon={faCamera} />
+                    </Avatar>
                 </section>
 
             </div>

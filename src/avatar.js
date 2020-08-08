@@ -245,6 +245,7 @@ function createAvatarComponent({ sources = [] }) {
         _renderAsText() {
             const { className, round, unstyled, title, name, value } = this.props;
             const size = parseSize(this.props.size);
+            const children = this.props.children;
 
             const initialsStyle = unstyled ? null : {
                 width: size.str,
@@ -285,7 +286,8 @@ function createAvatarComponent({ sources = [] }) {
                     <div style={tableStyle}>
                         <span style={spanStyle}>
                             <span ref={this._scaleTextNode} key={key}>
-                                {this.state.value}
+                                {!children && this.state.value}
+                                {children && children}
                             </span>
                         </span>
                     </div>

@@ -98,6 +98,19 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 
 ```
 
+**Custom Icons as Children elements**
+
+```html
+import Avatar from 'react-avatar';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+<Avatar>
+    <FontAwesomeIcon icon={faCoffee} />
+</Avatar>
+
+```
+
 ## Options
 
 ### Avatar
