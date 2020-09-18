@@ -46,7 +46,10 @@ function createAvatarComponent({ sources = [] }) {
             ...sourcePropTypes,
 
             alt: PropTypes.string,
-            title: PropTypes.string,
+            title: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.bool
+            ]),
             className: PropTypes.string,
             fgColor: PropTypes.string,
             color: PropTypes.string,
