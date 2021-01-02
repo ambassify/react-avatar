@@ -33,7 +33,7 @@ function createRedirectSource(network, property) {
             const query = size ? `size=${size}` : '';
             const src = `${baseUrl}${network}/${id}?${query}`;
 
-            setState({ source: 'network', src });
+            setState({ sourceName: network, src });
         }
     };
 }

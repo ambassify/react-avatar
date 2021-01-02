@@ -31,6 +31,7 @@ const SOURCES = [
 
 export * from './avatar';
 export { default as createAvatarComponent } from './avatar';
+export { default as createAvatarDataProvider } from './data-provider';
 
 export default createAvatarComponent({
     sources: SOURCES
