@@ -237,7 +237,7 @@ function createAvatarComponent({ sources = [] }) {
                     style={imageStyle}
                     src={this.state.src}
                     alt={alt || name || value}
-                    title={title || name || value}
+                    title={title !== undefined ? title : name || value}
                     onError={internal && internal.fetch} />
             );
         }
@@ -281,7 +281,7 @@ function createAvatarComponent({ sources = [] }) {
             return (
                 <div className={className + ' sb-avatar__text'}
                     style={initialsStyle}
-                    title={title || name || value}>
+                    title={title !== undefined ? title : name || value}
                     <div style={tableStyle}>
                         <span style={spanStyle}>
                             <span ref={this._scaleTextNode} key={key}>
