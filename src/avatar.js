@@ -175,6 +175,9 @@ function createAvatarComponent({ sources = [] }) {
                 return;
 
             const spanNode = node.parentNode;
+            if (!spanNode)
+                return;
+
             const tableNode = spanNode.parentNode;
 
             const {
