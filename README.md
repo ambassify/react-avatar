@@ -22,7 +22,7 @@ The fallbacks are in the same order as the list above were Facebook has the high
 
 ## Demo
 
-[Check it live!](https://www.sitebase.be/react-avatar/?utm_source=github&utm_medium=readme&utm_campaign=react-avatar)
+[Check it live!](https://ambassify.github.io/react-avatar/)
 
 ## Install
 
