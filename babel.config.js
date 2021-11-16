@@ -3,16 +3,14 @@
 const { BABEL_MODULES = false } = process.env;
 
 module.exports = {
-    "presets": [
-        ["@babel/preset-env", {
-            "targets": "> 0.25%, not dead",
-            "modules": BABEL_MODULES,
-            "useBuiltIns": "usage",
-            "corejs": { version: 3 }
-        }],
-        "@babel/preset-react"
+    targets: '> 0.25%, not dead',
+    presets: [
+        [ '@babel/preset-env', { modules: BABEL_MODULES } ],
+        '@babel/preset-react'
     ],
-    "plugins": [
-        "@babel/plugin-proposal-class-properties"
+    plugins: [
+        '@babel/plugin-proposal-class-properties',
+        '@babel/plugin-transform-runtime',
+        [ 'polyfill-corejs3', { method: 'usage-pure' } ],
     ]
-}
+};

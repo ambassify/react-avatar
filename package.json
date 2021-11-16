@@ -40,6 +40,8 @@
   ],
   "homepage": "https://www.sitebase.be/react-avatar/",
   "peerDependencies": {
+    "@babel/runtime": ">=7",
+    "core-js-pure": ">=3",
     "react": "^15.0.0 || ^16.0.0 || ^17.0.0",
     "prop-types": "^15.0.0 || ^16.0.0"
   },
@@ -47,11 +49,15 @@
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "@babel/runtime": "^7.16.0",
     "@types/react": "^16.0.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-polyfill-corejs3": "^0.3.0",
+    "core-js-pure": "^3.19.1",
     "eslint": "^6.8.0",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-react": "^7.17.0",
@@ -66,7 +72,6 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "core-js": "^3.6.1",
     "is-retina": "^1.0.3",
     "md5": "^2.0.0"
   }
