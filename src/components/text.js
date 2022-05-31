@@ -66,7 +66,7 @@ class AvatarText extends React.PureComponent {
 
         this._node = node;
 
-        if (!node || unstyled || avatar.src || !this._mounted)
+        if (!node || !node.parentNode || unstyled || avatar.src || !this._mounted)
             return;
 
         const spanNode = node.parentNode;
