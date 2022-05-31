@@ -177,3 +177,14 @@ function getNullableText(...args) {
 
     return;
 }
+
+export
+function calculateBorderRadius(round) {
+    if (round === true)
+        return '100%';
+
+    if (round === false)
+        return;
+
+    return round;
+}

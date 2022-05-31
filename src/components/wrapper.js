@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { parseSize } from '../utils';
+import { parseSize, calculateBorderRadius } from '../utils';
 
 export default
 class AvatarWrapper extends React.PureComponent {
@@ -43,7 +43,7 @@ class AvatarWrapper extends React.PureComponent {
             verticalAlign: 'middle',
             width: size.str,
             height: size.str,
-            borderRadius: (round === true ? '100%' : round),
+            borderRadius: calculateBorderRadius(round),
             fontFamily: 'Helvetica, Arial, sans-serif',
             ...style
         };

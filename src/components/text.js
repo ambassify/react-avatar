@@ -5,6 +5,7 @@ import Wrapper from './wrapper';
 import {
     parseSize,
     setGroupedTimeout,
+    calculateBorderRadius,
     getNullableText
 } from '../utils';
 
@@ -132,7 +133,7 @@ class AvatarText extends React.PureComponent {
             textAlign: 'center',
             color: this.props.fgColor,
             background: avatar.color,
-            borderRadius: (round === true ? '100%' : round)
+            borderRadius: calculateBorderRadius(round),
         };
 
         const tableStyle = unstyled ? null : {
