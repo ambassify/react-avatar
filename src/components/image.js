@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { parseSize, getNullableText } from '../utils';
+import { parseSize, calculateBorderRadius, getNullableText } from '../utils';
 import Wrapper from './wrapper';
 
 export default
@@ -54,7 +54,7 @@ class AvatarImage extends React.PureComponent {
             maxWidth: '100%',
             width: size.str,
             height: size.str,
-            borderRadius: (round === true ? '100%' : round)
+            borderRadius: calculateBorderRadius(round),
         };
 
         return (
