@@ -1,17 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { parseSize, setGroupedTimeout } from '../utils';
 import Wrapper from './wrapper';
+import {
+    parseSize,
+    setGroupedTimeout,
+    getNullableText
+} from '../utils';
 
 export default
 class AvatarText extends React.PureComponent {
 
     static propTypes = {
-        title: PropTypes.string,
         name: PropTypes.string,
         value: PropTypes.string,
         avatar: PropTypes.object,
+
+        title: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool
+        ]),
 
         className: PropTypes.string,
         unstyled: PropTypes.bool,
@@ -153,7 +161,7 @@ class AvatarText extends React.PureComponent {
             <Wrapper {...this.props}>
                 <div className={className + ' sb-avatar__text'}
                     style={initialsStyle}
-                    title={title || name || value}>
+                    title={getNullableText(title, name || value)}>
                     <div style={tableStyle}>
                         <span style={spanStyle}>
                             <span ref={this._scaleTextNode} key={key}>

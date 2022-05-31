@@ -301,6 +301,31 @@ class Demo extends React.Component {
                 </section>
 
                 <section>
+                    <h2>Nullable title</h2>
+                    <div>
+                        <Avatar title={false}
+                            name={this.state.name}
+                            color={getRandomColor('Jim Jones', customColors)}
+                            size={40} />
+                        <Avatar title={false}
+                            name={this.state.name}
+                            color={getRandomColor('Jamie Jones', customColors)}
+                            size={100}
+                            round={true} />
+                        <Avatar title={false}
+                            name={this.state.name}
+                            color={getRandomColor('JJ', customColors)}
+                            size={150}
+                            round="20px" />
+                        <Avatar title={false}
+                            name={this.state.name}
+                            md5Email="8c5d4c4b9ef6c68c4ff91c319d4c56be"
+                            color={getRandomColor(this.state.name, customColors)}
+                            size={200} />
+                    </div>
+                </section>
+
+                <section>
                     <h2>Initials with maximum number of characters</h2>
                     <div>
                         <Avatar name={this.state.name} maxInitials={2} skypeId={this.state.skypeId}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { parseSize } from '../utils';
+import { parseSize, getNullableText } from '../utils';
 import Wrapper from './wrapper';
 
 export default
@@ -9,7 +9,10 @@ class AvatarImage extends React.PureComponent {
 
     static propTypes = {
         alt: PropTypes.string,
-        title: PropTypes.string,
+        title: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool
+        ]),
         name: PropTypes.string,
         value: PropTypes.string,
         avatar: PropTypes.object,
@@ -61,8 +64,8 @@ class AvatarImage extends React.PureComponent {
                     height={size.str}
                     style={imageStyle}
                     src={avatar.src}
-                    alt={alt || name || value}
-                    title={title || name || value}
+                    alt={getNullableText(alt, name || value)}
+                    title={getNullableText(title, name || value)}
                     onError={avatar.onRenderFailed} />
             </Wrapper>
         );
