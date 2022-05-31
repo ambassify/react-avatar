@@ -164,3 +164,16 @@ function setGroupedTimeout(fn, ttl) {
         callbacks.forEach(cb => cb());
     }, ttl);
 }
+
+export
+function getNullableText(...args) {
+    for (const arg of args) {
+        if (arg)
+            return arg;
+
+        if (arg === false || arg === null)
+            return null;
+    }
+
+    return;
+}
