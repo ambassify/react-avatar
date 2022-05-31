@@ -40,14 +40,15 @@ function fetchJSONP(url, successCb, errorCb) {
     };
 }
 
+// https://webaim.org/resources/contrastchecker/
 export
 const defaultColors = [
-    '#d73d32',
+    '#A62A21',
     '#7e3794',
-    '#4285f4',
-    '#67ae3f',
-    '#d61a7f',
-    '#ff4080'
+    '#0B51C1',
+    '#3A6024',
+    '#A81563',
+    '#B3003C'
 ];
 
 // https://regex101.com/r/YEsPER/1
