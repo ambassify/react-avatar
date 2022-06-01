@@ -21,7 +21,8 @@ class AvatarImage extends React.PureComponent {
         unstyled: PropTypes.bool,
         round: PropTypes.oneOfType([
             PropTypes.bool,
-            PropTypes.string
+            PropTypes.string,
+            PropTypes.number,
         ]),
         size: PropTypes.oneOfType([
             PropTypes.number,

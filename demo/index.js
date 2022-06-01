@@ -125,7 +125,7 @@ class Demo extends React.Component {
                         <h2>Google</h2>
                         <Avatar googleId="116933859726289749306" size={40} />
                         <Avatar googleId="116933859726289749306" size={100} round={true} />
-                        <Avatar googleId="116933859726289749306" size={150} round="20px" />
+                        <Avatar googleId="116933859726289749306" size={150} round={20} />
                         <Avatar googleId="116933859726289749306" size={200} />
                     </section>
                 </ConfigProvider>
