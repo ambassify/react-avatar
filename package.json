@@ -26,11 +26,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sitebase/react-avatar.git"
+    "url": "https://github.com/ambassify/react-avatar.git"
   },
   "author": "Wim Mostmans <wim@sitebase.be>",
   "bugs": {
-    "url": "https://github.com/sitebase/react-avatar/issues"
+    "url": "https://github.com/ambassify/react-avatar/issues"
   },
   "keywords": [
     "component",
@@ -38,7 +38,7 @@
     "react-component",
     "avatar"
   ],
-  "homepage": "https://www.sitebase.be/react-avatar/",
+  "homepage": "https://ambassify.github.io/react-avatar/",
   "peerDependencies": {
     "@babel/runtime": ">=7",
     "core-js-pure": ">=3",
