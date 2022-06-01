@@ -45,7 +45,9 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: rel('build'),
+        static: {
+            directory: rel('build'),
+        },
         compress: true,
         port: 8000
     },
