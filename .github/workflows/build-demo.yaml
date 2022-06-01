@@ -1,0 +1,31 @@
+name: 'Generate demo'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+
+      - name: Install
+        run: npm install
+
+      - name: Run tests
+        run: npm run build:demo
+
+      - name: Publish to GitHub pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
