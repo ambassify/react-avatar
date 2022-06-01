@@ -13,7 +13,7 @@
     "build": "npm -s run clean && npm -s run build:commonjs && npm -s run build:modules",
     "build:commonjs": "BABEL_MODULES=commonjs babel ./src --out-dir ./lib",
     "build:modules": "babel ./src --out-dir ./es",
-    "build:demo": "webpack -p",
+    "build:demo": "NODE_ENV=production webpack",
     "demo": "npm -s run build:demo",
     "dev": "webpack-dev-server",
     "serve": "npm -s run dev",
@@ -66,10 +66,10 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "typescript": "^3.9.3",
-    "webpack": "^4.41.4",
+    "webpack": "^5.72.1",
     "webpack-bundle-analyzer": "^3.6.0",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.1"
   },
   "dependencies": {
     "is-retina": "^1.0.3",
