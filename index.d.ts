@@ -1,6 +1,7 @@
 import * as React from "react";
 
 export interface ReactAvatarProps {
+    children?: React.ReactNode;
     /**
      * Name of the CSS class you want to add to this component alongside the default sb-avatar.
      */
