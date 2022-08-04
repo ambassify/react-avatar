@@ -42,11 +42,11 @@ export interface ReactAvatarProps {
     /**
      * The alt attribute used on the avatar img tag. If not set we will fallback to either name or value
      */
-    alt?: string;
+    alt?: string | boolean;
     /**
      * The title attribute used on the avatar img tag. If not set we will fallback to either name or value
      */
-    title?: string;
+    title?: string | boolean;
     /**
      * Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example #FF0000
      */

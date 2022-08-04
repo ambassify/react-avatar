@@ -8,7 +8,10 @@ export default
 class AvatarImage extends React.PureComponent {
 
     static propTypes = {
-        alt: PropTypes.string,
+        alt: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool
+        ]),
         title: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.bool

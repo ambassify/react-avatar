@@ -172,7 +172,7 @@ function getNullableText(...args) {
         if (arg)
             return arg;
 
-        if (arg === false || arg === null)
+        if (arg === false || arg === null || arg === '')
             return null;
     }
 
