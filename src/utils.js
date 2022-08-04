@@ -169,10 +169,10 @@ function setGroupedTimeout(fn, ttl) {
 export
 function getNullableText(...args) {
     for (const arg of args) {
-        if (arg)
+        if (arg || arg === '')
             return arg;
 
-        if (arg === false || arg === null || arg === '')
+        if (arg === false || arg === null)
             return null;
     }
 
