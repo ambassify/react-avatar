@@ -84,6 +84,10 @@ export interface ReactAvatarProps {
      */
     unstyled?: boolean;
     /**
+     * Whether it is possible to select the initials text.
+     */
+    selectable?: boolean;
+    /**
      * Mouse click event
      * @param {React.SyntheticEvent<any>} e
      * @returns {any}
