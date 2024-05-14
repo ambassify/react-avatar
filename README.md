@@ -128,6 +128,7 @@ import Avatar, { ConfigProvider } from 'react-avatar';
 | `src`         | *string*          |         | Fallback image to use                                                                                  |
 | `style`         | *object*          |         | Style that will be applied on the root element                                                       |
 | `unstyled`    | *bool*            | false   | Disable all styles                                                                                     |
+| `selectable`  | *bool*            | false   | Whether it is possible to select the initials text.                                                    |
 | `onClick`    | *function*            |        | Mouse click event                                                                                     |
 
 ### ConfigProvider
