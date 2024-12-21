@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import Avatar, {
     getRandomColor,
     ConfigProvider,
@@ -453,8 +453,8 @@ var mountNode = document.getElementById('container');
 // Enable strict mode when supported by react version
 var Wrapper = React.StrictMode || 'div';
 
-ReactDOM.render((
+ReactDOM.createRoot(mountNode).render((
     <Wrapper>
         <Demo />
     </Wrapper>
-), mountNode);
+));
