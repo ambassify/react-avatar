@@ -95,7 +95,7 @@ interface CreateAvatarOptions {
     sources?: SourceConstructor[]
 }
 
-export interface ConfigProvider {
+export interface ConfigProvider extends React.PropsWithChildren {
     /**
      * A list of color values as strings from which the getRandomColor picks one at random.
      */

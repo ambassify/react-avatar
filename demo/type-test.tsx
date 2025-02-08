@@ -56,6 +56,6 @@ class TypeTest extends Component {
                     <Avatar />
                 </ConfigProvider>
             </div>
-        )
+        );
     }
 }
