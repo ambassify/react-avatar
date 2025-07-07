@@ -96,6 +96,7 @@ interface CreateAvatarOptions {
 }
 
 export interface ConfigProvider {
+    children?: React.ReactNode;
     /**
      * A list of color values as strings from which the getRandomColor picks one at random.
      */
