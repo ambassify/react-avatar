@@ -36,6 +36,7 @@ class AvatarText extends React.PureComponent {
             PropTypes.number,
             PropTypes.string
         ]),
+        selectable: PropTypes.bool,
     }
 
     static defaultProps = {
@@ -45,7 +46,8 @@ class AvatarText extends React.PureComponent {
         size: 100,
         textSizeRatio: 3,
         textMarginRatio: .15,
-        unstyled: false
+        unstyled: false,
+        selectable: false,
     }
 
     componentDidMount() {
@@ -122,7 +124,8 @@ class AvatarText extends React.PureComponent {
             title,
             name,
             value,
-            avatar
+            avatar,
+            selectable
         } = this.props;
 
         const size = parseSize(this.props.size);
@@ -144,11 +147,19 @@ class AvatarText extends React.PureComponent {
             height: '100%'
         };
 
+        const unselectableStyle = {
+            WebkitUserSelect: 'none',
+            MsUserSelect: 'none',
+            userSelect: 'none',
+        };
+
         const spanStyle = unstyled ? null : {
             display: 'table-cell',
             verticalAlign: 'middle',
             fontSize: '100%',
-            whiteSpace: 'nowrap'
+            whiteSpace: 'nowrap',
+
+            ...(!selectable && unselectableStyle)
         };
 
         // Ensure the text node is updated and scaled when any of these
